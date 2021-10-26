@@ -1,0 +1,199 @@
+name: kepegawaian
+description: A new Flutter project.
+
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+# Dependencies specify other packages that your package needs in order to work.
+# To automatically upgrade your package dependencies to the latest versions
+# consider running `flutter pub upgrade --major-versions`. Alternatively,
+# dependencies can be manually updated by changing the version numbers below to
+# the latest version available on pub.dev. To see which dependencies have newer
+# versions available, run `flutter pub outdated`.
+dependencies:
+  animations: ^2.0.1
+  cached_network_image: ^3.1.0
+  card_swiper: ^1.0.2
+  carousel_slider: ^4.0.0
+  clippy_flutter: ^2.0.0-nullsafety.1
+  cool_alert: ^1.1.0
+  cupertino_icons: ^1.0.2
+  dio: ^4.0.0
+  dots_indicator: ^2.0.0
+  file_picker: ^3.0.1
+  fl_chart: 0.36.1
+  flutter:
+    sdk: flutter
+  flutter_colorpicker: ^0.4.0
+  flutter_datetime_picker: ^1.5.1
+  flutter_image_compress: ^1.1.0
+  flutter_reaction_button: ^1.0.8
+  flutter_slidable: ^0.6.0
+  flutter_staggered_animations: ^1.0.0
+  flutter_staggered_grid_view: ^0.4.0
+  flutter_svg: ^0.22.0
+  flutter_vector_icons: ^1.0.0
+  get: ^4.3.8
+  get_storage: ^2.0.3
+  google_fonts: ^2.1.0
+  image_cropper: ^1.4.1
+  image_picker: ^0.8.4+2
+  intl: ^0.17.0
+  liquid_swipe: ^2.1.0
+  lottie: ^1.1.0
+  nb_utils: ^4.4.8
+  otp_text_field: ^1.1.1
+  percent_indicator: ^3.0.1
+  photo_view: ^0.12.0
+  qr_code_scanner: ^0.5.2
+  qr_flutter: ^4.0.0
+  search_choices: ^2.0.14
+  showcaseview: ^1.0.0
+  signature: ^4.1.1
+  simple_animations: ^3.1.1
+  smart_select: ^4.3.2
+  syncfusion_flutter_charts: ^19.1.67
+
+dev_dependencies:
+  flutter_lints: ^1.0.0
+  flutter_test:
+    sdk: flutter
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+# The following section is specific to Flutter.
+flutter:
+  uses-material-design: true
+  assets:
+    - fonts/
+    - assets/
+    - images/
+    - images/app/icons/
+    - images/app/
+    - images/app/socialIcons/
+    - images/widgets/
+    - images/widgets/materialWidgets/
+    - images/widgets/interactionModelWidgets/
+    - images/widgets/cupertinoWidgets/
+    - images/widgets/materialWidgets/mwAppStructureWidgets/
+    - images/widgets/materialWidgets/mwDialogAlertPanelWidgets/
+    - images/widgets/paintingAndEffectWidgets/
+    - images/widgets/animationAndMotionWidgets/
+    - images/widgets/materialWidgets/mwInformationDisplayWidgets/
+    - images/widgets/materialWidgets/mwLayoutWidgtes/
+    - images/widgets/materialWidgets/mwInputSelectionWidgets/
+    - images/widgets/materialWidgets/mwLayoutWidgtes/MWUserAccountDrawerHeaderWidget/
+    - images/widgets/materialWidgets/mwLayoutWidgtes/MWListTile/
+    - images/widgets/materialWidgets/mwAppStructureWidgets/BottomNavigation/
+    - images/widgets/materialWidgets/mwAppStructureWidgets/TabBar/
+    - images/widgets/materialWidgets/mwInputSelectionWidgets/switch/
+    - images/widgets/materialWidgets/mwInputSelectionWidgets/Checkbox/
+    - images/widgets/materialWidgets/mwInformationDisplayWidgets/cards/
+    - images/widgets/materialWidgets/mwInformationDisplayWidgets/gridview/
+    - images/widgets/materialWidgets/mwInformationDisplayWidgets/listView/
+    - images/widgets/paintingAndEffectWidgets/opacity/
+    - images/integrations/img/
+    - images/integrations/icons/
+    - images/integrations/
+    - images/theme1/
+    - images/theme2/
+    - images/theme3/
+    - images/theme4/
+    - images/theme5/
+    - images/theme7/
+    - images/theme6/
+    - images/theme8/
+    - images/theme9/
+    - images/theme10/
+    - images/theme11/
+    - images/theme12/
+    - images/theme13/
+    - images/theme14/
+    - images/LikeButton/image/
+    - images/walletApp/
+    - images/Tinder/images/
+    - assets/defaultTheme/
+    - images/shophop/img/
+    - assets/shophop_data/
+    - assets/integrations/
+    - assets/medium/
+    - assets/integrations/lang/
+    - images/medium/mtopics/
+    - images/muvi/icons/
+    - images/shophop/img/products/
+    - images/muvi/images/
+    - images/shophop/img/products/shoes/
+    - images/shophop/img/products/dress/
+    - images/qibus/
+    - images/pricingPlans/
+    - images/shophop/img/products/banners/
+    - images/shophop/img/products/decor/
+    - images/newsBlog/
+    - images/medium/
+    - images/banking/
+    - images/LikeButton/
+    - images/mediLab/images/
+    - images/orapay/
+    - assets/meadium_data/
+    - images/defaultTheme/
+    - images/mediLab/
+    - images/quiz/
+    - images/eventApp/
+    - images/defaultTheme/banner/
+    - images/flag/
+    - images/dating/
+    - images/dashboard/
+    - images/social/
+    - images/muvi/
+    - images/shophop/
+    - images/Reaction/images/
+    - images/defaultTheme/category/
+    - images/Reaction/
+    - images/cloudStorage/
+    - images/Tinder/
+    - images/smartDeck/
+    - images/learner/
+    - images/Reaction/images/SocialMedia/
+    - images/smartDeck/images/
+    - images/hairSalon/
+    - images/food/
+    - images/mpmusic/
+    - images/grocery/
+    - assets/pdf/
+
+  fonts:
+    - family: Andina
+      fonts:
+        - asset: fonts/andina.ttf
+
+    - family: Regular
+      fonts:
+        - asset: fonts/googlesansregular.ttf
+
+    - family: Medium
+      fonts:
+        - asset: fonts/googlesansmedium.ttf
+
+    - family: Semibold
+      fonts:
+        - asset: fonts/googlesansmedium.ttf
+
+    - family: Bold
+      fonts:
+        - asset: fonts/googlesansebold.ttf
