@@ -53,14 +53,55 @@ class WADashboardScreenState extends State<WADashboardScreen> {
           FloatingActionButtonLocation.miniCenterDocked,
       floatingActionButton: Padding(
         padding: EdgeInsets.all(6.0),
-        child: FloatingActionButton(
-          backgroundColor: WAPrimaryColor,
-          child: Icon(Icons.qr_code_scanner_sharp, color: Colors.white),
-          onPressed: () async {
-            // WAQrScannerScreen().launch(context);
-            c.getImage(ImageSource.camera);
-          },
-        ),
+        child: Obx(() => FloatingActionButton(
+              backgroundColor: c.buttonColor.value,
+              child: Icon(Icons.qr_code_scanner_sharp, color: Colors.white),
+              onPressed: () async {
+                // WAQrScannerScreen().launch(context);
+                Get.bottomSheet(
+                  Container(
+                    padding: const EdgeInsets.only(
+                        top: 16, left: 16, right: 16, bottom: 16),
+                    width: Get.width,
+                    height: Get.height / 2,
+                    decoration: boxDecorationWithShadow(
+                        borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(30),
+                            topRight: Radius.circular(30))),
+                    child: SingleChildScrollView(
+                      child: Obx(
+                        () => Column(
+                          children: c.listJamJaga.value
+                              .map(
+                                (e) => Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 16, right: 16, top: 10, bottom: 10),
+                                  child: Container(
+                                    decoration:
+                                        boxDecorationRoundedWithShadow(12),
+                                    child: ListTile(
+                                      title: Text(e.shift!,
+                                          style: boldTextStyle(size: 18)),
+                                      subtitle: Text(
+                                          '${e.jamMasuk} - ${e.jamPulang}'),
+                                      onTap: () {
+                                        c.shift.value = e.shift!;
+                                        c.getImage(ImageSource.camera);
+                                      },
+                                    ),
+                                  ),
+                                ),
+                              )
+                              .toList(),
+                        ),
+                      ),
+                    ),
+                  ),
+                  isDismissible: false,
+                );
+                //c.getImage(ImageSource.camera);
+              },
+            )),
       ),
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),

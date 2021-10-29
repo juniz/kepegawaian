@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kepegawaian/component/riwayat_component.dart';
-import 'package:kepegawaian/controller/riwayat_cuti_controller.dart';
-import 'package:kepegawaian/controller/riwayat_izin_controller.dart';
+import 'package:intl/intl.dart';
+import 'package:kepegawaian/controller/riwayat_seminar_controller.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-class RiwayatIzin extends StatelessWidget {
-  const RiwayatIzin({Key? key}) : super(key: key);
+class RiwayatSeminar extends StatelessWidget {
+  const RiwayatSeminar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final c = Get.put(RiwayatIzinController());
-
+    final c = Get.put(RiwayatSeminarController());
     return SafeArea(
       child: Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           title: Text(
-            'Riwayat Izin',
+            'Riwayat Seminar',
             style: boldTextStyle(color: Colors.black, size: 20),
           ),
           leading: Container(
@@ -54,17 +53,39 @@ class RiwayatIzin extends StatelessWidget {
             width: Get.width,
             height: Get.height,
             decoration: boxDecorationWithShadow(
-                borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(30),
-                    topRight: Radius.circular(30))),
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(30),
+                topRight: Radius.circular(30),
+              ),
+            ),
             child: SingleChildScrollView(
-              physics: const BouncingScrollPhysics(
-                  parent: AlwaysScrollableScrollPhysics()),
-              child: Obx(
-                () => Column(
-                  children: c.listRiwayatCuti.value
-                      .map((cuti) => RiwayatComponent(cuti: cuti))
-                      .toList(),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Obx(
+                  () => DataTable(
+                    columns: c.headerTable.value,
+                    rows: c.dataTable
+                        .map(
+                          (e) => DataRow(
+                            cells: <DataCell>[
+                              DataCell(
+                                Text(e!.namaSeminar!),
+                                onTap: () async => await launch(
+                                    'https://webapps.rsbhayangkaranganjuk.com/webapps/penggajian/' +
+                                        e.berkas!),
+                              ),
+                              DataCell(Text(e.peranan!)),
+                              DataCell(
+                                Text(
+                                  DateFormat('dd/MM/yyyy').format(e.mulai!),
+                                ),
+                              ),
+                              DataCell(Text(e.penyelengara!)),
+                            ],
+                          ),
+                        )
+                        .toList(),
+                  ),
                 ),
               ),
             ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
 import 'package:kepegawaian/api/api_connection.dart';
 import 'package:kepegawaian/model/pegawai_model.dart';
@@ -15,6 +16,7 @@ class IzinController extends GetxController {
   var tglMulai = DateTime.now().obs;
   var tglSelesai = DateTime.now().obs;
   var cutiSelected = ''.obs;
+  var nik = "".obs;
   late TextEditingController tanggalMulaiController;
   late TextEditingController tanggalSelesaiController;
   late TextEditingController alamatController;
@@ -41,6 +43,8 @@ class IzinController extends GetxController {
     jenisCutiFocusNode = FocusNode();
     alamatFocusNode = FocusNode();
     alasanFocusNode = FocusNode();
+
+    nik.value = GetStorage().read('nik');
 
     await getPegawai();
     super.onInit();
@@ -78,7 +82,7 @@ class IzinController extends GetxController {
       var param = {
         'tanggal_awal': DateFormat('yyyy-MM-dd').format(tglMulai.value),
         'tanggal_akhir': DateFormat('yyyy-MM-dd').format(tglSelesai.value),
-        'nik': 'TKK0000263',
+        'nik': nik.value,
         'urgensi': cutiSelected.value,
         'kepentingan': alasanController.text,
         'nik_pj': pjSelected.value,
@@ -90,7 +94,9 @@ class IzinController extends GetxController {
           body: param);
       print(data.bodyString);
       var response = data.body;
-
+      if (data.statusCode == 200) {
+        GetStorage().write('noPengajuanIzin', response['data']['no_pengajuan']);
+      }
       DialogHelper.hideLoading();
       return {'code': data.statusCode, 'message': response['message']};
     } on Exception catch (e) {

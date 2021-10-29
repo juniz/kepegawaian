@@ -143,8 +143,7 @@ Widget widgetMenuButton(
             height: 45,
             width: 45,
             padding: EdgeInsets.all(12),
-            child:
-                Image.asset(image!, fit: BoxFit.cover, height: 20, width: 20),
+            child: Icon(Icons.bookmark, color: color),
           ),
           10.width,
           Column(

@@ -5,12 +5,20 @@ import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/state_manager.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:kepegawaian/api/api_connection.dart';
+import 'package:kepegawaian/model/jam_jaga_model.dart';
+import 'package:kepegawaian/utils/WAColors.dart';
 import 'package:kepegawaian/utils/helper.dart';
 
 class PresensiController extends GetxController {
+  var listJamJaga = <JamJagaData>[].obs;
+  var cap = "".obs;
+  var idPegawai = "".obs;
+  var shift = "".obs;
+  var buttonColor = WAPrimaryColor.obs;
   var selectedImagePath = ''.obs;
   var selectedImageSize = ''.obs;
 
@@ -67,41 +75,137 @@ class PresensiController extends GetxController {
 
   @override
   void onInit() {
+    cap.value = GetStorage().read('cap');
+    idPegawai.value = GetStorage().read('idPegawai');
     super.onInit();
   }
 
   @override
   void onReady() {
+    getJamJaga();
+    cekPresensi();
     super.onReady();
   }
 
   @override
   void onClose() {}
 
+  void getJamJaga() {
+    try {
+      Future.delayed(
+        Duration.zero,
+        () => DialogHelper.showLoading('Sedang mengambil data.....'),
+      );
+      var body = {'cap': cap.value};
+      ApiConnection()
+          .postData(
+              url:
+                  'https://webapps.rsbhayangkaranganjuk.com/api-rsbnganjuk/api/v1/jamjaga',
+              body: body)
+          .then((res) {
+        listJamJaga.value = jamJagaModelFromJson(res.bodyString!).data!;
+        DialogHelper.hideLoading();
+      });
+    } catch (e) {
+      DialogHelper.hideLoading();
+    }
+  }
+
+  void cekPresensi() {
+    try {
+      Future.delayed(
+        Duration.zero,
+        () => DialogHelper.showLoading('Sedang mengambil data.....'),
+      );
+      var body = {'id': idPegawai.value};
+      ApiConnection()
+          .postData(
+              url:
+                  'https://webapps.rsbhayangkaranganjuk.com/api-rsbnganjuk/api/v1/cekpresensi',
+              body: body)
+          .then((res) {
+        print(res.bodyString);
+        if (res.statusCode == 200) {
+          buttonColor.value = Colors.red;
+        } else {
+          buttonColor.value = WAPrimaryColor;
+        }
+        DialogHelper.hideLoading();
+      });
+    } catch (e) {
+      DialogHelper.hideLoading();
+    }
+  }
+
   void uploadImage(File file) {
     Future.delayed(
       Duration.zero,
       () => DialogHelper.showLoading('Sedang mengambil data.....'),
     );
-    ApiConnection().uploadImage(file).then((resp) {
+
+    print(shift.value);
+    final form = FormData({
+      'id': idPegawai.value,
+      'shift': shift.value,
+      'file': MultipartFile(file, filename: 'photo.jpg'),
+    });
+
+    ApiConnection()
+        .uploadImage(
+            url:
+                'https://webapps.rsbhayangkaranganjuk.com/api-rsbnganjuk/api/v1/presensi',
+            body: form)
+        .then((resp) {
+      print(resp.bodyString);
       DialogHelper.hideLoading();
-      if (resp == "success") {
-        Get.snackbar('Success', 'File Uploaded',
-            snackPosition: SnackPosition.BOTTOM,
-            backgroundColor: Colors.green,
-            colorText: Colors.white);
-      } else if (resp == "fail") {
-        Get.snackbar('Error', 'File upload failed',
-            snackPosition: SnackPosition.BOTTOM,
-            backgroundColor: Colors.red,
-            colorText: Colors.white);
+      Get.back();
+      if (resp.body['status'] == "success") {
+        Get.snackbar(
+          'Success',
+          resp.body['result'],
+          icon: const Icon(Icons.add_alert_outlined, color: Colors.white),
+          snackPosition: SnackPosition.TOP,
+          backgroundColor: Colors.green,
+          colorText: Colors.white,
+          borderRadius: 20,
+          margin: const EdgeInsets.all(15),
+          duration: const Duration(seconds: 5),
+          isDismissible: true,
+          dismissDirection: SnackDismissDirection.HORIZONTAL,
+          forwardAnimationCurve: Curves.easeOutBack,
+        );
+      } else if (resp.body['status'] == "error") {
+        Get.snackbar(
+          'Error',
+          resp.body['result'],
+          icon: const Icon(Icons.add_alert_outlined, color: Colors.white),
+          snackPosition: SnackPosition.TOP,
+          backgroundColor: Colors.red,
+          colorText: Colors.white,
+          borderRadius: 20,
+          margin: const EdgeInsets.all(15),
+          duration: const Duration(seconds: 5),
+          isDismissible: true,
+          dismissDirection: SnackDismissDirection.HORIZONTAL,
+          forwardAnimationCurve: Curves.easeOutBack,
+        );
       }
     }, onError: (err) {
       Get.back();
-      Get.snackbar('Error', 'File upload failed',
-          snackPosition: SnackPosition.BOTTOM,
-          backgroundColor: Colors.red,
-          colorText: Colors.white);
+      Get.snackbar(
+        'Error',
+        'File upload failed',
+        icon: const Icon(Icons.add_alert_outlined, color: Colors.white),
+        snackPosition: SnackPosition.TOP,
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+        borderRadius: 20,
+        margin: const EdgeInsets.all(15),
+        duration: const Duration(seconds: 5),
+        isDismissible: true,
+        dismissDirection: SnackDismissDirection.HORIZONTAL,
+        forwardAnimationCurve: Curves.easeOutBack,
+      );
     });
   }
 }

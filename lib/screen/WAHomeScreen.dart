@@ -116,7 +116,7 @@ class WAHomeScreenState extends State<WAHomeScreen> {
                 //   ).paddingAll(16),
                 // ),
                 16.height,
-                Text('Grafik Cuti', style: boldTextStyle(size: 20))
+                Text('Grafik Cuti dan Izin', style: boldTextStyle(size: 20))
                     .paddingOnly(left: 16, right: 16),
                 // 10.height,
                 WAStatisticsChartComponent(),

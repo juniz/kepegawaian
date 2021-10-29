@@ -3,8 +3,12 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:kepegawaian/screen/IzinScreen.dart';
 import 'package:kepegawaian/screen/WALoginScreen.dart';
+import 'package:kepegawaian/screen/WASplashScreen.dart';
 import 'package:kepegawaian/screen/riwayat_cuti.dart';
+import 'package:kepegawaian/screen/riwayat_gaji.dart';
 import 'package:kepegawaian/screen/riwayat_izin.dart';
+import 'package:kepegawaian/screen/riwayat_jabatan.dart';
+import 'package:kepegawaian/screen/riwayat_seminar.dart';
 
 import 'screen/WADashboardScreen.dart';
 import 'screen/WASendMoneyViaLoopScreen.dart';
@@ -32,14 +36,18 @@ class MyApp extends StatelessWidget {
             page: () => GetStorage().read('nik') != null
                 ? WADashboardScreen()
                 : WALoginScreen()),
+        GetPage(name: '/splash', page: () => WASplashScreen()),
         GetPage(name: '/login', page: () => WALoginScreen()),
         GetPage(name: '/dashboard', page: () => WADashboardScreen()),
         GetPage(name: '/izin', page: () => IzinScreen()),
         GetPage(name: '/cuti', page: () => WASendMoneyViaLoopScreen()),
         GetPage(name: '/riwayatcuti', page: () => RiwayatCuti()),
         GetPage(name: '/riwayatizin', page: () => RiwayatIzin()),
+        GetPage(name: '/riwayatseminar', page: () => RiwayatSeminar()),
+        GetPage(name: '/riwayatgaji', page: () => RiwayatGaji()),
+        GetPage(name: '/riwayatjabatan', page: () => RiwayatJabatan()),
       ],
-      initialRoute: '/',
+      initialRoute: '/splash',
     );
   }
 }

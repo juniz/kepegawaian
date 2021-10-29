@@ -90,7 +90,7 @@ BarChartGroupData makeGroupData(int x, double y1, double y2) {
     x: x,
     barRods: [
       BarChartRodData(y: y1, colors: [WAPrimaryColor], width: 7),
-      BarChartRodData(y: y2, colors: [Colors.red], width: 7),
+      BarChartRodData(y: y2, colors: [Color(0xFFFF7426)], width: 7),
     ],
   );
 }

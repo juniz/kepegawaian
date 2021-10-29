@@ -1,8 +1,11 @@
+import 'package:cool_alert/cool_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:kepegawaian/controller/cuti_controller.dart';
 import 'package:kepegawaian/controller/profile_controller.dart';
+import 'package:kepegawaian/utils/WAColors.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:kepegawaian/screen/WAEditProfileScreen.dart';
 import 'package:kepegawaian/utils/WAWidgets.dart';
@@ -108,13 +111,56 @@ class WAMyProfileScreenState extends State<WAMyProfileScreen> {
                     }),
                 16.height,
                 SettingItemWidget(
-                    title: 'Settings',
+                    title: 'Riwayat Jabatan',
                     decoration: boxDecorationRoundedWithShadow(12),
                     trailing:
                         Icon(Icons.arrow_right, color: grey.withOpacity(0.5)),
                     onTap: () {
-                      //
+                      Get.toNamed('/riwayatjabatan');
                     }),
+                16.height,
+                SettingItemWidget(
+                    title: 'Riwayat Seminar',
+                    decoration: boxDecorationRoundedWithShadow(12),
+                    trailing:
+                        Icon(Icons.arrow_right, color: grey.withOpacity(0.5)),
+                    onTap: () {
+                      Get.toNamed('/riwayatseminar');
+                    }),
+                16.height,
+                SettingItemWidget(
+                    title: 'Riwayat Gaji',
+                    decoration: boxDecorationRoundedWithShadow(12),
+                    trailing:
+                        Icon(Icons.arrow_right, color: grey.withOpacity(0.5)),
+                    onTap: () {
+                      Get.toNamed('/riwayatgaji');
+                    }),
+                16.height,
+                SettingItemWidget(
+                    title: 'Log Out',
+                    decoration: boxDecorationRoundedWithShadow(12),
+                    trailing:
+                        Icon(Icons.arrow_right, color: grey.withOpacity(0.5)),
+                    onTap: () {
+                      CoolAlert.show(
+                          context: context,
+                          backgroundColor: WAPrimaryColor,
+                          confirmBtnColor: WAPrimaryColor,
+                          confirmBtnText: 'Ya',
+                          cancelBtnText: 'Tidak',
+                          type: CoolAlertType.confirm,
+                          title: 'Keluar Aplikasi',
+                          text: 'Apakah anda yakin ingin keluar aplikasi ?',
+                          onConfirmBtnTap: () {
+                            GetStorage().erase();
+                            Get.offAllNamed('/login');
+                          },
+                          onCancelBtnTap: () {
+                            Get.back();
+                          });
+                    }),
+                16.height,
               ],
             ).paddingAll(16),
           ),

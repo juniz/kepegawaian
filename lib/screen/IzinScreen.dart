@@ -205,7 +205,8 @@ class IzinScreen extends StatelessWidget {
                                 ? CoolAlertType.success
                                 : CoolAlertType.error,
                             text: res['message'],
-                            onConfirmBtnTap: () => Get.off(WAHomeScreen()),
+                            onConfirmBtnTap: () =>
+                                Get.offAllNamed('/dashboard'),
                           );
                         })
                     .paddingOnly(left: Get.width * 0.1, right: Get.width * 0.1),

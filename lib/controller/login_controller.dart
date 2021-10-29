@@ -53,10 +53,12 @@ class LoginController extends GetxController {
       if (res.statusCode == 200) {
         var body = res.body;
         print(body['data']['nama']);
+        GetStorage().write('idPegawai', body['data']['id'].toString());
         GetStorage().write('nik', body['data']['username']);
         GetStorage().write('nama', body['data']['nama']);
+        GetStorage().write('cap', body['data']['cap']);
         DialogHelper.hideLoading();
-        Get.toNamed('/dashboard');
+        Get.offAllNamed('/dashboard');
       } else {
         DialogHelper.hideLoading();
         CoolAlert.show(
@@ -67,6 +69,8 @@ class LoginController extends GetxController {
           title: 'Username atau Password salah',
         );
       }
-    } catch (e) {}
+    } catch (e) {
+      DialogHelper.hideLoading();
+    }
   }
 }

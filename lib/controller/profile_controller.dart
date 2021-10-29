@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
 import 'package:kepegawaian/api/api_connection.dart';
 import 'package:kepegawaian/model/biodata_model.dart';
@@ -42,17 +43,19 @@ class ProfileController extends GetxController {
           noKtp: '',
           email: '')
       .obs;
-  var nik = 'TKK0000263';
+  var nik = ''.obs;
 
   @override
   void onInit() {
     // TODO: implement onInit
+    nik.value = GetStorage().read('nik');
     super.onInit();
   }
 
   @override
   void onReady() async {
     // TODO: implement onReady
+
     await getBiodata();
     super.onReady();
   }
@@ -70,7 +73,7 @@ class ProfileController extends GetxController {
         () => DialogHelper.showLoading('Sedang mengambil data.....'),
       );
 
-      var param = {'nik': 'TKK0000263'};
+      var param = {'nik': nik.value};
 
       var data = await ApiConnection().postData(
           url:

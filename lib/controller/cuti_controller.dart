@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
 import 'package:kepegawaian/api/api_connection.dart';
 import 'package:kepegawaian/model/pegawai_model.dart';
@@ -7,6 +8,7 @@ import 'package:smart_select/smart_select.dart';
 import '../utils/helper.dart';
 
 class CutiController extends GetxController {
+  var nik = "".obs;
   var listPegawai = <PegawaiData?>[].obs;
   var options = [
     S2Choice<String>(value: '', title: ''),
@@ -29,6 +31,7 @@ class CutiController extends GetxController {
 
   @override
   void onInit() async {
+    nik.value = GetStorage().read('nik');
     cutiSelected.value = 'Tahunan';
     tanggalMulaiController = TextEditingController();
     tanggalSelesaiController = TextEditingController();
@@ -78,7 +81,7 @@ class CutiController extends GetxController {
       var param = {
         'tanggal_awal': DateFormat('yyyy-MM-dd').format(tglMulai.value),
         'tanggal_akhir': DateFormat('yyyy-MM-dd').format(tglSelesai.value),
-        'nik': 'TKK0000263',
+        'nik': nik.value,
         'urgensi': cutiSelected.value,
         'alamat': alamatController.text,
         'kepentingan': alasanController.text,

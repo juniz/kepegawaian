@@ -1,24 +1,23 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:kepegawaian/api/api_connection.dart';
-import 'package:kepegawaian/model/riwayat_cuti_model.dart';
+import 'package:kepegawaian/model/riwayat_jabatan_model.dart';
 import 'package:kepegawaian/utils/helper.dart';
 
-class RiwayatIzinController extends GetxController {
-  var nik = "".obs;
-  var listRiwayatCuti = <RiwayatCutiDataModel>[].obs;
-
+class RiwayatJabatanController extends GetxController {
+  var idPegawai = "".obs;
+  var listRiwayatJabatan = <RiwayatJabatanData>[].obs;
   @override
   void onInit() {
     // TODO: implement onInit
-    nik.value = GetStorage().read('nik');
+    idPegawai.value = GetStorage().read('idPegawai');
     super.onInit();
   }
 
   @override
   void onReady() {
     // TODO: implement onReady
-    getRiwayatIzin();
+    getRiwayatJabatan();
     super.onReady();
   }
 
@@ -28,22 +27,21 @@ class RiwayatIzinController extends GetxController {
     super.onClose();
   }
 
-  Future<void> getRiwayatIzin() async {
+  Future<void> getRiwayatJabatan() async {
     try {
       Future.delayed(
         Duration.zero,
         () => DialogHelper.showLoading('Sedang mengambil data.....'),
       );
-
-      var param = {'nik': nik.value};
-
+      var param = {'id': idPegawai.value};
       ApiConnection()
           .postData(
               url:
-                  'https://webapps.rsbhayangkaranganjuk.com/api-rsbnganjuk/api/v1/riwayatizin',
+                  'https://webapps.rsbhayangkaranganjuk.com/api-rsbnganjuk/api/v1/riwayatjabatan',
               body: param)
           .then((res) {
-        listRiwayatCuti.value = riwayatCutiModelFromJson(res.bodyString!).data!;
+        listRiwayatJabatan.value =
+            riwayatJabatanModelFromJson(res.bodyString!).data!;
         DialogHelper.hideLoading();
       });
     } catch (e) {

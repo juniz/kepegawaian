@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:kepegawaian/screen/WAWalkThroughScreen.dart';
 import 'package:kepegawaian/utils/WAColors.dart';
@@ -22,7 +24,9 @@ class WASplashScreenState extends State<WASplashScreen> {
         statusBarIconBrightness: Brightness.light);
     await Future.delayed(Duration(seconds: 3));
     if (mounted) finish(context);
-    WAWalkThroughScreen().launch(context);
+    var nik = GetStorage().read('nik');
+    nik != null ? Get.offAllNamed('/dashboard') : Get.offAllNamed('/login');
+    //WAWalkThroughScreen().launch(context);
   }
 
   @override
