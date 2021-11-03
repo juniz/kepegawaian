@@ -1,6 +1,8 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:get/get.dart';
+import 'package:kepegawaian/controller/informasi_controller.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:kepegawaian/component/WACardComponent.dart';
 import 'package:kepegawaian/component/WATransactionComponent.dart';
@@ -18,9 +20,10 @@ class WAWalletScreen extends StatefulWidget {
 }
 
 class WAWalletScreenState extends State<WAWalletScreen> {
-  List<WAWalletUserModel> walletUserList = waWalletUserList();
-  List<WACardModel> walletList = waCardList();
-  List<WATransactionModel> transactionList = waTransactionList();
+  final c = Get.put(InformasiController());
+  // List<WAWalletUserModel> walletUserList = waWalletUserList();
+  // List<WACardModel> walletList = waCardList();
+  // List<WATransactionModel> transactionList = waTransactionList();
 
   PageController? pageController;
   int currentPosition = 1;
@@ -53,7 +56,7 @@ class WAWalletScreenState extends State<WAWalletScreen> {
         extendBodyBehindAppBar: true,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-          title: Text('Wallets',
+          title: Text('Informasi',
               style: boldTextStyle(color: Colors.black, size: 20)),
           centerTitle: true,
           automaticallyImplyLeading: false,
@@ -73,67 +76,50 @@ class WAWalletScreenState extends State<WAWalletScreen> {
           ],
         ),
         body: Container(
-          height: context.height(),
-          width: context.width(),
+          height: Get.height,
+          width: Get.width,
           padding: EdgeInsets.only(top: 70),
           decoration: BoxDecoration(
               image: DecorationImage(
                   image: AssetImage('images/walletApp/wa_bg.jpg'),
                   fit: BoxFit.cover)),
           child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(
-                  height: 200,
-                  width: context.width(),
-                  child: PageView(
-                    controller: pageController,
-                    children: walletList.map((WACardModel item) {
-                      return WACardComponent(cardModel: item)
-                          .paddingOnly(right: 16);
-                    }).toList(),
-                    onPageChanged: (index) {
-                      setState(() {
-                        currentPosition = index;
-                      });
-                    },
-                  ),
-                ),
-                8.height,
-                DotsIndicator(
-                  dotsCount: 3,
-                  position: currentPosition.toDouble(),
-                  decorator: DotsDecorator(
-                      size: Size.square(9.0),
-                      activeSize: Size(18.0, 9.0),
-                      color: grey,
-                      activeColor: WAPrimaryColor,
-                      activeShape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.0))),
-                ),
-                30.height,
-                Align(
-                        alignment: Alignment.topLeft,
-                        child: Text('Send Money to',
-                            style: boldTextStyle(size: 20)))
-                    .paddingLeft(16),
-                16.height,
-                WAWalletUserListComponent(walletUserList: walletUserList),
-                16.height,
-                Align(
-                        alignment: Alignment.topLeft,
-                        child: Text('Transactions',
-                            style: boldTextStyle(size: 20)))
-                    .paddingLeft(16),
-                16.height,
-                Column(
-                  children: transactionList.map((transactionItem) {
-                    return WATransactionComponent(
-                        transactionModel: transactionItem);
-                  }).toList(),
-                ),
-              ],
+            child: Obx(
+              () => Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: c.listWebContents.value
+                    .where((e) => e.betterFeaturedImage != null)
+                    .map(
+                      (e) => InkWell(
+                        onTap: () => c.launchURL(e.link!),
+                        child: Container(
+                          width: Get.width,
+                          height: Get.height / 5,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            image: DecorationImage(
+                              image: NetworkImage(e
+                                  .betterFeaturedImage!
+                                  .mediaDetails!
+                                  .sizes!['medium_large']!
+                                  .sourceUrl!),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text(e.title!.rendered!,
+                                      style: boldTextStyle(
+                                          color: Colors.white, size: 15))
+                                  .paddingOnly(left: 16, right: 16, bottom: 16),
+                            ],
+                          ),
+                        ).paddingOnly(left: 16, right: 16, bottom: 20),
+                      ),
+                    )
+                    .toList(),
+              ),
             ),
           ),
         ),

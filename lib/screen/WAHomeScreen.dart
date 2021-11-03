@@ -74,34 +74,34 @@ class WAHomeScreenState extends State<WAHomeScreen> {
                       ),
                       child: Icon(Icons.person),
                     ),
-                    Container(
-                      width: 40,
-                      height: 40,
-                      decoration: boxDecorationWithRoundedCorners(
-                        backgroundColor: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: Colors.grey.withOpacity(0.2)),
-                      ),
-                      alignment: Alignment.center,
-                      child: Stack(
-                        alignment: AlignmentDirectional.topEnd,
-                        children: [
-                          Icon(Icons.add_alert, color: Colors.grey),
-                          Positioned(
-                            top: 3,
-                            right: 3,
-                            child: Container(
-                              width: 8,
-                              height: 8,
-                              decoration: BoxDecoration(
-                                color: Color(0xFFFF7426),
-                                shape: BoxShape.circle,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    )
+                    // Container(
+                    //   width: 40,
+                    //   height: 40,
+                    //   decoration: boxDecorationWithRoundedCorners(
+                    //     backgroundColor: Colors.white,
+                    //     borderRadius: BorderRadius.circular(12),
+                    //     border: Border.all(color: Colors.grey.withOpacity(0.2)),
+                    //   ),
+                    //   alignment: Alignment.center,
+                    //   child: Stack(
+                    //     alignment: AlignmentDirectional.topEnd,
+                    //     children: [
+                    //       Icon(Icons.add_alert, color: Colors.grey),
+                    //       Positioned(
+                    //         top: 3,
+                    //         right: 3,
+                    //         child: Container(
+                    //           width: 8,
+                    //           height: 8,
+                    //           decoration: BoxDecoration(
+                    //             color: Color(0xFFFF7426),
+                    //             shape: BoxShape.circle,
+                    //           ),
+                    //         ),
+                    //       ),
+                    //     ],
+                    //   ),
+                    // )
                   ],
                 ).paddingOnly(left: 16, right: 16, bottom: 16),
                 Obx(() => Text(c.nama.value, style: secondaryTextStyle())
