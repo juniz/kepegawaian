@@ -68,12 +68,12 @@ class WAMyProfileScreenState extends State<WAMyProfileScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                waCommonCachedNetworkImage(
-                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB8vuaWT6wGaoDz6T0UEilQ8wwcFO-hvserEgijbpPulSLBBpgbkxZBjwhUsU3ULuPazM&usqp=CAU',
-                  fit: BoxFit.cover,
-                  height: 120,
-                  width: 120,
-                ).cornerRadiusWithClipRRect(60),
+                Obx(() => waCommonCachedNetworkImage(
+                      'https://webapps.rsbhayangkaranganjuk.com/webapps/penggajian/${c.dataBiodata.value.photo!}',
+                      fit: BoxFit.cover,
+                      height: 120,
+                      width: 120,
+                    ).cornerRadiusWithClipRRect(60)),
                 16.height,
                 Obx(
                   () => Text(c.dataBiodata.value.nama!, style: boldTextStyle()),
@@ -84,7 +84,7 @@ class WAMyProfileScreenState extends State<WAMyProfileScreen> {
                 ),
                 16.height,
                 SettingItemWidget(
-                    title: 'Edit Profile',
+                    title: 'Biodata',
                     decoration: boxDecorationRoundedWithShadow(12),
                     trailing:
                         Icon(Icons.arrow_right, color: grey.withOpacity(0.5)),

@@ -78,7 +78,7 @@ class WAEditProfileScreenState extends State<WAEditProfileScreen> {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           title: Text(
-            'Edit Profile',
+            'Biodata',
             style: boldTextStyle(color: Colors.black, size: 20),
           ),
           leading: Container(
@@ -88,7 +88,7 @@ class WAEditProfileScreenState extends State<WAEditProfileScreen> {
               borderRadius: BorderRadius.circular(12),
               border: Border.all(color: Colors.grey.withOpacity(0.2)),
             ),
-            child: Icon(Icons.arrow_back),
+            child: Icon(Icons.arrow_back, color: Colors.black),
           ).onTap(() {
             finish(context);
           }),
@@ -107,9 +107,9 @@ class WAEditProfileScreenState extends State<WAEditProfileScreen> {
             alignment: AlignmentDirectional.topCenter,
             children: [
               Container(
-                margin: EdgeInsets.only(top: 80),
+                margin: EdgeInsets.only(top: 20),
                 padding:
-                    EdgeInsets.only(top: 50, left: 16, right: 16, bottom: 16),
+                    EdgeInsets.only(top: 16, left: 16, right: 16, bottom: 16),
                 width: Get.width,
                 height: Get.height,
                 decoration: boxDecorationWithShadow(
@@ -321,29 +321,29 @@ class WAEditProfileScreenState extends State<WAEditProfileScreen> {
                   ),
                 ),
               ),
-              Stack(
-                alignment: AlignmentDirectional.bottomEnd,
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(right: 8),
-                    height: 110,
-                    width: 110,
-                    decoration: BoxDecoration(
-                        color: WAPrimaryColor.withOpacity(0.2),
-                        shape: BoxShape.circle),
-                    child: Icon(Icons.person, color: WAPrimaryColor, size: 60),
-                  ),
-                  Positioned(
-                    bottom: 16,
-                    child: Container(
-                      padding: EdgeInsets.all(6),
-                      child: Icon(Icons.edit, color: Colors.white, size: 20),
-                      decoration: BoxDecoration(
-                          color: WAPrimaryColor, shape: BoxShape.circle),
-                    ),
-                  ),
-                ],
-              ),
+              // Stack(
+              //   alignment: AlignmentDirectional.bottomEnd,
+              //   children: [
+              //     Container(
+              //       margin: EdgeInsets.only(right: 8),
+              //       height: 110,
+              //       width: 110,
+              //       decoration: BoxDecoration(
+              //           color: WAPrimaryColor.withOpacity(0.2),
+              //           shape: BoxShape.circle),
+              //       child: Icon(Icons.person, color: WAPrimaryColor, size: 60),
+              //     ),
+              //     Positioned(
+              //       bottom: 16,
+              //       child: Container(
+              //         padding: EdgeInsets.all(6),
+              //         child: Icon(Icons.edit, color: Colors.white, size: 20),
+              //         decoration: BoxDecoration(
+              //             color: WAPrimaryColor, shape: BoxShape.circle),
+              //       ),
+              //     ),
+              //   ],
+              // ),
             ],
           ).paddingTop(60),
         ),

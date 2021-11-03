@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
+import 'package:kepegawaian/controller/rekap_presensi_controller.dart';
+import 'package:kepegawaian/model/rekap_presensi_model.dart';
+import 'package:kepegawaian/utils/WAWidgets.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:kepegawaian/model/WalletAppModel.dart';
+import 'package:map_launcher/map_launcher.dart';
 
 class WACategoriesComponent extends StatefulWidget {
   static String tag = '/WACategoriesComponent';
 
-  final WATransactionModel? categoryModel;
+  final RekapPresensiData? categoryModel;
 
   WACategoriesComponent({this.categoryModel});
 
@@ -14,6 +19,7 @@ class WACategoriesComponent extends StatefulWidget {
 }
 
 class WACategoriesComponentState extends State<WACategoriesComponent> {
+  final c = Get.find<RekapPresensiController>();
   @override
   void initState() {
     super.initState();
@@ -40,30 +46,52 @@ class WACategoriesComponentState extends State<WACategoriesComponent> {
         tileColor: Colors.red,
         enabled: true,
         contentPadding: EdgeInsets.zero,
-        title: Text(widget.categoryModel!.title!, style: boldTextStyle()),
-        leading: Container(
-          height: 50,
-          width: 50,
-          alignment: Alignment.center,
-          decoration: boxDecorationWithRoundedCorners(
-              boxShape: BoxShape.circle,
-              backgroundColor: widget.categoryModel!.color!.withOpacity(0.1)),
-          child: ImageIcon(AssetImage('${widget.categoryModel!.image!}'),
-              size: 24, color: widget.categoryModel!.color!),
+        title: Text(widget.categoryModel!.nama!, style: boldTextStyle()),
+        subtitle: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+                DateFormat("yyyy-MM-dd HH:mm:ss")
+                    .format(widget.categoryModel!.jamDatang!),
+                style: secondaryTextStyle()),
+            Text(
+                DateFormat("yyyy-MM-dd HH:mm:ss")
+                    .format(widget.categoryModel!.jamDatang!),
+                style: secondaryTextStyle())
+          ],
         ),
+        leading: waCommonCachedNetworkImage(
+          widget.categoryModel!.photo,
+          height: 60,
+          width: 60,
+          fit: BoxFit.cover,
+        ).cornerRadiusWithClipRRect(30),
         trailing: Container(
           width: 80,
           height: 35,
           alignment: Alignment.center,
           decoration: boxDecorationWithRoundedCorners(
             borderRadius: BorderRadius.circular(30),
-            backgroundColor: widget.categoryModel!.color!.withOpacity(0.1),
+            backgroundColor: widget.categoryModel!.status == 'Tepat Waktu'
+                ? Colors.green.withOpacity(0.1)
+                : Colors.red.withOpacity(0.1),
           ),
-          child: Text('${widget.categoryModel!.balance!}',
-              maxLines: 1,
-              style:
-                  boldTextStyle(size: 12, color: widget.categoryModel!.color!)),
+          child: Text(
+            '${widget.categoryModel!.shift!}',
+            maxLines: 1,
+            style: boldTextStyle(
+                size: 12,
+                color: widget.categoryModel!.status == 'Tepat Waktu'
+                    ? Colors.green
+                    : Colors.red),
+          ),
         ),
+        onTap: () async {
+          await c.getGeo(
+              id: widget.categoryModel!.id!.toString(),
+              tanggal: DateFormat('yyyy-MM-dd')
+                  .format(widget.categoryModel!.jamDatang!));
+        },
       ),
     );
   }

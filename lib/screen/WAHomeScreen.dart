@@ -4,7 +4,9 @@ import 'package:get_storage/get_storage.dart';
 import 'package:kepegawaian/component/WAStatisticsChartComponent.dart';
 import 'package:kepegawaian/component/WAStatisticsComponent.dart';
 import 'package:kepegawaian/component/grafik_izin.dart';
+import 'package:kepegawaian/controller/chart_controller.dart';
 import 'package:kepegawaian/controller/home_controller.dart';
+import 'package:kepegawaian/utils/WAWidgets.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:kepegawaian/component/WACardComponent.dart';
 import 'package:kepegawaian/component/WAOperationComponent.dart';
@@ -22,9 +24,10 @@ class WAHomeScreen extends StatefulWidget {
 
 class WAHomeScreenState extends State<WAHomeScreen> {
   final c = Get.put(HomeController());
-  List<WACardModel> cardList = waCardList();
-  List<WAOperationsModel> operationsList = waOperationList();
-  List<WATransactionModel> transactionList = waTransactionList();
+  final b = Get.put(ChartController());
+  // List<WACardModel> cardList = waCardList();
+  // List<WAOperationsModel> operationsList = waOperationList();
+  // List<WATransactionModel> transactionList = waTransactionList();
 
   @override
   void initState() {
@@ -116,9 +119,39 @@ class WAHomeScreenState extends State<WAHomeScreen> {
                 //   ).paddingAll(16),
                 // ),
                 16.height,
-                Text('Grafik Cuti dan Izin', style: boldTextStyle(size: 20))
-                    .paddingOnly(left: 16, right: 16),
-                // 10.height,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Obx(
+                      () => Text(
+                        'Grafik ${b.chart.value}',
+                        style: boldTextStyle(size: 20),
+                      ),
+                    ),
+                    16.height,
+                    Container(
+                      width: 100,
+                      height: 50,
+                      child: DropdownButtonFormField(
+                        value: b.chart.value,
+                        isExpanded: true,
+                        decoration: waInputDecoration(
+                            bgColor: Colors.white,
+                            padding: EdgeInsets.symmetric(horizontal: 8)),
+                        items: <String>['Cuti', 'Izin'].map((String? value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value!, style: boldTextStyle(size: 14)),
+                          );
+                        }).toList(),
+                        onChanged: (value) {
+                          b.chart.value = value.toString();
+                          b.getJmlCuti();
+                        },
+                      ),
+                    ),
+                  ],
+                ).paddingOnly(left: 16, right: 16, top: 16),
                 WAStatisticsChartComponent(),
                 // Text('Grafik Izin', style: boldTextStyle(size: 20))
                 //     .paddingOnly(left: 16, right: 16),

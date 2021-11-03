@@ -13,6 +13,8 @@ class ChartController extends GetxController {
   var leftBarColor = WAPrimaryColor;
   var rightBarColor = Colors.red;
   late var width = 7;
+  var chart = "".obs;
+  var url = "".obs;
 
   late var rawBarGroups = <BarChartGroupData>[].obs;
   late var showingBarGroups = <BarChartGroupData>[].obs;
@@ -22,6 +24,7 @@ class ChartController extends GetxController {
   void onInit() async {
     // TODO: implement onInit
     nik.value = GetStorage().read('nik');
+    chart.value = "Cuti";
     print(nik.value);
     super.onInit();
   }
@@ -43,38 +46,42 @@ class ChartController extends GetxController {
     try {
       Future.delayed(
         Duration.zero,
-        () => DialogHelper.showLoading('Sedang mengambil data.....'),
+        // () => DialogHelper.showLoading('Sedang mengambil data.....'),
       );
       var param = {
         'nik': nik.value,
       };
+      if (chart.value == 'Cuti') {
+        url.value =
+            'https://webapps.rsbhayangkaranganjuk.com/api-rsbnganjuk/api/v1/jumlahcuti';
+      } else {
+        url.value =
+            'https://webapps.rsbhayangkaranganjuk.com/api-rsbnganjuk/api/v1/jumlahizin';
+      }
 
-      var data = await ApiConnection().postData(
-          url:
-              'https://webapps.rsbhayangkaranganjuk.com/api-rsbnganjuk/api/v1/jumlahcuti',
-          body: param);
-      var izin = await ApiConnection().postData(
-          url:
-              'https://webapps.rsbhayangkaranganjuk.com/api-rsbnganjuk/api/v1/jumlahizin',
-          body: param);
+      var data = await ApiConnection().postData(url: url.value, body: param);
+      // var izin = await ApiConnection().postData(
+      //     url:
+      //         'https://webapps.rsbhayangkaranganjuk.com/api-rsbnganjuk/api/v1/jumlahizin',
+      //     body: param);
 
       var e = data.body;
-      var a = izin.body;
+      //var a = izin.body;
       print(e);
       // jmlCuti.value = data.body;
       showingBarGroups.value = [
-        makeGroupData(0, e['jan'].toDouble(), a['jan'].toDouble()),
-        makeGroupData(1, e['feb'].toDouble(), a['feb'].toDouble()),
-        makeGroupData(2, e['mar'].toDouble(), a['mar'].toDouble()),
-        makeGroupData(3, e['apr'].toDouble(), a['apr'].toDouble()),
-        makeGroupData(4, e['mei'].toDouble(), a['mei'].toDouble()),
-        makeGroupData(5, e['jun'].toDouble(), a['jun'].toDouble()),
-        makeGroupData(6, e['jul'].toDouble(), a['jul'].toDouble()),
-        makeGroupData(7, e['agu'].toDouble(), a['agu'].toDouble()),
-        makeGroupData(8, e['sep'].toDouble(), a['sep'].toDouble()),
-        makeGroupData(9, e['okt'].toDouble(), a['okt'].toDouble()),
-        makeGroupData(10, e['nov'].toDouble(), a['nov'].toDouble()),
-        makeGroupData(11, e['des'].toDouble(), a['des'].toDouble()),
+        makeGroupData(0, e['jan'].toDouble(), chart.value),
+        makeGroupData(1, e['feb'].toDouble(), chart.value),
+        makeGroupData(2, e['mar'].toDouble(), chart.value),
+        makeGroupData(3, e['apr'].toDouble(), chart.value),
+        makeGroupData(4, e['mei'].toDouble(), chart.value),
+        makeGroupData(5, e['jun'].toDouble(), chart.value),
+        makeGroupData(6, e['jul'].toDouble(), chart.value),
+        makeGroupData(7, e['agu'].toDouble(), chart.value),
+        makeGroupData(8, e['sep'].toDouble(), chart.value),
+        makeGroupData(9, e['okt'].toDouble(), chart.value),
+        makeGroupData(10, e['nov'].toDouble(), chart.value),
+        makeGroupData(11, e['des'].toDouble(), chart.value),
       ];
       DialogHelper.hideLoading();
     } on Exception catch (e) {
@@ -84,13 +91,16 @@ class ChartController extends GetxController {
   }
 }
 
-BarChartGroupData makeGroupData(int x, double y1, double y2) {
+BarChartGroupData makeGroupData(int x, double y1, String y2) {
   return BarChartGroupData(
     barsSpace: 7,
     x: x,
     barRods: [
-      BarChartRodData(y: y1, colors: [WAPrimaryColor], width: 7),
-      BarChartRodData(y: y2, colors: [Color(0xFFFF7426)], width: 7),
+      BarChartRodData(
+          y: y1,
+          colors: [y2 == 'Cuti' ? WAPrimaryColor : Color(0xFFFF7426)],
+          width: 7),
+      //BarChartRodData(y: y2, colors: [Color(0xFFFF7426)], width: 7),
     ],
   );
 }

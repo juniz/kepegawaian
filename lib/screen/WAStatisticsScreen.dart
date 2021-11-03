@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:kepegawaian/controller/rekap_presensi_controller.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:kepegawaian/component/WAStatisticsChartComponent.dart';
 import 'package:kepegawaian/component/WAStatisticsComponent.dart';
@@ -15,6 +17,7 @@ class WAStatisticScreen extends StatefulWidget {
 }
 
 class WAStatisticScreenState extends State<WAStatisticScreen> {
+  final c = Get.put(RekapPresensiController());
   List<WATransactionModel> categoriesList = waCategoriesList();
 
   @override
@@ -39,7 +42,7 @@ class WAStatisticScreenState extends State<WAStatisticScreen> {
         extendBodyBehindAppBar: true,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-          title: Text('Statistics',
+          title: Text('Rekap Presensi',
               style: boldTextStyle(color: Colors.black, size: 20)),
           centerTitle: true,
           automaticallyImplyLeading: false,
@@ -47,11 +50,11 @@ class WAStatisticScreenState extends State<WAStatisticScreen> {
           brightness: Brightness.dark,
         ),
         body: Container(
-          height: context.height(),
-          width: context.width(),
+          height: Get.height,
+          width: Get.width,
           padding: EdgeInsets.only(top: 60),
           decoration: BoxDecoration(
-            image: DecorationImage(
+            image: const DecorationImage(
                 image: AssetImage('images/walletApp/wa_bg.jpg'),
                 fit: BoxFit.cover),
           ),
@@ -59,47 +62,43 @@ class WAStatisticScreenState extends State<WAStatisticScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                WAStatisticsComponent(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Overview', style: boldTextStyle(size: 20)),
-                    16.height,
+                    Text('Presensi', style: boldTextStyle(size: 20)),
                     Container(
-                      width: 100,
+                      width: Get.width / 3.5,
                       height: 50,
-                      child: DropdownButtonFormField(
-                        value: overViewList[0],
-                        isExpanded: true,
-                        decoration: waInputDecoration(
-                            bgColor: Colors.white,
-                            padding: EdgeInsets.symmetric(horizontal: 8)),
-                        items: overViewList.map((String? value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value!, style: boldTextStyle(size: 14)),
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          //
-                        },
+                      child: Obx(
+                        () => DropdownButtonFormField(
+                          value: c.monthSelected,
+                          isExpanded: true,
+                          decoration: waInputDecoration(
+                              bgColor: Colors.white,
+                              padding: EdgeInsets.symmetric(horizontal: 8)),
+                          items: c.months.value.map((Bulan? value) {
+                            return DropdownMenuItem<String>(
+                              value: value!.bulan,
+                              child: Text(value.name!,
+                                  style: boldTextStyle(size: 14)),
+                            );
+                          }).toList(),
+                          onChanged: (value) {
+                            c.monthSelected = value.toString();
+                            c.getRekapPresensi();
+                          },
+                        ),
                       ),
                     ),
                   ],
-                ).paddingOnly(left: 16, right: 16, top: 16),
-                WAStatisticsChartComponent(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text('Categories', style: boldTextStyle(size: 20)),
-                    Icon(Icons.play_arrow, color: Colors.grey),
-                  ],
                 ).paddingOnly(left: 16, right: 16),
                 16.height,
-                Column(
-                  children: categoriesList.map((categoryItem) {
-                    return WACategoriesComponent(categoryModel: categoryItem);
-                  }).toList(),
+                Obx(
+                  () => Column(
+                    children: c.listPresensi.value.map((categoryItem) {
+                      return WACategoriesComponent(categoryModel: categoryItem);
+                    }).toList(),
+                  ),
                 ),
               ],
             ),

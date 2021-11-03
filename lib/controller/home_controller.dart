@@ -40,7 +40,7 @@ class HomeController extends GetxController {
     try {
       Future.delayed(
         Duration.zero,
-        () => DialogHelper.showLoading('Sedang mengambil data.....'),
+        // () => DialogHelper.showLoading('Sedang mengambil data.....'),
       );
       var param = {'nik': nik.value};
       ApiConnection()
@@ -81,7 +81,7 @@ class HomeController extends GetxController {
     try {
       Future.delayed(
         Duration.zero,
-        () => DialogHelper.showLoading('Sedang mengambil data.....'),
+        //() => DialogHelper.showLoading('Sedang mengambil data.....'),
       );
       var param = {'nik': nik.value};
       ApiConnection()

@@ -55,9 +55,10 @@ class WADashboardScreenState extends State<WADashboardScreen> {
         padding: EdgeInsets.all(6.0),
         child: Obx(() => FloatingActionButton(
               backgroundColor: c.buttonColor.value,
-              child: Icon(Icons.qr_code_scanner_sharp, color: Colors.white),
+              child: Icon(Icons.photo_camera, color: Colors.white),
               onPressed: () async {
                 // WAQrScannerScreen().launch(context);
+                c.getJamJaga();
                 Get.bottomSheet(
                   Container(
                     padding: const EdgeInsets.only(
