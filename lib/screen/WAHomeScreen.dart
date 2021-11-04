@@ -6,6 +6,7 @@ import 'package:kepegawaian/component/WAStatisticsComponent.dart';
 import 'package:kepegawaian/component/grafik_izin.dart';
 import 'package:kepegawaian/controller/chart_controller.dart';
 import 'package:kepegawaian/controller/home_controller.dart';
+import 'package:kepegawaian/utils/WAColors.dart';
 import 'package:kepegawaian/utils/WAWidgets.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:kepegawaian/component/WACardComponent.dart';
@@ -61,74 +62,129 @@ class WAHomeScreenState extends State<WAHomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 50.height,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      width: 40,
-                      height: 40,
-                      decoration: boxDecorationWithRoundedCorners(
-                        backgroundColor: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: Colors.grey.withOpacity(0.2)),
+                Container(
+                  width: Get.width,
+                  height: Get.height / 4,
+                  decoration: boxDecorationRoundedWithShadow(
+                    10,
+                    backgroundColor: Color(0xFFFF7426),
+                    blurRadius: 10.0,
+                    spreadRadius: 4.0,
+                    shadowColor: Color(0xFFFF7426).withAlpha(50),
+                  ),
+                  child: Column(
+                    children: [
+                      Text(
+                        'KARTU TANDA ANGGOTA',
+                        style: boldTextStyle(color: Colors.white, size: 18),
+                      ).paddingOnly(top: 10, bottom: 20),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Obx(
+                            () => waCommonCachedNetworkImage(
+                              'https://webapps.rsbhayangkaranganjuk.com/webapps/penggajian/${c.photo.value}',
+                              fit: BoxFit.fill,
+                              height: 100,
+                              width: 70,
+                            ),
+                          ).paddingOnly(left: 16, right: 10),
+                          Container(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Nama',
+                                  style: secondaryTextStyle(
+                                      size: 12, color: Colors.white),
+                                  maxLines: 1,
+                                ),
+                                Text(
+                                  'NIK',
+                                  style: secondaryTextStyle(
+                                      size: 12, color: Colors.white),
+                                ),
+                                Text(
+                                  'Tgl Lahir',
+                                  style: secondaryTextStyle(
+                                      size: 12, color: Colors.white),
+                                ),
+                                Text(
+                                  'Alamat',
+                                  style: secondaryTextStyle(
+                                      size: 12, color: Colors.white),
+                                ),
+                              ],
+                            ),
+                          ).expand(flex: 2),
+                          Container(
+                            child: Column(
+                              children: [
+                                Text(
+                                  ':',
+                                  style: secondaryTextStyle(
+                                      size: 12, color: Colors.white),
+                                ),
+                                Text(
+                                  ':',
+                                  style: secondaryTextStyle(
+                                      size: 12, color: Colors.white),
+                                ),
+                                Text(
+                                  ':',
+                                  style: secondaryTextStyle(
+                                      size: 12, color: Colors.white),
+                                ),
+                                Text(
+                                  ':',
+                                  style: secondaryTextStyle(
+                                      size: 12, color: Colors.white),
+                                ),
+                              ],
+                            ),
+                          ).expand(flex: 1),
+                          Container(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  c.nama.value,
+                                  style: secondaryTextStyle(
+                                      size: 12, color: Colors.white),
+                                  maxLines: 1,
+                                ),
+                                Text(
+                                  c.nik.value,
+                                  style: secondaryTextStyle(
+                                      size: 12, color: Colors.white),
+                                ),
+                                Text(
+                                  '${c.tmpLahir.value}, ${c.tglLahir.value}',
+                                  style: secondaryTextStyle(
+                                      size: 12, color: Colors.white),
+                                ),
+                                Text(
+                                  c.alamat.value,
+                                  style: secondaryTextStyle(
+                                      size: 12, color: Colors.white),
+                                ),
+                              ],
+                            ),
+                          ).expand(flex: 5),
+                        ],
                       ),
-                      child: Icon(Icons.person),
-                    ),
-                    // Container(
-                    //   width: 40,
-                    //   height: 40,
-                    //   decoration: boxDecorationWithRoundedCorners(
-                    //     backgroundColor: Colors.white,
-                    //     borderRadius: BorderRadius.circular(12),
-                    //     border: Border.all(color: Colors.grey.withOpacity(0.2)),
-                    //   ),
-                    //   alignment: Alignment.center,
-                    //   child: Stack(
-                    //     alignment: AlignmentDirectional.topEnd,
-                    //     children: [
-                    //       Icon(Icons.add_alert, color: Colors.grey),
-                    //       Positioned(
-                    //         top: 3,
-                    //         right: 3,
-                    //         child: Container(
-                    //           width: 8,
-                    //           height: 8,
-                    //           decoration: BoxDecoration(
-                    //             color: Color(0xFFFF7426),
-                    //             shape: BoxShape.circle,
-                    //           ),
-                    //         ),
-                    //       ),
-                    //     ],
-                    //   ),
-                    // )
-                  ],
-                ).paddingOnly(left: 16, right: 16, bottom: 16),
-                Obx(() => Text(c.nama.value, style: secondaryTextStyle())
-                    .paddingOnly(left: 16, right: 16)),
-                Text('Selamat Datang', style: boldTextStyle(size: 20))
-                    .paddingOnly(left: 16, right: 16),
-                // SingleChildScrollView(
-                //   scrollDirection: Axis.horizontal,
-                //   child: Wrap(
-                //     direction: Axis.horizontal,
-                //     spacing: 16,
-                //     children: cardList.map((cardItem) {
-                //       return WACardComponent(cardModel: cardItem);
-                //     }).toList(),
-                //   ).paddingAll(16),
-                // ),
-                16.height,
+                    ],
+                  ),
+                ).onTap(() {}).paddingOnly(left: 16, right: 16, top: 16),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Obx(
                       () => Text(
-                        'Grafik ${b.chart.value}',
+                        'Grafik ${b.chart.value} Saya',
                         style: boldTextStyle(size: 20),
                       ),
                     ),
-                    16.height,
                     Container(
                       width: 100,
                       height: 50,
@@ -153,51 +209,18 @@ class WAHomeScreenState extends State<WAHomeScreen> {
                   ],
                 ).paddingOnly(left: 16, right: 16, top: 16),
                 WAStatisticsChartComponent(),
-                // Text('Grafik Izin', style: boldTextStyle(size: 20))
-                //     .paddingOnly(left: 16, right: 16),
-                // GrafikIzin(),
-                16.height,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Menu', style: boldTextStyle(size: 20)),
-                    // Icon(Icons.play_arrow, color: Colors.grey).onTap(() {
-                    //   WAOperatorsScreen().launch(context);
-                    // }),
+                    Text(
+                      'Menu',
+                      style: boldTextStyle(size: 20),
+                    ),
                   ],
                 ).paddingOnly(left: 16, right: 16),
                 16.height,
                 WAStatisticsComponent(),
-                // SingleChildScrollView(
-                //   scrollDirection: Axis.horizontal,
-                //   child: Wrap(
-                //     direction: Axis.horizontal,
-                //     spacing: 16,
-                //     children: operationsList.map((operationModel) {
-                //       return WAOperationComponent(itemModel: operationModel)
-                //           .onTap(() {
-                //         operationModel.widget != null
-                //             ? operationModel.widget.launch(context)
-                //             : toast(operationModel.title);
-                //       });
-                //     }).toList(),
-                //   ).paddingAll(16),
-                // ),
                 25.height,
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-                //     Text('Pengumuman', style: boldTextStyle(size: 20)),
-                //     Icon(Icons.play_arrow, color: Colors.grey),
-                //   ],
-                // ).paddingOnly(left: 16, right: 16),
-                // 16.height,
-                // Column(
-                //   children: transactionList.map((transactionItem) {
-                //     return WATransactionComponent(
-                //         transactionModel: transactionItem);
-                //   }).toList(),
-                // ),
               ],
             ),
           ),

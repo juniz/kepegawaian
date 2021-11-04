@@ -80,9 +80,10 @@ class WAWalletScreenState extends State<WAWalletScreen> {
           width: Get.width,
           padding: EdgeInsets.only(top: 70),
           decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage('images/walletApp/wa_bg.jpg'),
-                  fit: BoxFit.cover)),
+            image: DecorationImage(
+                image: AssetImage('images/walletApp/wa_bg.jpg'),
+                fit: BoxFit.cover),
+          ),
           child: SingleChildScrollView(
             child: Obx(
               () => Column(

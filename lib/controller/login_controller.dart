@@ -2,6 +2,7 @@ import 'package:cool_alert/cool_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:intl/intl.dart';
 import 'package:kepegawaian/api/api_connection.dart';
 import 'package:kepegawaian/utils/WAColors.dart';
 import 'package:kepegawaian/utils/helper.dart';
@@ -57,6 +58,13 @@ class LoginController extends GetxController {
         GetStorage().write('nik', body['data']['username']);
         GetStorage().write('nama', body['data']['nama']);
         GetStorage().write('cap', body['data']['cap']);
+        DateTime parseDate =
+            DateFormat("yyyy-MM-dd").parse(body['data']['tgl_lahir']);
+        var tglLahir = DateFormat("dd-MM-yyyy").format(parseDate);
+        GetStorage().write('tmp_lahir', body['data']['tmp_lahir']);
+        GetStorage().write('tgl_lahir', tglLahir);
+        GetStorage().write('alamat', body['data']['alamat']);
+        GetStorage().write('photo', body['data']['photo']);
         DialogHelper.hideLoading();
         Get.offAllNamed('/dashboard');
       } else {

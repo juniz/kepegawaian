@@ -7,6 +7,10 @@ import 'package:kepegawaian/utils/helper.dart';
 class HomeController extends GetxController {
   var nik = "".obs;
   var nama = "".obs;
+  var tmpLahir = "".obs;
+  var tglLahir = "".obs;
+  var alamat = "".obs;
+  var photo = "".obs;
   var statusIzin = "".obs;
   var noPengajuanIzin = "".obs;
   var noPengajuanCuti = "".obs;
@@ -16,6 +20,10 @@ class HomeController extends GetxController {
     // TODO: implement onInit
     nik.value = GetStorage().read('nik');
     nama.value = GetStorage().read('nama');
+    tmpLahir.value = GetStorage().read('tmp_lahir');
+    tglLahir.value = GetStorage().read('tgl_lahir');
+    alamat.value = GetStorage().read('alamat');
+    photo.value = GetStorage().read('photo');
     noPengajuanIzin.value = GetStorage().read('noPengajuanIzin');
     noPengajuanCuti.value = GetStorage().read('noPengajuanCuti');
     super.onInit();
@@ -50,8 +58,7 @@ class HomeController extends GetxController {
               body: param)
           .then((res) {
         DialogHelper.hideLoading();
-        //GetStorage().remove('noPengajuanIzin');
-        print(noPengajuanIzin.value);
+
         if (res.body['data']['status'] == 'Disetujui' &&
             noPengajuanIzin.value != res.body['data']['no_pengajuan']) {
           GetStorage()
@@ -92,7 +99,7 @@ class HomeController extends GetxController {
           .then((res) {
         DialogHelper.hideLoading();
         //GetStorage().remove('noPengajuanIzin');
-        print(noPengajuanCuti.value);
+
         if (res.body['data']['status'] == 'Disetujui' &&
             noPengajuanCuti.value != res.body['data']['no_pengajuan']) {
           GetStorage()

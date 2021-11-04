@@ -35,7 +35,7 @@ class WAStatisticsChartComponentState
   Widget build(BuildContext context) {
     return Container(
       height: 250,
-      padding: const EdgeInsets.only(top: 16, right: 16, left: 16),
+      padding: const EdgeInsets.only(right: 16, left: 16),
       child: Obx(
         () => BarChart(
           BarChartData(

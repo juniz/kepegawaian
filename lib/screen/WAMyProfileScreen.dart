@@ -47,7 +47,7 @@ class WAMyProfileScreenState extends State<WAMyProfileScreen> {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           title: Text(
-            'My Profile',
+            'Profile',
             style: boldTextStyle(color: Colors.black, size: 20),
           ),
           centerTitle: true,
@@ -71,6 +71,7 @@ class WAMyProfileScreenState extends State<WAMyProfileScreen> {
                 Obx(() => waCommonCachedNetworkImage(
                       'https://webapps.rsbhayangkaranganjuk.com/webapps/penggajian/${c.dataBiodata.value.photo!}',
                       fit: BoxFit.cover,
+                      alignment: Alignment.topCenter,
                       height: 120,
                       width: 120,
                     ).cornerRadiusWithClipRRect(60)),
