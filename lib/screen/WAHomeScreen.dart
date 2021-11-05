@@ -77,7 +77,7 @@ class WAHomeScreenState extends State<WAHomeScreen> {
                       Text(
                         'KARTU TANDA ANGGOTA',
                         style: boldTextStyle(color: Colors.white, size: 18),
-                      ).paddingOnly(top: 10, bottom: 20),
+                      ).paddingOnly(left: 35, top: 10, bottom: 20),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
