@@ -15,6 +15,7 @@ import 'package:kepegawaian/component/WATransactionComponent.dart';
 import 'package:kepegawaian/model/WalletAppModel.dart';
 import 'package:kepegawaian/screen/WAOperatorsScreen.dart';
 import 'package:kepegawaian/utils/WADataGenerator.dart';
+import 'package:outlined_text/outlined_text.dart';
 
 class WAHomeScreen extends StatefulWidget {
   static String tag = '/WAHomeScreen';
@@ -65,19 +66,28 @@ class WAHomeScreenState extends State<WAHomeScreen> {
                 Container(
                   width: Get.width,
                   height: Get.height / 4,
-                  decoration: boxDecorationRoundedWithShadow(
-                    10,
-                    backgroundColor: Color(0xFFFF7426),
-                    blurRadius: 10.0,
-                    spreadRadius: 4.0,
-                    shadowColor: Color(0xFFFF7426).withAlpha(50),
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('images/walletApp/kta.jpg'),
+                      fit: BoxFit.fill,
+                    ),
+                    border: Border.all(color: Colors.white),
+                    borderRadius: radius(10.0),
+                    boxShadow: defaultBoxShadow(
+                      shadowColor: Color(0xFFFF7426).withAlpha(50),
+                      blurRadius: 10.0,
+                      spreadRadius: 4.0,
+                      offset: const Offset(0.0, 0.0),
+                    ),
                   ),
                   child: Column(
                     children: [
                       Text(
                         'KARTU TANDA ANGGOTA',
-                        style: boldTextStyle(color: Colors.white, size: 18),
-                      ).paddingOnly(left: 35, top: 10, bottom: 20),
+                        style:
+                            boldTextStyle(color: Colors.transparent, size: 18),
+                      ).paddingOnly(left: 50, top: 10, bottom: 20),
+                      10.height,
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -93,52 +103,100 @@ class WAHomeScreenState extends State<WAHomeScreen> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  'Nama',
-                                  style: secondaryTextStyle(
-                                      size: 12, color: Colors.white),
-                                  maxLines: 1,
+                                OutlinedText(
+                                  text: Text(
+                                    'Nama',
+                                    style: boldTextStyle(
+                                        size: 12, color: Colors.black),
+                                    maxLines: 1,
+                                  ),
+                                  strokes: [
+                                    OutlinedTextStroke(
+                                        color: Colors.white, width: 3),
+                                  ],
                                 ),
-                                Text(
-                                  'NIK',
-                                  style: secondaryTextStyle(
-                                      size: 12, color: Colors.white),
+                                OutlinedText(
+                                  text: Text(
+                                    'NIP',
+                                    style: boldTextStyle(
+                                        size: 12, color: Colors.black),
+                                  ),
+                                  strokes: [
+                                    OutlinedTextStroke(
+                                        color: Colors.white, width: 3),
+                                  ],
                                 ),
-                                Text(
-                                  'Tgl Lahir',
-                                  style: secondaryTextStyle(
-                                      size: 12, color: Colors.white),
+                                OutlinedText(
+                                  text: Text(
+                                    'Tgl Lahir',
+                                    style: boldTextStyle(
+                                        size: 12, color: Colors.black),
+                                  ),
+                                  strokes: [
+                                    OutlinedTextStroke(
+                                        color: Colors.white, width: 3),
+                                  ],
                                 ),
-                                Text(
-                                  'Alamat',
-                                  style: secondaryTextStyle(
-                                      size: 12, color: Colors.white),
-                                ),
+                                OutlinedText(
+                                  text: Text(
+                                    'Alamat',
+                                    style: boldTextStyle(
+                                        size: 12, color: Colors.black),
+                                  ),
+                                  strokes: [
+                                    OutlinedTextStroke(
+                                        color: Colors.white, width: 3),
+                                  ],
+                                )
                               ],
                             ),
                           ).expand(flex: 2),
                           Container(
                             child: Column(
                               children: [
-                                Text(
-                                  ':',
-                                  style: secondaryTextStyle(
-                                      size: 12, color: Colors.white),
+                                OutlinedText(
+                                  text: Text(
+                                    ':',
+                                    style: boldTextStyle(
+                                        size: 12, color: Colors.black),
+                                  ),
+                                  strokes: [
+                                    OutlinedTextStroke(
+                                        color: Colors.white, width: 3),
+                                  ],
                                 ),
-                                Text(
-                                  ':',
-                                  style: secondaryTextStyle(
-                                      size: 12, color: Colors.white),
+                                OutlinedText(
+                                  text: Text(
+                                    ':',
+                                    style: boldTextStyle(
+                                        size: 12, color: Colors.black),
+                                  ),
+                                  strokes: [
+                                    OutlinedTextStroke(
+                                        color: Colors.white, width: 3),
+                                  ],
                                 ),
-                                Text(
-                                  ':',
-                                  style: secondaryTextStyle(
-                                      size: 12, color: Colors.white),
+                                OutlinedText(
+                                  text: Text(
+                                    ':',
+                                    style: boldTextStyle(
+                                        size: 12, color: Colors.black),
+                                  ),
+                                  strokes: [
+                                    OutlinedTextStroke(
+                                        color: Colors.white, width: 3),
+                                  ],
                                 ),
-                                Text(
-                                  ':',
-                                  style: secondaryTextStyle(
-                                      size: 12, color: Colors.white),
+                                OutlinedText(
+                                  text: Text(
+                                    ':',
+                                    style: boldTextStyle(
+                                        size: 12, color: Colors.black),
+                                  ),
+                                  strokes: [
+                                    OutlinedTextStroke(
+                                        color: Colors.white, width: 3),
+                                  ],
                                 ),
                               ],
                             ),
@@ -147,26 +205,49 @@ class WAHomeScreenState extends State<WAHomeScreen> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  c.nama.value,
-                                  style: secondaryTextStyle(
-                                      size: 12, color: Colors.white),
-                                  maxLines: 1,
+                                OutlinedText(
+                                  text: Text(
+                                    c.nama.value,
+                                    style: boldTextStyle(
+                                        size: 12, color: Colors.black),
+                                  ),
+                                  strokes: [
+                                    OutlinedTextStroke(
+                                        color: Colors.white, width: 3),
+                                  ],
                                 ),
-                                Text(
-                                  c.nik.value,
-                                  style: secondaryTextStyle(
-                                      size: 12, color: Colors.white),
+                                OutlinedText(
+                                  text: Text(
+                                    c.nik.value,
+                                    style: boldTextStyle(
+                                        size: 12, color: Colors.black),
+                                  ),
+                                  strokes: [
+                                    OutlinedTextStroke(
+                                        color: Colors.white, width: 3),
+                                  ],
                                 ),
-                                Text(
-                                  '${c.tmpLahir.value}, ${c.tglLahir.value}',
-                                  style: secondaryTextStyle(
-                                      size: 12, color: Colors.white),
+                                OutlinedText(
+                                  text: Text(
+                                    '${c.tmpLahir.value}, ${c.tglLahir.value}',
+                                    style: boldTextStyle(
+                                        size: 12, color: Colors.black),
+                                  ),
+                                  strokes: [
+                                    OutlinedTextStroke(
+                                        color: Colors.white, width: 3),
+                                  ],
                                 ),
-                                Text(
-                                  c.alamat.value,
-                                  style: secondaryTextStyle(
-                                      size: 12, color: Colors.white),
+                                OutlinedText(
+                                  text: Text(
+                                    c.alamat.value,
+                                    style: boldTextStyle(
+                                        size: 12, color: Colors.black),
+                                  ),
+                                  strokes: [
+                                    OutlinedTextStroke(
+                                        color: Colors.white, width: 3),
+                                  ],
                                 ),
                               ],
                             ),
@@ -174,7 +255,7 @@ class WAHomeScreenState extends State<WAHomeScreen> {
                         ],
                       ),
                     ],
-                  ),
+                  ).paddingOnly(right: 16),
                 ).onTap(() {}).paddingOnly(left: 16, right: 16, top: 16),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -85,7 +85,7 @@ class WAMyProfileScreenState extends State<WAMyProfileScreen> {
                 ),
                 16.height,
                 SettingItemWidget(
-                    title: 'Biodata',
+                    title: 'Riwayat Hidup',
                     decoration: boxDecorationRoundedWithShadow(12),
                     trailing:
                         Icon(Icons.arrow_right, color: grey.withOpacity(0.5)),

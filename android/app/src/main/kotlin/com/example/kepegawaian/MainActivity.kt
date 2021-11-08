@@ -1,4 +1,4 @@
-package com.example.kepegawaian
+package com.bhayangkara.kepegawaian
 
 import io.flutter.embedding.android.FlutterActivity
 

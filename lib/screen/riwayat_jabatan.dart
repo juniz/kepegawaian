@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:kepegawaian/controller/riwayat_jabatan_controller.dart';
 import 'package:kepegawaian/utils/WAColors.dart';
 import 'package:nb_utils/nb_utils.dart';
@@ -75,8 +76,8 @@ class RiwayatJabatan extends StatelessWidget {
                           isLast: index == c.listRiwayatJabatan.value.length - 1
                               ? true
                               : false,
-                          startChild:
-                              Text(c.listRiwayatJabatan.value[index].nomorSk!),
+                          startChild: Text(
+                              '${c.listRiwayatJabatan.value[index].nomorSk!}\n${DateFormat('dd-MM-yyyy').format(c.listRiwayatJabatan.value[index].tglSk!)}'),
                           endChild:
                               Text(c.listRiwayatJabatan.value[index].jabatan!)
                                   .paddingLeft(16),

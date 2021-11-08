@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:get/get.dart';
 import 'package:nb_utils/nb_utils.dart';
 
@@ -142,8 +143,8 @@ Widget widgetMenuButton(
                 backgroundColor: color!.withOpacity(0.1)),
             height: 45,
             width: 45,
-            padding: EdgeInsets.all(12),
-            child: Icon(Icons.bookmark, color: color),
+            padding: const EdgeInsets.all(12),
+            child: Icon(AntDesign.form, color: color),
           ),
           10.width,
           Column(

@@ -78,7 +78,7 @@ class WAEditProfileScreenState extends State<WAEditProfileScreen> {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           title: Text(
-            'Biodata',
+            'Riwayat Hidup',
             style: boldTextStyle(color: Colors.black, size: 20),
           ),
           leading: Container(
@@ -120,7 +120,7 @@ class WAEditProfileScreenState extends State<WAEditProfileScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Biodata', style: boldTextStyle(size: 18)),
+                      Text('Riwayat Hidup', style: boldTextStyle(size: 18)),
                       16.height,
                       Container(
                         padding: EdgeInsets.all(16),

@@ -212,18 +212,18 @@ class WALoginScreenState extends State<WALoginScreen> {
                         ],
                       ),
                     ),
-                    Container(
-                      alignment: Alignment.center,
-                      height: 100,
-                      width: 100,
-                      decoration: boxDecorationRoundedWithShadow(30),
-                      child: Image.asset(
-                        'images/walletApp/wa_app_logo.png',
-                        height: 60,
-                        width: 60,
-                        fit: BoxFit.cover,
-                      ),
-                    )
+                    // Container(
+                    //   alignment: Alignment.center,
+                    //   height: 100,
+                    //   width: 100,
+                    //   decoration: boxDecorationRoundedWithShadow(30),
+                    //   child: Image.asset(
+                    //     'images/walletApp/wa_app_logo.png',
+                    //     height: 60,
+                    //     width: 60,
+                    //     fit: BoxFit.cover,
+                    //   ),
+                    // )
                   ],
                 ),
               ),

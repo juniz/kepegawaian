@@ -56,33 +56,36 @@ class WAWalletScreenState extends State<WAWalletScreen> {
         extendBodyBehindAppBar: true,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-          title: Text('Informasi',
-              style: boldTextStyle(color: Colors.black, size: 20)),
+          title: Text(
+            'Informasi',
+            style: boldTextStyle(color: Colors.black, size: 20),
+          ),
           centerTitle: true,
           automaticallyImplyLeading: false,
           elevation: 0.0,
           brightness: Brightness.dark,
-          actions: [
-            Container(
-              height: 35,
-              width: 35,
-              margin: EdgeInsets.only(right: 16, top: 16),
-              padding: EdgeInsets.symmetric(horizontal: 4, vertical: 8),
-              decoration: boxDecorationRoundedWithShadow(8),
-              child: waCommonCachedNetworkImage(
-                  'images/walletApp/wa_add_icon.png',
-                  fit: BoxFit.fill),
-            ),
-          ],
+          // actions: [
+          //   Container(
+          //     height: 35,
+          //     width: 35,
+          //     margin: EdgeInsets.only(right: 16, top: 16),
+          //     padding: EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+          //     decoration: boxDecorationRoundedWithShadow(8),
+          //     child: waCommonCachedNetworkImage(
+          //         'images/walletApp/wa_add_icon.png',
+          //         fit: BoxFit.fill),
+          //   ),
+          // ],
         ),
         body: Container(
           height: Get.height,
           width: Get.width,
           padding: EdgeInsets.only(top: 70),
           decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('images/walletApp/wa_bg.jpg'),
-                fit: BoxFit.cover),
+            image: const DecorationImage(
+              image: AssetImage('images/walletApp/wa_bg.jpg'),
+              fit: BoxFit.cover,
+            ),
           ),
           child: SingleChildScrollView(
             child: Obx(

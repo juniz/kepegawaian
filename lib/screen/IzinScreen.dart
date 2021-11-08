@@ -29,7 +29,10 @@ class IzinScreen extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
               border: Border.all(color: Colors.grey.withOpacity(0.2)),
             ),
-            child: Icon(Icons.arrow_back),
+            child: Icon(
+              Icons.arrow_back,
+              color: Colors.black,
+            ),
           ).onTap(() {
             finish(context);
           }),
