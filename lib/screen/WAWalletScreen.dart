@@ -107,7 +107,7 @@ class WAWalletScreenState extends State<WAWalletScreen> {
                                   .mediaDetails!
                                   .sizes!['medium_large']!
                                   .sourceUrl!),
-                              fit: BoxFit.cover,
+                              fit: BoxFit.fill,
                             ),
                           ),
                           child: Column(

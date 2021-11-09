@@ -1,20 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:kepegawaian/component/WAStatisticsChartComponent.dart';
 import 'package:kepegawaian/component/WAStatisticsComponent.dart';
-import 'package:kepegawaian/component/grafik_izin.dart';
 import 'package:kepegawaian/controller/chart_controller.dart';
 import 'package:kepegawaian/controller/home_controller.dart';
-import 'package:kepegawaian/utils/WAColors.dart';
 import 'package:kepegawaian/utils/WAWidgets.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:kepegawaian/component/WACardComponent.dart';
-import 'package:kepegawaian/component/WAOperationComponent.dart';
-import 'package:kepegawaian/component/WATransactionComponent.dart';
-import 'package:kepegawaian/model/WalletAppModel.dart';
-import 'package:kepegawaian/screen/WAOperatorsScreen.dart';
-import 'package:kepegawaian/utils/WADataGenerator.dart';
 import 'package:outlined_text/outlined_text.dart';
 
 class WAHomeScreen extends StatefulWidget {
@@ -254,9 +245,23 @@ class WAHomeScreenState extends State<WAHomeScreen> {
                           ).expand(flex: 5),
                         ],
                       ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: OutlinedText(
+                          text: Text(
+                            'Masa Berlaku : Selama Jadi Pegawai',
+                            style: boldTextStyle(size: 12, color: Colors.black),
+                          ),
+                          strokes: [
+                            OutlinedTextStroke(color: Colors.white, width: 3),
+                          ],
+                        ).paddingLeft(50),
+                      ),
                     ],
                   ).paddingOnly(right: 16),
-                ).onTap(() {}).paddingOnly(left: 16, right: 16, top: 16),
+                ).onTap(() {
+                  
+                }).paddingOnly(left: 16, right: 16, top: 16),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

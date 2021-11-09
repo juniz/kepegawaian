@@ -45,19 +45,19 @@ class WASplashScreenState extends State<WASplashScreen> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: WAPrimaryColor,
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              'images/walletApp/wa_app_logo.png',
-              color: Colors.white,
-              fit: BoxFit.cover,
-              height: 100,
-              width: 100,
-            ).center(),
-          ],
-        ),
+        // body: Column(
+        //   crossAxisAlignment: CrossAxisAlignment.center,
+        //   mainAxisAlignment: MainAxisAlignment.center,
+        //   children: [
+        //     Image.asset(
+        //       'images/walletApp/wa_app_logo.png',
+        //       color: Colors.white,
+        //       fit: BoxFit.cover,
+        //       height: 100,
+        //       width: 100,
+        //     ).center(),
+        //   ],
+        // ),
       ),
     );
   }

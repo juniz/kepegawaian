@@ -123,9 +123,8 @@ class WADashboardScreenState extends State<WADashboardScreen> {
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
             BottomNavigationBarItem(
-                icon: Icon(Icons.date_range), label: 'Statistics'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.wallet_giftcard), label: 'Wallet'),
+                icon: Icon(Icons.date_range), label: 'Presensi'),
+            BottomNavigationBarItem(icon: Icon(Icons.info), label: 'Informasi'),
             BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
           ],
         ),
