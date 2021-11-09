@@ -51,7 +51,7 @@ class ChartIzinController extends GetxController {
           body: param);
 
       var e = data.body;
-      print(e);
+      // print(e);
       // jmlCuti.value = data.body;
       showingBarGroups.value = [
         makeGroupData(0, e['jan'].toDouble(), 12),

@@ -53,7 +53,7 @@ class LoginController extends GetxController {
           body: param);
       if (res.statusCode == 200) {
         var body = res.body;
-        print(body['data']['nama']);
+        // print(body['data']['nama']);
         GetStorage().write('idPegawai', body['data']['id'].toString());
         GetStorage().write('nik', body['data']['username']);
         GetStorage().write('nama', body['data']['nama']);

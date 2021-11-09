@@ -67,7 +67,7 @@ class ChartController extends GetxController {
 
       var e = data.body;
       //var a = izin.body;
-      print(e);
+      // print(e);
       // jmlCuti.value = data.body;
       showingBarGroups.value = [
         makeGroupData(0, e['jan'].toDouble(), chart.value),

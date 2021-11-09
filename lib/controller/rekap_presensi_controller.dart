@@ -59,7 +59,7 @@ class RekapPresensiController extends GetxController {
                   'https://webapps.rsbhayangkaranganjuk.com/api-rsbnganjuk/api/v1/rekappresensi',
               body: body)
           .then((res) {
-        print(bulan.value);
+        //print(bulan.value);
         listPresensi.value = rekapPresensiModelFromJson(res.bodyString!).data!;
       });
     } catch (e) {}
@@ -84,8 +84,7 @@ class RekapPresensiController extends GetxController {
         // lat.value = res.body['latitude'];
         // lng.value = res.body['longitude'];
 
-        print(
-            availableMaps); // [AvailableMap { mapName: Google Maps, mapType: google }, ...]
+        // print(availableMaps);
 
         await availableMaps.first.showMarker(
           coords: Coords(double.parse(res.body['latitude']),

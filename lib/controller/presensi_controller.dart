@@ -152,7 +152,7 @@ class PresensiController extends GetxController {
                   'https://webapps.rsbhayangkaranganjuk.com/api-rsbnganjuk/api/v1/cekpresensi',
               body: body)
           .then((res) {
-        print(res.bodyString);
+        // print(res.bodyString);
         if (res.statusCode == 200) {
           buttonColor.value = Colors.red;
         } else {
@@ -186,7 +186,7 @@ class PresensiController extends GetxController {
                 'https://webapps.rsbhayangkaranganjuk.com/api-rsbnganjuk/api/v1/presensi',
             body: form)
         .then((resp) {
-      print(resp.bodyString);
+      // print(resp.bodyString);
       DialogHelper.hideLoading();
       Get.back();
       if (resp.body['status'] == "success") {

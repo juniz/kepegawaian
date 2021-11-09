@@ -95,7 +95,7 @@ class IzinController extends GetxController {
       print(data.bodyString);
       var response = data.body;
       if (data.statusCode == 200) {
-        GetStorage().write('noPengajuanIzin', response['data']['no_pengajuan']);
+        // GetStorage().write('noPengajuanIzin', response['data']['no_pengajuan']);
       }
       DialogHelper.hideLoading();
       return {'code': data.statusCode, 'message': response['message']};

@@ -32,7 +32,7 @@ class HomeController extends GetxController {
   @override
   void onReady() {
     // TODO: implement onReady
-
+    cekCutiStatus();
     cekIzinStatus();
 
     super.onReady();
@@ -58,8 +58,8 @@ class HomeController extends GetxController {
               body: param)
           .then((res) {
         DialogHelper.hideLoading();
-
-        if (res.body['data']['status'] == 'Disetujui' &&
+        // print('izin status : ${res.body['data']['status']}');
+        if (res.body['data']['status'] != 'Proses Persetujuan' &&
             noPengajuanIzin.value != res.body['data']['no_pengajuan']) {
           GetStorage()
               .write('noPengajuanIzin', res.body['data']['no_pengajuan']);
@@ -67,8 +67,10 @@ class HomeController extends GetxController {
             'Notifikasi Pengajuan Izin',
             'Pengajuan izin No. ${res.body['data']['no_pengajuan']} ${res.body['data']['status']}',
             icon: const Icon(Icons.add_alert_outlined, color: Colors.white),
-            snackPosition: SnackPosition.BOTTOM,
-            backgroundColor: Colors.green,
+            snackPosition: SnackPosition.TOP,
+            backgroundColor: res.body['data']['status'] == 'Disetujui'
+                ? Colors.green
+                : Colors.red,
             colorText: Colors.white,
             borderRadius: 20,
             margin: const EdgeInsets.all(15),
@@ -100,7 +102,7 @@ class HomeController extends GetxController {
         DialogHelper.hideLoading();
         //GetStorage().remove('noPengajuanIzin');
 
-        if (res.body['data']['status'] == 'Disetujui' &&
+        if (res.body['data']['status'] != 'Proses Persetujuan' &&
             noPengajuanCuti.value != res.body['data']['no_pengajuan']) {
           GetStorage()
               .write('noPengajuanCuti', res.body['data']['no_pengajuan']);
@@ -108,8 +110,10 @@ class HomeController extends GetxController {
             'Notifikasi Pengajuan Izin',
             'Pengajuan Cuti No. ${res.body['data']['no_pengajuan']} ${res.body['data']['status']}',
             icon: const Icon(Icons.add_alert_outlined, color: Colors.white),
-            snackPosition: SnackPosition.BOTTOM,
-            backgroundColor: Colors.green,
+            snackPosition: SnackPosition.TOP,
+            backgroundColor: res.body['data']['status'] == 'Disetujui'
+                ? Colors.green
+                : Colors.red,
             colorText: Colors.white,
             borderRadius: 20,
             margin: const EdgeInsets.all(15),

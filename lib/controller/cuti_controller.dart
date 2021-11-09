@@ -60,7 +60,7 @@ class CutiController extends GetxController {
           url:
               'https://webapps.rsbhayangkaranganjuk.com/api-rsbnganjuk/api/v1/pegawai');
       listPegawai.value = pegawaiModelFromJson(data.bodyString!).data!;
-      print(data.bodyString);
+      // print(data.bodyString);
       options.value = listPegawai.value
           .map((e) => S2Choice<String>(value: e!.nik, title: e.nama))
           .toList();

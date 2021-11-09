@@ -8,6 +8,7 @@ import 'package:kepegawaian/screen/riwayat_cuti.dart';
 import 'package:kepegawaian/screen/riwayat_gaji.dart';
 import 'package:kepegawaian/screen/riwayat_izin.dart';
 import 'package:kepegawaian/screen/riwayat_jabatan.dart';
+import 'package:kepegawaian/screen/riwayat_pendidikan.dart';
 import 'package:kepegawaian/screen/riwayat_seminar.dart';
 
 import 'screen/WADashboardScreen.dart';
@@ -46,6 +47,8 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/riwayatseminar', page: () => RiwayatSeminar()),
         GetPage(name: '/riwayatgaji', page: () => RiwayatGaji()),
         GetPage(name: '/riwayatjabatan', page: () => RiwayatJabatan()),
+        GetPage(
+            name: '/riwayatpendidikan', page: () => RiwayatPendidikanPage()),
       ],
       initialRoute: '/splash',
     );
