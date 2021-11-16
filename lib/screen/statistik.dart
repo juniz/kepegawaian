@@ -123,14 +123,17 @@ class Statistik extends StatelessWidget {
                                   ),
                                 ),
                                 5.width,
-                                Icon(
-                                  c.perKunjunganTahunIni.value.isNegative
-                                      ? AntDesign.arrowdown
-                                      : AntDesign.arrowup,
-                                  size: 15,
-                                  color: c.perKunjunganTahunIni.value.isNegative
-                                      ? Colors.red
-                                      : Colors.green,
+                                Obx(
+                                  () => Icon(
+                                    c.perKunjunganTahunIni.value.isNegative
+                                        ? AntDesign.arrowdown
+                                        : AntDesign.arrowup,
+                                    size: 15,
+                                    color:
+                                        c.perKunjunganTahunIni.value.isNegative
+                                            ? Colors.red
+                                            : Colors.green,
+                                  ),
                                 ),
                                 Obx(
                                   () => Text(
@@ -183,14 +186,17 @@ class Statistik extends StatelessWidget {
                                   ),
                                 ),
                                 5.width,
-                                Icon(
-                                  c.perKunjunganBulanIni.value.isNegative
-                                      ? AntDesign.arrowdown
-                                      : AntDesign.arrowup,
-                                  size: 15,
-                                  color: c.perKunjunganBulanIni.value.isNegative
-                                      ? Colors.red
-                                      : Colors.green,
+                                Obx(
+                                  () => Icon(
+                                    c.perKunjunganBulanIni.value.isNegative
+                                        ? AntDesign.arrowdown
+                                        : AntDesign.arrowup,
+                                    size: 15,
+                                    color:
+                                        c.perKunjunganBulanIni.value.isNegative
+                                            ? Colors.red
+                                            : Colors.green,
+                                  ),
                                 ),
                                 Obx(
                                   () => Text(
@@ -242,14 +248,17 @@ class Statistik extends StatelessWidget {
                                   ),
                                 ),
                                 5.width,
-                                Icon(
-                                  c.perKunjunganHariIni.value.isNegative
-                                      ? AntDesign.arrowdown
-                                      : AntDesign.arrowup,
-                                  size: 15,
-                                  color: c.perKunjunganHariIni.value.isNegative
-                                      ? Colors.red
-                                      : Colors.green,
+                                Obx(
+                                  () => Icon(
+                                    c.perKunjunganHariIni.value.isNegative
+                                        ? AntDesign.arrowdown
+                                        : AntDesign.arrowup,
+                                    size: 15,
+                                    color:
+                                        c.perKunjunganHariIni.value.isNegative
+                                            ? Colors.red
+                                            : Colors.green,
+                                  ),
                                 ),
                                 Obx(
                                   () => Text(

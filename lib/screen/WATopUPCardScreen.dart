@@ -136,10 +136,15 @@ class WATopUPCardScreenState extends State<WATopUPCardScreen> {
                     (index) {
                       return Container(
                         decoration: boxDecorationWithRoundedCorners(
-                            backgroundColor: WAPrimaryColor.withOpacity(0.2),
-                            borderRadius: BorderRadius.circular(18)),
+                          backgroundColor: WAPrimaryColor.withOpacity(0.2),
+                          borderRadius: BorderRadius.circular(18),
+                        ),
                         padding: EdgeInsets.only(
-                            left: 22, right: 22, top: 8, bottom: 8),
+                          left: 22,
+                          right: 22,
+                          top: 8,
+                          bottom: 8,
+                        ),
                         child: Text('\u0024${amountList[index]}',
                             style: secondaryTextStyle(color: WAPrimaryColor)),
                       ).onTap(
