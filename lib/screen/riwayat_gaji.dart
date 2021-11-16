@@ -71,7 +71,7 @@ class RiwayatGaji extends StatelessWidget {
                               DataCell(
                                 Text(e.noSk!),
                                 onTap: () async => await launch(
-                                    'https://webapps.rsbhayangkaranganjuk.com/webapps/penggajian/' +
+                                    'https://simrs.rsbhayangkaranganjuk.com/webapps/penggajian/' +
                                         e.berkas!),
                               ),
                               DataCell(Text(e.pangkatjabatan!)),

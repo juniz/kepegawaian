@@ -44,8 +44,9 @@ class RiwayatIzin extends StatelessWidget {
           width: Get.width,
           decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('images/walletApp/wa_bg.jpg'),
-                fit: BoxFit.cover),
+              image: AssetImage('images/walletApp/wa_bg.jpg'),
+              fit: BoxFit.cover,
+            ),
           ),
           child: Container(
             margin: const EdgeInsets.only(top: 80),

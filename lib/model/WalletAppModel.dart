@@ -36,7 +36,7 @@ class WAOperationsModel {
   String? image;
   Color? color;
   String? title;
-  Widget? widget;
+  String? widget;
 
   WAOperationsModel({this.image, this.color, this.title, this.widget});
 }

@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:kepegawaian/controller/riwayat_seminar_controller.dart';
+import 'package:kepegawaian/controller/riwayat_penghargaan_controller.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:url_launcher/url_launcher.dart';
 
-class RiwayatSeminar extends StatelessWidget {
-  const RiwayatSeminar({Key? key}) : super(key: key);
+class RiwayatPenghargaan extends StatelessWidget {
+  const RiwayatPenghargaan({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final c = Get.put(RiwayatSeminarController());
+    final c = Get.put(RiwayatPenghargaanController());
     return SafeArea(
       child: Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           title: Text(
-            'Riwayat Seminar',
+            'Riwayat Penghargaan',
             style: boldTextStyle(color: Colors.black, size: 20),
           ),
           leading: Container(
@@ -69,18 +68,22 @@ class RiwayatSeminar extends StatelessWidget {
                           (e) => DataRow(
                             cells: <DataCell>[
                               DataCell(
-                                Text(e!.namaSeminar!),
-                                onTap: () async => await launch(
+                                Text(e!.namaPenghargaan!),
+                                onTap: () async => await c.launchURL(
                                     'https://simrs.rsbhayangkaranganjuk.com/webapps/penggajian/' +
                                         e.berkas!),
                               ),
-                              DataCell(Text(e.peranan!)),
                               DataCell(
                                 Text(
-                                  DateFormat('dd/MM/yyyy').format(e.mulai!),
+                                  DateFormat('dd/MM/yyyy').format(e.tanggal!),
                                 ),
                               ),
-                              DataCell(Text(e.penyelengara!)),
+                              DataCell(
+                                Text(e.instansi!),
+                              ),
+                              DataCell(
+                                Text(e.pejabatPemberi!),
+                              ),
                             ],
                           ),
                         )

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:kepegawaian/controller/presensi_controller.dart';
@@ -9,6 +10,8 @@ import 'package:kepegawaian/screen/WAMyProfileScreen.dart';
 import 'package:kepegawaian/screen/WAQrScannerScreen.dart';
 import 'package:kepegawaian/screen/WAStatisticsScreen.dart';
 import 'package:kepegawaian/screen/WAWalletScreen.dart';
+import 'package:kepegawaian/screen/jadwal_dokter.dart';
+import 'package:kepegawaian/screen/statistik.dart';
 import 'package:kepegawaian/utils/WAColors.dart';
 import 'package:nb_utils/nb_utils.dart';
 
@@ -25,6 +28,8 @@ class WADashboardScreenState extends State<WADashboardScreen> {
   var _pages = <Widget>[
     WAHomeScreen(),
     WAStatisticScreen(),
+    // Statistik(),
+    // JadwalDokterPage(),
     WAWalletScreen(),
     WAMyProfileScreen(),
   ];
@@ -49,8 +54,7 @@ class WADashboardScreenState extends State<WADashboardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _pages.elementAt(_selectedIndex),
-      floatingActionButtonLocation:
-          FloatingActionButtonLocation.miniCenterDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Padding(
         padding: EdgeInsets.all(6.0),
         child: Obx(() => FloatingActionButton(
@@ -106,6 +110,7 @@ class WADashboardScreenState extends State<WADashboardScreen> {
       ),
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
+        notchMargin: 0.5,
         clipBehavior: Clip.antiAlias,
         child: BottomNavigationBar(
           backgroundColor: Colors.white,
@@ -124,7 +129,12 @@ class WADashboardScreenState extends State<WADashboardScreen> {
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
             BottomNavigationBarItem(
                 icon: Icon(Icons.date_range), label: 'Presensi'),
-            BottomNavigationBarItem(icon: Icon(Icons.info), label: 'Informasi'),
+            // BottomNavigationBarItem(
+            //     icon: Icon(Icons.bar_chart), label: 'statistik'),
+            // BottomNavigationBarItem(
+            //     icon: Icon(AntDesign.contacts), label: 'jadwaldokter'),
+            BottomNavigationBarItem(
+                icon: Icon(AntDesign.infocirlce), label: 'Informasi'),
             BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
           ],
         ),

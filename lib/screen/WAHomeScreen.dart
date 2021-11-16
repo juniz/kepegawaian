@@ -1,10 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kepegawaian/component/WAOperationComponent.dart';
 import 'package:kepegawaian/component/WAStatisticsChartComponent.dart';
 import 'package:kepegawaian/component/WAStatisticsComponent.dart';
 import 'package:kepegawaian/controller/chart_controller.dart';
 import 'package:kepegawaian/controller/home_controller.dart';
+import 'package:kepegawaian/model/WalletAppModel.dart';
+import 'package:kepegawaian/screen/WAOperatorsScreen.dart';
+import 'package:kepegawaian/utils/WADataGenerator.dart';
 import 'package:kepegawaian/utils/WAWidgets.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:outlined_text/outlined_text.dart';
@@ -20,7 +24,7 @@ class WAHomeScreenState extends State<WAHomeScreen> {
   final c = Get.put(HomeController());
   final b = Get.put(ChartController());
   // List<WACardModel> cardList = waCardList();
-  // List<WAOperationsModel> operationsList = waOperationList();
+  List<WAOperationsModel> operationsList = waOperationList();
   // List<WATransactionModel> transactionList = waTransactionList();
 
   @override
@@ -92,7 +96,7 @@ class WAHomeScreenState extends State<WAHomeScreen> {
                                 image: DecorationImage(
                                   fit: BoxFit.fill,
                                   image: CachedNetworkImageProvider(
-                                    'https://webapps.rsbhayangkaranganjuk.com/webapps/penggajian/${c.photo.value}',
+                                    'https://simrs.rsbhayangkaranganjuk.com/webapps/penggajian/${c.photo.value}',
                                   ),
                                 ),
                               ),
@@ -240,11 +244,29 @@ class WAHomeScreenState extends State<WAHomeScreen> {
                       'Menu',
                       style: boldTextStyle(size: 20),
                     ),
+                    Icon(Icons.play_arrow, color: Colors.grey).onTap(() {
+                      WAOperatorsScreen().launch(context);
+                    }),
                   ],
                 ).paddingOnly(left: 16, right: 16),
-                16.height,
-                WAStatisticsComponent(),
-                25.height,
+                // 16.height,
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Wrap(
+                    direction: Axis.horizontal,
+                    spacing: 16,
+                    children: operationsList.map((operationModel) {
+                      return WAOperationComponent(itemModel: operationModel)
+                          .onTap(() {
+                        operationModel.widget != null
+                            ? Get.toNamed(operationModel.widget!)
+                            : toast(operationModel.title);
+                      });
+                    }).toList(),
+                  ).paddingAll(16),
+                ),
+                //WAStatisticsComponent(),
+                80.height,
               ],
             ),
           ),

@@ -121,6 +121,15 @@ class WAMyProfileScreenState extends State<WAMyProfileScreen> {
                     }),
                 16.height,
                 SettingItemWidget(
+                    title: 'Riwayat Penghargaan',
+                    decoration: boxDecorationRoundedWithShadow(12),
+                    trailing:
+                        Icon(Icons.arrow_right, color: grey.withOpacity(0.5)),
+                    onTap: () {
+                      Get.toNamed('/riwayatpenghargaan');
+                    }),
+                16.height,
+                SettingItemWidget(
                     title: 'Riwayat Pendidikan',
                     decoration: boxDecorationRoundedWithShadow(12),
                     trailing:
@@ -148,7 +157,7 @@ class WAMyProfileScreenState extends State<WAMyProfileScreen> {
                     }),
                 16.height,
                 SettingItemWidget(
-                    title: 'Log Out',
+                    title: 'Keluar',
                     decoration: boxDecorationRoundedWithShadow(12),
                     trailing:
                         Icon(Icons.arrow_right, color: grey.withOpacity(0.5)),
@@ -162,8 +171,8 @@ class WAMyProfileScreenState extends State<WAMyProfileScreen> {
                           type: CoolAlertType.confirm,
                           title: 'Keluar Aplikasi',
                           text: 'Apakah anda yakin ingin keluar aplikasi ?',
-                          onConfirmBtnTap: () {
-                            GetStorage().erase();
+                          onConfirmBtnTap: () async {
+                            await GetStorage().erase();
                             Get.offAllNamed('/login');
                           },
                           onCancelBtnTap: () {

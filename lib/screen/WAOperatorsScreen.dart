@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:kepegawaian/component/WAOperationComponent.dart';
 import 'package:kepegawaian/model/WalletAppModel.dart';
@@ -47,7 +48,7 @@ class WAOperatorsScreenState extends State<WAOperatorsScreen> {
             borderRadius: BorderRadius.circular(12),
             border: Border.all(color: Colors.grey.withOpacity(0.2)),
           ),
-          child: const Icon(Icons.arrow_back),
+          child: const Icon(Icons.arrow_back, color: Colors.black),
         ).onTap(() {
           finish(context);
         }),
@@ -56,8 +57,8 @@ class WAOperatorsScreenState extends State<WAOperatorsScreen> {
         brightness: Brightness.dark,
       ),
       body: Container(
-        height: context.height(),
-        width: context.width(),
+        height: Get.height,
+        width: Get.width,
         padding: EdgeInsets.only(top: 80),
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -81,12 +82,12 @@ class WAOperatorsScreenState extends State<WAOperatorsScreen> {
                       EdgeInsets.only(top: 16, bottom: 8, left: 8, right: 8),
                   decoration: boxDecorationRoundedWithShadow(16),
                   alignment: AlignmentDirectional.center,
-                  width: context.width() * 0.27,
+                  width: Get.width * 0.27,
                   child: WAOperationComponent(
                     itemModel: item,
                   ),
                 ).onTap(() {
-                  item.widget.launch(context);
+                  Get.toNamed(item.widget!);
                 });
               }).toList(),
             ).paddingAll(16),

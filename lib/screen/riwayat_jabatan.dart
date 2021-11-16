@@ -78,9 +78,14 @@ class RiwayatJabatan extends StatelessWidget {
                               : false,
                           startChild: Text(
                               '${c.listRiwayatJabatan.value[index].nomorSk!}\n${DateFormat('dd-MM-yyyy').format(c.listRiwayatJabatan.value[index].tglSk!)}'),
-                          endChild:
-                              Text(c.listRiwayatJabatan.value[index].jabatan!)
-                                  .paddingLeft(16),
+                          endChild: InkWell(
+                            onTap: () => c.launchURL(
+                                'https://simrs.rsbhayangkaranganjuk.com/webapps/penggajian/' +
+                                    c.listRiwayatJabatan.value[index].berkas!),
+                            child:
+                                Text(c.listRiwayatJabatan.value[index].jabatan!)
+                                    .paddingLeft(16),
+                          ),
                           indicatorStyle: IndicatorStyle(
                             color: index == 0 ? Colors.green : Colors.grey,
                           ),

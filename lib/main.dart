@@ -4,12 +4,16 @@ import 'package:get_storage/get_storage.dart';
 import 'package:kepegawaian/screen/IzinScreen.dart';
 import 'package:kepegawaian/screen/WALoginScreen.dart';
 import 'package:kepegawaian/screen/WASplashScreen.dart';
+import 'package:kepegawaian/screen/jadwal_dokter.dart';
+import 'package:kepegawaian/screen/rengiat.dart';
 import 'package:kepegawaian/screen/riwayat_cuti.dart';
 import 'package:kepegawaian/screen/riwayat_gaji.dart';
 import 'package:kepegawaian/screen/riwayat_izin.dart';
 import 'package:kepegawaian/screen/riwayat_jabatan.dart';
 import 'package:kepegawaian/screen/riwayat_pendidikan.dart';
+import 'package:kepegawaian/screen/riwayat_penghargaan.dart';
 import 'package:kepegawaian/screen/riwayat_seminar.dart';
+import 'package:kepegawaian/screen/statistik.dart';
 
 import 'screen/WADashboardScreen.dart';
 import 'screen/WASendMoneyViaLoopScreen.dart';
@@ -49,6 +53,10 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/riwayatjabatan', page: () => RiwayatJabatan()),
         GetPage(
             name: '/riwayatpendidikan', page: () => RiwayatPendidikanPage()),
+        GetPage(name: '/riwayatpenghargaan', page: () => RiwayatPenghargaan()),
+        GetPage(name: '/statistik', page: () => Statistik()),
+        GetPage(name: '/jadwaldokter', page: () => JadwalDokterPage()),
+        GetPage(name: '/rengiat', page: () => RengiatPage()),
       ],
       initialRoute: '/splash',
     );

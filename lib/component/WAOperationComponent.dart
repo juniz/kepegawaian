@@ -41,13 +41,21 @@ class WAOperationComponentState extends State<WAOperationComponent> {
             alignment: Alignment.center,
             decoration: boxDecorationRoundedWithShadow(
               16,
-              backgroundColor: widget.isApplyColor ? widget.itemModel!.color!.withOpacity(0.1) : Colors.white,
-              shadowColor: widget.isApplyColor ? Colors.transparent : Colors.grey.withOpacity(0.2),
+              backgroundColor: widget.isApplyColor
+                  ? widget.itemModel!.color!.withOpacity(0.1)
+                  : Colors.white,
+              shadowColor: widget.isApplyColor
+                  ? Colors.transparent
+                  : Colors.grey.withOpacity(0.2),
             ),
-            child: ImageIcon(AssetImage('${widget.itemModel!.image!}'), size: 30, color: widget.itemModel!.color!),
+            child: ImageIcon(AssetImage('${widget.itemModel!.image!}'),
+                size: 30, color: widget.itemModel!.color!),
           ),
           8.height,
-          Text('${widget.itemModel!.title!}', style: boldTextStyle(size: 14), textAlign: TextAlign.center, maxLines: 1),
+          Text('${widget.itemModel!.title!}',
+              style: boldTextStyle(size: 14),
+              textAlign: TextAlign.center,
+              maxLines: 1),
         ],
       ),
     );

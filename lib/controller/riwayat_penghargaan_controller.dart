@@ -1,24 +1,41 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:kepegawaian/api/api_connection.dart';
-import 'package:kepegawaian/model/riwayat_pendidikan_model.dart';
+import 'package:kepegawaian/model/riwayat_penghargaan_modal.dart';
 import 'package:kepegawaian/utils/helper.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class RiwayatPendidikanController extends GetxController {
+class RiwayatPenghargaanController extends GetxController {
   var idPegawai = "".obs;
-  var listRiwayatPendidikan = <RiwayatPendidikanData>[].obs;
+  var headerTable = <DataColumn>[].obs;
+  var dataTable = <RiwayatPenghargaanData?>[].obs;
+
   @override
   void onInit() {
     // TODO: implement onInit
     idPegawai.value = GetStorage().read('idPegawai');
+    headerTable.value = [
+      DataColumn(
+        label: Text("Nama Penghargaan"),
+      ),
+      DataColumn(
+        label: Text("Tanggal"),
+      ),
+      DataColumn(
+        label: Text("Instansi"),
+      ),
+      DataColumn(
+        label: Text("Penjabat Pemberi"),
+      ),
+    ];
     super.onInit();
   }
 
   @override
   void onReady() {
     // TODO: implement onReady
-    getRiwayatPendidikan();
+    getRiwayatPenghargaan();
     super.onReady();
   }
 
@@ -32,7 +49,7 @@ class RiwayatPendidikanController extends GetxController {
     await launch(url);
   }
 
-  Future<void> getRiwayatPendidikan() async {
+  getRiwayatPenghargaan() {
     try {
       Future.delayed(
         Duration.zero,
@@ -42,11 +59,10 @@ class RiwayatPendidikanController extends GetxController {
       ApiConnection()
           .postData(
               url:
-                  'https://webapps.rsbhayangkaranganjuk.com/api-rsbnganjuk/api/v1/riwayatpendidikan',
+                  'https://webapps.rsbhayangkaranganjuk.com/api-rsbnganjuk/api/v1/riwayatpenghargaan',
               body: param)
           .then((res) {
-        listRiwayatPendidikan.value =
-            riwayatPendidikanFromJson(res.bodyString!).data!;
+        dataTable.value = riwayatPenghargaanFromJson(res.bodyString!).data!;
         DialogHelper.hideLoading();
       });
     } catch (e) {

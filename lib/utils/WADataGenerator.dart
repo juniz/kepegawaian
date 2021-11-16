@@ -90,53 +90,65 @@ List<WAOperationsModel> waOperationList() {
   List<WAOperationsModel> operationModel = [];
   operationModel.add(WAOperationsModel(
     color: Color(0xFF6C56F9),
-    title: 'Transfer',
-    image: 'images/walletApp/wa_transfer.png',
-    widget: WASendMoneyViaLoopScreen(),
+    title: 'Cuti',
+    image: 'images/walletApp/group.png',
+    widget: '/cuti',
   ));
   operationModel.add(WAOperationsModel(
     color: Color(0xFFFF7426),
-    title: 'Vouchers',
-    image: 'images/walletApp/wa_voucher.png',
-    widget: IzinScreen(),
+    title: 'Izin',
+    image: 'images/walletApp/group.png',
+    widget: '/izin',
   ));
   operationModel.add(WAOperationsModel(
     color: Color(0xFF6C56F9),
-    title: 'Top Up',
-    image: 'images/walletApp/wa_ticket.png',
-    widget: WACreditCardScreen(),
-  ));
-  operationModel.add(WAOperationsModel(
-    color: Color(0xFF26C884),
-    title: 'Bill Pay',
-    image: 'images/walletApp/wa_bill_pay.png',
-    widget: WABillPayScreen(),
-  ));
-  operationModel.add(WAOperationsModel(
-    color: Color(0xFF6C56F9),
-    title: 'Rewards',
-    image: 'images/walletApp/wa_ticket.png',
-  ));
-  operationModel.add(WAOperationsModel(
-    color: Color(0xFF26C884),
-    title: 'Shopping',
-    image: 'images/walletApp/wa_bill_pay.png',
+    title: 'Statistik',
+    image: 'images/walletApp/statistics.png',
+    widget: '/statistik',
   ));
   operationModel.add(WAOperationsModel(
     color: Color(0xFFFF7426),
-    title: 'Tickets',
-    image: 'images/walletApp/wa_voucher.png',
+    title: 'Jadwal Dokter',
+    image: 'images/walletApp/doctors.png',
+    widget: '/jadwaldokter',
   ));
   operationModel.add(WAOperationsModel(
     color: Color(0xFF6C56F9),
-    title: 'Budgets',
-    image: 'images/walletApp/wa_voucher.png',
+    title: 'Rengiat',
+    image: 'images/walletApp/clipboard.png',
+    widget: '/rengiat',
   ));
   operationModel.add(WAOperationsModel(
-    color: Color(0xFFFF7426),
-    title: 'Request',
-    image: 'images/walletApp/wa_transfer.png',
+    color: Color(0xFFE21B1B),
+    title: 'Kesehatan',
+    image: 'images/walletApp/heart.png',
+    widget: '/kesehatan',
   ));
+  // operationModel.add(WAOperationsModel(
+  //   color: Color(0xFF6C56F9),
+  //   title: 'Rewards',
+  //   image: 'images/walletApp/wa_ticket.png',
+  // ));
+  // operationModel.add(WAOperationsModel(
+  //   color: Color(0xFF26C884),
+  //   title: 'Shopping',
+  //   image: 'images/walletApp/wa_bill_pay.png',
+  // ));
+  // operationModel.add(WAOperationsModel(
+  //   color: Color(0xFFFF7426),
+  //   title: 'Tickets',
+  //   image: 'images/walletApp/wa_voucher.png',
+  // ));
+  // operationModel.add(WAOperationsModel(
+  //   color: Color(0xFF6C56F9),
+  //   title: 'Budgets',
+  //   image: 'images/walletApp/wa_voucher.png',
+  // ));
+  // operationModel.add(WAOperationsModel(
+  //   color: Color(0xFFFF7426),
+  //   title: 'Request',
+  //   image: 'images/walletApp/wa_transfer.png',
+  // ));
   return operationModel;
 }
 

@@ -82,7 +82,7 @@ class RiwayatPendidikanPage extends StatelessWidget {
                               .toString()),
                           endChild: InkWell(
                             onTap: () => c.launchURL(
-                                'https://webapps.rsbhayangkaranganjuk.com/webapps/penggajian/' +
+                                'https://simrs.rsbhayangkaranganjuk.com/webapps/penggajian/' +
                                     c.listRiwayatPendidikan.value[index]
                                         .berkas!),
                             child: Text(

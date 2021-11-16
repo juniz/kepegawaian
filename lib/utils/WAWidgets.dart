@@ -144,7 +144,7 @@ Widget widgetMenuButton(
             height: 45,
             width: 45,
             padding: const EdgeInsets.all(12),
-            child: Icon(AntDesign.form, color: color),
+            child: Icon(MaterialIcons.people, color: color),
           ),
           10.width,
           Column(
