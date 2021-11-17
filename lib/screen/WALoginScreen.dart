@@ -4,11 +4,8 @@ import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:sdm_handal/controller/login_controller.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:sdm_handal/screen/WARegisterScreen.dart';
 import 'package:sdm_handal/utils/WAColors.dart';
 import 'package:sdm_handal/utils/WAWidgets.dart';
-
-import 'WAEditProfileScreen.dart';
 
 class WALoginScreen extends StatefulWidget {
   static String tag = '/WALoginScreen';

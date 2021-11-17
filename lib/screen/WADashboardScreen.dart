@@ -7,11 +7,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:sdm_handal/controller/presensi_controller.dart';
 import 'package:sdm_handal/screen/WAHomeScreen.dart';
 import 'package:sdm_handal/screen/WAMyProfileScreen.dart';
-import 'package:sdm_handal/screen/WAQrScannerScreen.dart';
 import 'package:sdm_handal/screen/WAStatisticsScreen.dart';
 import 'package:sdm_handal/screen/WAWalletScreen.dart';
-import 'package:sdm_handal/screen/jadwal_dokter.dart';
-import 'package:sdm_handal/screen/statistik.dart';
 import 'package:sdm_handal/utils/WAColors.dart';
 import 'package:nb_utils/nb_utils.dart';
 

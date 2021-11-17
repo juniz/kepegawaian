@@ -4,9 +4,6 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:sdm_handal/controller/profile_controller.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:sdm_handal/screen/WAAddCreditionalScreen.dart';
-import 'package:sdm_handal/utils/WAColors.dart';
-import 'package:sdm_handal/utils/WADataGenerator.dart';
 import 'package:sdm_handal/utils/WAWidgets.dart';
 
 class WAEditProfileScreen extends StatefulWidget {
