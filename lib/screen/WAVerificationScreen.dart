@@ -3,7 +3,7 @@ import 'package:nb_utils/nb_utils.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/otp_field_style.dart';
 import 'package:otp_text_field/style.dart';
-import 'package:kepegawaian/utils/WAColors.dart';
+import 'package:sdm_handal/utils/WAColors.dart';
 
 import 'WADashboardScreen.dart';
 

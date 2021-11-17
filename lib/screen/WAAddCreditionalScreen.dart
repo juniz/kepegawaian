@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:kepegawaian/screen/WADashboardScreen.dart';
-import 'package:kepegawaian/screen/WAVerificationScreen.dart';
-import 'package:kepegawaian/utils/WAColors.dart';
+import 'package:sdm_handal/screen/WADashboardScreen.dart';
+import 'package:sdm_handal/screen/WAVerificationScreen.dart';
+import 'package:sdm_handal/utils/WAColors.dart';
 
 class WAAddCredentialScreen extends StatefulWidget {
   static String tag = '/WAAddCredentialScreen';

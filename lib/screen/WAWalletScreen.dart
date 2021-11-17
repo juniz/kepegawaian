@@ -2,15 +2,15 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:get/get.dart';
-import 'package:kepegawaian/controller/informasi_controller.dart';
+import 'package:sdm_handal/controller/informasi_controller.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:kepegawaian/component/WACardComponent.dart';
-import 'package:kepegawaian/component/WATransactionComponent.dart';
-import 'package:kepegawaian/component/WAWalletUserListComponent.dart';
-import 'package:kepegawaian/model/WalletAppModel.dart';
-import 'package:kepegawaian/utils/WAColors.dart';
-import 'package:kepegawaian/utils/WADataGenerator.dart';
-import 'package:kepegawaian/utils/WAWidgets.dart';
+import 'package:sdm_handal/component/WACardComponent.dart';
+import 'package:sdm_handal/component/WATransactionComponent.dart';
+import 'package:sdm_handal/component/WAWalletUserListComponent.dart';
+import 'package:sdm_handal/model/WalletAppModel.dart';
+import 'package:sdm_handal/utils/WAColors.dart';
+import 'package:sdm_handal/utils/WADataGenerator.dart';
+import 'package:sdm_handal/utils/WAWidgets.dart';
 
 class WAWalletScreen extends StatefulWidget {
   static String tag = '/WAWalletScreen';

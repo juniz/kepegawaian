@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:kepegawaian/controller/rekap_presensi_controller.dart';
-import 'package:kepegawaian/model/rekap_presensi_model.dart';
-import 'package:kepegawaian/utils/WAWidgets.dart';
+import 'package:sdm_handal/controller/rekap_presensi_controller.dart';
+import 'package:sdm_handal/model/rekap_presensi_model.dart';
+import 'package:sdm_handal/utils/WAWidgets.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:map_launcher/map_launcher.dart';
 
@@ -51,11 +51,11 @@ class WACategoriesComponentState extends State<WACategoriesComponent> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-                DateFormat("yyyy-MM-dd HH:mm:ss")
+                DateFormat("dd-MM-yyyy HH:mm:ss")
                     .format(widget.categoryModel!.jamDatang!),
                 style: secondaryTextStyle()),
             Text(
-                DateFormat("yyyy-MM-dd HH:mm:ss")
+                DateFormat("dd-MM-yyyy HH:mm:ss")
                     .format(widget.categoryModel!.jamDatang!),
                 style: secondaryTextStyle())
           ],
@@ -65,6 +65,7 @@ class WACategoriesComponentState extends State<WACategoriesComponent> {
           height: 60,
           width: 60,
           fit: BoxFit.cover,
+          alignment: Alignment.center,
         ).cornerRadiusWithClipRRect(30),
         trailing: Container(
           width: 80,
@@ -88,9 +89,11 @@ class WACategoriesComponentState extends State<WACategoriesComponent> {
         ),
         onTap: () async {
           await c.getGeo(
-              id: widget.categoryModel!.id!.toString(),
-              tanggal: DateFormat('yyyy-MM-dd')
-                  .format(widget.categoryModel!.jamDatang!));
+            id: widget.categoryModel!.id!.toString(),
+            tanggal: DateFormat('yyyy-MM-dd').format(
+              widget.categoryModel!.jamDatang!,
+            ),
+          );
         },
       ),
     );

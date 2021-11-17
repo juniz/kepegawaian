@@ -8,10 +8,10 @@ import 'package:get/state_manager.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:kepegawaian/api/api_connection.dart';
-import 'package:kepegawaian/model/jam_jaga_model.dart';
-import 'package:kepegawaian/utils/WAColors.dart';
-import 'package:kepegawaian/utils/helper.dart';
+import 'package:sdm_handal/api/api_connection.dart';
+import 'package:sdm_handal/model/jam_jaga_model.dart';
+import 'package:sdm_handal/utils/WAColors.dart';
+import 'package:sdm_handal/utils/helper.dart';
 import 'package:location/location.dart';
 
 class PresensiController extends GetxController {

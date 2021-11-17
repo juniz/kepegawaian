@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kepegawaian/component/riwayat_component.dart';
-import 'package:kepegawaian/controller/riwayat_cuti_controller.dart';
-import 'package:kepegawaian/controller/riwayat_izin_controller.dart';
+import 'package:sdm_handal/component/riwayat_component.dart';
+import 'package:sdm_handal/controller/riwayat_cuti_controller.dart';
+import 'package:sdm_handal/controller/riwayat_izin_controller.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 class RiwayatIzin extends StatelessWidget {

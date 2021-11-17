@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:kepegawaian/controller/riwayat_penghargaan_controller.dart';
+import 'package:sdm_handal/controller/riwayat_penghargaan_controller.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 class RiwayatPenghargaan extends StatelessWidget {

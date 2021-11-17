@@ -1,7 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kepegawaian/controller/chart_controller.dart';
+import 'package:sdm_handal/controller/chart_controller.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 class WAStatisticsChartComponent extends StatefulWidget {

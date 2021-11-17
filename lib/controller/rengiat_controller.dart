@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:kepegawaian/api/api_connection.dart';
-import 'package:kepegawaian/model/rengiat_model.dart';
+import 'package:sdm_handal/api/api_connection.dart';
+import 'package:sdm_handal/model/rengiat_model.dart';
 
 class RengiatController extends GetxController {
   var rengiatData = <RengiatModel>[].obs;

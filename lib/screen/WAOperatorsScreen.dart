@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:kepegawaian/component/WAOperationComponent.dart';
-import 'package:kepegawaian/model/WalletAppModel.dart';
-import 'package:kepegawaian/utils/WADataGenerator.dart';
+import 'package:sdm_handal/component/WAOperationComponent.dart';
+import 'package:sdm_handal/model/WalletAppModel.dart';
+import 'package:sdm_handal/utils/WADataGenerator.dart';
 
 class WAOperatorsScreen extends StatefulWidget {
   static String tag = '/WAOperatorsScreen';
@@ -66,7 +66,7 @@ class WAOperatorsScreenState extends State<WAOperatorsScreen> {
               fit: BoxFit.cover),
         ),
         child: Container(
-          margin: EdgeInsets.only(top: 30),
+          margin: EdgeInsets.only(top: 50),
           decoration: boxDecorationRoundedWithShadow(
             16,
             backgroundColor: Colors.white,

@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:kepegawaian/controller/profile_controller.dart';
+import 'package:sdm_handal/controller/profile_controller.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:kepegawaian/screen/WAAddCreditionalScreen.dart';
-import 'package:kepegawaian/utils/WAColors.dart';
-import 'package:kepegawaian/utils/WADataGenerator.dart';
-import 'package:kepegawaian/utils/WAWidgets.dart';
+import 'package:sdm_handal/screen/WAAddCreditionalScreen.dart';
+import 'package:sdm_handal/utils/WAColors.dart';
+import 'package:sdm_handal/utils/WADataGenerator.dart';
+import 'package:sdm_handal/utils/WAWidgets.dart';
 
 class WAEditProfileScreen extends StatefulWidget {
   static String tag = '/WAEditProfileScreen';

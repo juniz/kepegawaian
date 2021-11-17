@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:kepegawaian/api/api_connection.dart';
-import 'package:kepegawaian/model/riwayat_gaji_model.dart';
-import 'package:kepegawaian/utils/helper.dart';
+import 'package:sdm_handal/api/api_connection.dart';
+import 'package:sdm_handal/model/riwayat_gaji_model.dart';
+import 'package:sdm_handal/utils/helper.dart';
 
 class RiwayatGajiController extends GetxController {
   var idPegawai = ''.obs;

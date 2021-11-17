@@ -2,11 +2,11 @@ import 'package:cool_alert/cool_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
-import 'package:kepegawaian/controller/login_controller.dart';
+import 'package:sdm_handal/controller/login_controller.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:kepegawaian/screen/WARegisterScreen.dart';
-import 'package:kepegawaian/utils/WAColors.dart';
-import 'package:kepegawaian/utils/WAWidgets.dart';
+import 'package:sdm_handal/screen/WARegisterScreen.dart';
+import 'package:sdm_handal/utils/WAColors.dart';
+import 'package:sdm_handal/utils/WAWidgets.dart';
 
 import 'WAEditProfileScreen.dart';
 
@@ -53,7 +53,7 @@ class WALoginScreenState extends State<WALoginScreen> {
           child: Column(
             children: <Widget>[
               60.height,
-              Text("Log In", style: boldTextStyle(size: 24)),
+              Text("SDM Handal", style: boldTextStyle(size: 24)),
               Container(
                 margin: EdgeInsets.all(16),
                 child: Stack(
@@ -111,7 +111,7 @@ class WALoginScreenState extends State<WALoginScreen> {
                                 // ),
                                 30.height,
                                 AppButton(
-                                        text: "Log In",
+                                        text: "Masuk",
                                         color: WAPrimaryColor,
                                         textColor: Colors.white,
                                         shapeBorder: RoundedRectangleBorder(
@@ -212,18 +212,18 @@ class WALoginScreenState extends State<WALoginScreen> {
                         ],
                       ),
                     ),
-                    // Container(
-                    //   alignment: Alignment.center,
-                    //   height: 100,
-                    //   width: 100,
-                    //   decoration: boxDecorationRoundedWithShadow(30),
-                    //   child: Image.asset(
-                    //     'images/walletApp/wa_app_logo.png',
-                    //     height: 60,
-                    //     width: 60,
-                    //     fit: BoxFit.cover,
-                    //   ),
-                    // )
+                    Container(
+                      alignment: Alignment.center,
+                      height: 100,
+                      width: 100,
+                      decoration: boxDecorationRoundedWithShadow(30),
+                      child: Image.asset(
+                        'images/walletApp/logo_rsbnganjuk.png',
+                        height: 80,
+                        width: 80,
+                        fit: BoxFit.cover,
+                      ),
+                    )
                   ],
                 ),
               ),

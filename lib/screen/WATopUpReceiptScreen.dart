@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:kepegawaian/component/WASendViaComponent.dart';
-import 'package:kepegawaian/model/WalletAppModel.dart';
-import 'package:kepegawaian/screen/WADashboardScreen.dart';
-import 'package:kepegawaian/utils/WAColors.dart';
-import 'package:kepegawaian/utils/WAMultiplePointedEdgeClipper.dart';
-import 'package:kepegawaian/utils/WAMySeperator.dart';
+import 'package:sdm_handal/component/WASendViaComponent.dart';
+import 'package:sdm_handal/model/WalletAppModel.dart';
+import 'package:sdm_handal/screen/WADashboardScreen.dart';
+import 'package:sdm_handal/utils/WAColors.dart';
+import 'package:sdm_handal/utils/WAMultiplePointedEdgeClipper.dart';
+import 'package:sdm_handal/utils/WAMySeperator.dart';
 
 class WATopUpReceiptScreen extends StatefulWidget {
   static String tag = '/WATopUpReceiptScreen';

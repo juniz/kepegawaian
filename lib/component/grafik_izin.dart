@@ -1,7 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kepegawaian/controller/chart_izin_controller.dart';
+import 'package:sdm_handal/controller/chart_izin_controller.dart';
 import 'package:nb_utils/src/extensions/widget_extensions.dart';
 
 class GrafikIzin extends StatelessWidget {

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
-import 'package:kepegawaian/api/api_connection.dart';
-import 'package:kepegawaian/model/pegawai_model.dart';
+import 'package:sdm_handal/api/api_connection.dart';
+import 'package:sdm_handal/model/pegawai_model.dart';
 import 'package:smart_select/smart_select.dart';
 import '../utils/helper.dart';
 

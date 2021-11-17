@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:kepegawaian/api/api_connection.dart';
+import 'package:sdm_handal/api/api_connection.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:kepegawaian/screen/WAWalkThroughScreen.dart';
-import 'package:kepegawaian/utils/WAColors.dart';
+import 'package:sdm_handal/screen/WAWalkThroughScreen.dart';
+import 'package:sdm_handal/utils/WAColors.dart';
 
 class WASplashScreen extends StatefulWidget {
   static String tag = '/WASplashScreen';
@@ -40,7 +40,7 @@ class WASplashScreenState extends State<WASplashScreen> {
     ApiConnection()
         .postData(
             url:
-                'https://webapps.rsbhayangkaranganjuk.com/api-rsbnganjuk/api/v1/kepegawaian/login',
+                'https://webapps.rsbhayangkaranganjuk.com/api-rsbnganjuk/api/v1/sdm_handal/login',
             body: param)
         .then((res) {
       //if (mounted) finish(context);

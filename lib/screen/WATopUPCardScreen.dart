@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:kepegawaian/component/WASelectBankComponent.dart';
-import 'package:kepegawaian/component/WASendViaComponent.dart';
-import 'package:kepegawaian/model/WalletAppModel.dart';
-import 'package:kepegawaian/screen/WATopUpReceiptScreen.dart';
-import 'package:kepegawaian/utils/WAColors.dart';
-import 'package:kepegawaian/utils/WADataGenerator.dart';
-import 'package:kepegawaian/utils/WAWidgets.dart';
-import 'package:kepegawaian/utils/widgets/slider.dart';
+import 'package:sdm_handal/component/WASelectBankComponent.dart';
+import 'package:sdm_handal/component/WASendViaComponent.dart';
+import 'package:sdm_handal/model/WalletAppModel.dart';
+import 'package:sdm_handal/screen/WATopUpReceiptScreen.dart';
+import 'package:sdm_handal/utils/WAColors.dart';
+import 'package:sdm_handal/utils/WADataGenerator.dart';
+import 'package:sdm_handal/utils/WAWidgets.dart';
+import 'package:sdm_handal/utils/widgets/slider.dart';
 
 class WATopUPCardScreen extends StatefulWidget {
   static String tag = '/WATopUPCardScreen';

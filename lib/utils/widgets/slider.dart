@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kepegawaian/utils/shimmer.dart';
+import 'package:sdm_handal/utils/shimmer.dart';
 
 class SliderButton extends StatefulWidget {
   ///To make button more customizable add your child widget

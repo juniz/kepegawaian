@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:kepegawaian/utils/WAWidgets.dart';
+import 'package:sdm_handal/utils/WAWidgets.dart';
 
 class WAStatisticsComponent extends StatefulWidget {
   static String tag = '/WAStatisticsComponent';

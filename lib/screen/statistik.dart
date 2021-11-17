@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:kepegawaian/controller/statistik_controller.dart';
-import 'package:kepegawaian/utils/WAColors.dart';
+import 'package:sdm_handal/controller/statistik_controller.dart';
+import 'package:sdm_handal/utils/WAColors.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 class Statistik extends StatelessWidget {

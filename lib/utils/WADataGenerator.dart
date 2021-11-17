@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kepegawaian/model/WalletAppModel.dart';
-import 'package:kepegawaian/screen/IzinScreen.dart';
-import 'package:kepegawaian/screen/WABillPayScreen.dart';
-import 'package:kepegawaian/screen/WACreditCardScreen.dart';
-import 'package:kepegawaian/screen/WASendMoneyViaLoopScreen.dart';
-import 'package:kepegawaian/screen/WAVoucherScreen.dart';
+import 'package:sdm_handal/model/WalletAppModel.dart';
 
 List<String?> waMonthList = <String?>[
   "Jan",

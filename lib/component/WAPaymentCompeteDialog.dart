@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:kepegawaian/screen/WADashboardScreen.dart';
-import 'package:kepegawaian/utils/WAColors.dart';
-import 'package:kepegawaian/utils/WAWidgets.dart';
+import 'package:sdm_handal/screen/WADashboardScreen.dart';
+import 'package:sdm_handal/utils/WAColors.dart';
+import 'package:sdm_handal/utils/WAWidgets.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 class WAPaymentCompletedDialog extends StatefulWidget {

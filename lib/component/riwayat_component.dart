@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kepegawaian/model/riwayat_cuti_model.dart';
+import 'package:sdm_handal/model/riwayat_cuti_model.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 class RiwayatComponent extends StatelessWidget {

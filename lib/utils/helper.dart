@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kepegawaian/utils/WAColors.dart';
+import 'package:sdm_handal/utils/WAColors.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 class DialogHelper {

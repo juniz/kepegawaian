@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kepegawaian/model/WalletAppModel.dart';
-import 'package:kepegawaian/utils/WADataGenerator.dart';
+import 'package:sdm_handal/model/WalletAppModel.dart';
+import 'package:sdm_handal/utils/WADataGenerator.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 class WASelectBankComponent extends StatefulWidget {

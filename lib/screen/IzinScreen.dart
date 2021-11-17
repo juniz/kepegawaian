@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:kepegawaian/controller/cuti_controller.dart';
-import 'package:kepegawaian/controller/izin_controller.dart';
-import 'package:kepegawaian/screen/WAHomeScreen.dart';
-import 'package:kepegawaian/utils/WAColors.dart';
-import 'package:kepegawaian/utils/WAWidgets.dart';
+import 'package:sdm_handal/controller/cuti_controller.dart';
+import 'package:sdm_handal/controller/izin_controller.dart';
+import 'package:sdm_handal/screen/WAHomeScreen.dart';
+import 'package:sdm_handal/utils/WAColors.dart';
+import 'package:sdm_handal/utils/WAWidgets.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:smart_select/smart_select.dart';
 

@@ -1,17 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kepegawaian/component/WAOperationComponent.dart';
-import 'package:kepegawaian/component/WAStatisticsChartComponent.dart';
-import 'package:kepegawaian/component/WAStatisticsComponent.dart';
-import 'package:kepegawaian/controller/chart_controller.dart';
-import 'package:kepegawaian/controller/home_controller.dart';
-import 'package:kepegawaian/model/WalletAppModel.dart';
-import 'package:kepegawaian/screen/WAOperatorsScreen.dart';
-import 'package:kepegawaian/utils/WADataGenerator.dart';
-import 'package:kepegawaian/utils/WAWidgets.dart';
+import 'package:sdm_handal/component/WAOperationComponent.dart';
+import 'package:sdm_handal/component/WAStatisticsChartComponent.dart';
+import 'package:sdm_handal/controller/chart_controller.dart';
+import 'package:sdm_handal/controller/home_controller.dart';
+import 'package:sdm_handal/model/WalletAppModel.dart';
+import 'package:sdm_handal/screen/WAOperatorsScreen.dart';
+import 'package:sdm_handal/utils/WADataGenerator.dart';
+import 'package:sdm_handal/utils/WAWidgets.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:outlined_text/outlined_text.dart';
 
 class WAHomeScreen extends StatefulWidget {
   static String tag = '/WAHomeScreen';
@@ -61,9 +59,9 @@ class WAHomeScreenState extends State<WAHomeScreen> {
                 50.height,
                 Container(
                   width: Get.width,
-                  height: Get.height / 4,
+                  height: 200,
                   decoration: BoxDecoration(
-                    image: DecorationImage(
+                    image: const DecorationImage(
                       image: AssetImage('images/walletApp/kta.jpg'),
                       fit: BoxFit.fill,
                     ),
@@ -171,7 +169,10 @@ class WAHomeScreenState extends State<WAHomeScreen> {
                                 Text(
                                   c.nama.value,
                                   style: boldTextStyle(
-                                      size: 12, color: Colors.black),
+                                    size: 12,
+                                    color: Colors.black,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
                                 ),
                                 Text(
                                   c.nik.value,

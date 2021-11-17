@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:kepegawaian/api/api_connection.dart';
-import 'package:kepegawaian/model/jadwal_dokter_model.dart';
+import 'package:sdm_handal/api/api_connection.dart';
+import 'package:sdm_handal/model/jadwal_dokter_model.dart';
 
 class JadwalDokterController extends GetxController {
   var listJadwalController = <JadwalDokterModel>[].obs;

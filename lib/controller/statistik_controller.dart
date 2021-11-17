@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:kepegawaian/api/api_connection.dart';
-import 'package:kepegawaian/model/jumlah_pasien_model.dart';
+import 'package:sdm_handal/api/api_connection.dart';
+import 'package:sdm_handal/model/jumlah_pasien_model.dart';
 
 class StatistikController extends GetxController {
   var kunjungan = 0.obs;

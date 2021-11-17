@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:kepegawaian/screen/IzinScreen.dart';
-import 'package:kepegawaian/screen/WALoginScreen.dart';
-import 'package:kepegawaian/screen/WASplashScreen.dart';
-import 'package:kepegawaian/screen/jadwal_dokter.dart';
-import 'package:kepegawaian/screen/rengiat.dart';
-import 'package:kepegawaian/screen/riwayat_cuti.dart';
-import 'package:kepegawaian/screen/riwayat_gaji.dart';
-import 'package:kepegawaian/screen/riwayat_izin.dart';
-import 'package:kepegawaian/screen/riwayat_jabatan.dart';
-import 'package:kepegawaian/screen/riwayat_pendidikan.dart';
-import 'package:kepegawaian/screen/riwayat_penghargaan.dart';
-import 'package:kepegawaian/screen/riwayat_seminar.dart';
-import 'package:kepegawaian/screen/statistik.dart';
+import 'package:sdm_handal/screen/IzinScreen.dart';
+import 'package:sdm_handal/screen/WALoginScreen.dart';
+import 'package:sdm_handal/screen/WASplashScreen.dart';
+import 'package:sdm_handal/screen/jadwal_dokter.dart';
+import 'package:sdm_handal/screen/rengiat.dart';
+import 'package:sdm_handal/screen/riwayat_cuti.dart';
+import 'package:sdm_handal/screen/riwayat_gaji.dart';
+import 'package:sdm_handal/screen/riwayat_izin.dart';
+import 'package:sdm_handal/screen/riwayat_jabatan.dart';
+import 'package:sdm_handal/screen/riwayat_pendidikan.dart';
+import 'package:sdm_handal/screen/riwayat_penghargaan.dart';
+import 'package:sdm_handal/screen/riwayat_seminar.dart';
+import 'package:sdm_handal/screen/statistik.dart';
 
 import 'screen/WADashboardScreen.dart';
 import 'screen/WASendMoneyViaLoopScreen.dart';
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'KEPEGAWAIAN',
+      title: 'sdm_handal',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,

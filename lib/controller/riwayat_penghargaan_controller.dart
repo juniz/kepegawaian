@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:kepegawaian/api/api_connection.dart';
-import 'package:kepegawaian/model/riwayat_penghargaan_modal.dart';
-import 'package:kepegawaian/utils/helper.dart';
+import 'package:sdm_handal/api/api_connection.dart';
+import 'package:sdm_handal/model/riwayat_penghargaan_modal.dart';
+import 'package:sdm_handal/utils/helper.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class RiwayatPenghargaanController extends GetxController {

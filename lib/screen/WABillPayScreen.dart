@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:kepegawaian/component/WAOperationComponent.dart';
-import 'package:kepegawaian/component/WAOrganizationComponent.dart';
-import 'package:kepegawaian/component/WAPayToComponent.dart';
-import 'package:kepegawaian/model/WalletAppModel.dart';
-import 'package:kepegawaian/utils/WADataGenerator.dart';
-import 'package:kepegawaian/utils/WAWidgets.dart';
+import 'package:sdm_handal/component/WAOperationComponent.dart';
+import 'package:sdm_handal/component/WAOrganizationComponent.dart';
+import 'package:sdm_handal/component/WAPayToComponent.dart';
+import 'package:sdm_handal/model/WalletAppModel.dart';
+import 'package:sdm_handal/utils/WADataGenerator.dart';
+import 'package:sdm_handal/utils/WAWidgets.dart';
 
 class WABillPayScreen extends StatefulWidget {
   static String tag = '/WABillPayScreen';

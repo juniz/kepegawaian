@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:kepegawaian/model/WalletAppModel.dart';
+import 'package:sdm_handal/model/WalletAppModel.dart';
 
 class WAOrganizationComponent extends StatefulWidget {
   static String tag = '/WAOrganizationComponent';

@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:kepegawaian/controller/cuti_controller.dart';
-import 'package:kepegawaian/controller/profile_controller.dart';
-import 'package:kepegawaian/utils/WAColors.dart';
+import 'package:sdm_handal/controller/cuti_controller.dart';
+import 'package:sdm_handal/controller/profile_controller.dart';
+import 'package:sdm_handal/utils/WAColors.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:kepegawaian/screen/WAEditProfileScreen.dart';
-import 'package:kepegawaian/utils/WAWidgets.dart';
+import 'package:sdm_handal/screen/WAEditProfileScreen.dart';
+import 'package:sdm_handal/utils/WAWidgets.dart';
 
 class WAMyProfileScreen extends StatefulWidget {
   static String tag = '/WAMyProfileScreen';

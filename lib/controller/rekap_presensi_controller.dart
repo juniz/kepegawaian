@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:kepegawaian/api/api_connection.dart';
-import 'package:kepegawaian/model/rekap_presensi_model.dart';
+import 'package:sdm_handal/api/api_connection.dart';
+import 'package:sdm_handal/model/rekap_presensi_model.dart';
 import 'package:map_launcher/map_launcher.dart';
 
 class RekapPresensiController extends GetxController {
@@ -87,8 +87,14 @@ class RekapPresensiController extends GetxController {
         // print(availableMaps);
 
         await availableMaps.first.showMarker(
-          coords: Coords(double.parse(res.body['latitude']),
-              double.parse(res.body['longitude'])),
+          coords: Coords(
+            double.parse(
+              res.body['latitude'],
+            ),
+            double.parse(
+              res.body['longitude'],
+            ),
+          ),
           title: '',
         );
       });

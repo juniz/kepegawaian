@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:kepegawaian/component/WAVoucherComponent.dart';
-import 'package:kepegawaian/model/WalletAppModel.dart';
-import 'package:kepegawaian/utils/WADataGenerator.dart';
+import 'package:sdm_handal/component/WAVoucherComponent.dart';
+import 'package:sdm_handal/model/WalletAppModel.dart';
+import 'package:sdm_handal/utils/WADataGenerator.dart';
 
 class WAVoucherScreen extends StatefulWidget {
   static String tag = '/WAVoucherScreen';

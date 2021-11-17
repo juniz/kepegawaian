@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kepegawaian/controller/rekap_presensi_controller.dart';
+import 'package:sdm_handal/controller/rekap_presensi_controller.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:kepegawaian/component/WAStatisticsChartComponent.dart';
-import 'package:kepegawaian/component/WAStatisticsComponent.dart';
-import 'package:kepegawaian/model/WalletAppModel.dart';
-import 'package:kepegawaian/component/WACategoriesComponent.dart';
-import 'package:kepegawaian/utils/WADataGenerator.dart';
-import 'package:kepegawaian/utils/WAWidgets.dart';
+import 'package:sdm_handal/component/WAStatisticsChartComponent.dart';
+import 'package:sdm_handal/component/WAStatisticsComponent.dart';
+import 'package:sdm_handal/model/WalletAppModel.dart';
+import 'package:sdm_handal/component/WACategoriesComponent.dart';
+import 'package:sdm_handal/utils/WADataGenerator.dart';
+import 'package:sdm_handal/utils/WAWidgets.dart';
 
 class WAStatisticScreen extends StatefulWidget {
   static String tag = '/WAStatisticScreen';
