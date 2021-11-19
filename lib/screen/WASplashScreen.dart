@@ -39,7 +39,7 @@ class WASplashScreenState extends State<WASplashScreen> {
     ApiConnection()
         .postData(
             url:
-                'https://webapps.rsbhayangkaranganjuk.com/api-rsbnganjuk/api/v1/sdm_handal/login',
+                'https://webapps.rsbhayangkaranganjuk.com/api-rsbnganjuk/api/v1/kepegawaian/login',
             body: param)
         .then((res) {
       //if (mounted) finish(context);

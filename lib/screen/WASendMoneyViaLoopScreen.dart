@@ -4,19 +4,14 @@ import 'package:flutter/painting.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:sdm_handal/api/api_connection.dart';
 import 'package:sdm_handal/controller/cuti_controller.dart';
-import 'package:sdm_handal/model/pegawai_model.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:sdm_handal/model/WalletAppModel.dart';
 import 'package:sdm_handal/utils/WAColors.dart';
 import 'package:sdm_handal/utils/WADataGenerator.dart';
 import 'package:sdm_handal/utils/WAWidgets.dart';
 import 'package:flutter/services.dart';
-import 'package:search_choices/search_choices.dart';
 import 'package:smart_select/smart_select.dart';
-
-import 'WAHomeScreen.dart';
 
 class WASendMoneyViaLoopScreen extends StatefulWidget {
   static String tag = '/WASendMoneyViaLoopScreen';

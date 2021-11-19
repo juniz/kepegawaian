@@ -19,30 +19,31 @@ class RiwayatComponent extends StatelessWidget {
         enabled: true,
         contentPadding: EdgeInsets.zero,
         leading: Container(
-            height: 50,
-            width: 50,
-            alignment: Alignment.center,
-            decoration: boxDecorationWithRoundedCorners(
-              boxShape: BoxShape.circle,
-              backgroundColor: cuti!.status == 'Disetujui'
-                  ? Colors.green.withOpacity(0.1)
-                  : cuti!.status == 'Proses Pengajuan'
-                      ? Colors.yellow.withOpacity(0.1)
-                      : Colors.red.withOpacity(0.1),
-            ),
-            child: Icon(
-              cuti!.status == 'Disetujui'
-                  ? Icons.add_task
-                  : cuti!.status == 'Proses Pengajuan'
-                      ? Icons.alarm_add
-                      : Icons.cancel,
-              size: 24,
-              color: cuti!.status == 'Disetujui'
-                  ? Colors.green
-                  : cuti!.status == 'Proses Pengajuan'
-                      ? Colors.black87
-                      : Colors.red,
-            )),
+          height: 50,
+          width: 50,
+          alignment: Alignment.center,
+          decoration: boxDecorationWithRoundedCorners(
+            boxShape: BoxShape.circle,
+            backgroundColor: cuti!.status == 'Disetujui'
+                ? Colors.green.withOpacity(0.1)
+                : cuti!.status == 'Proses Pengajuan'
+                    ? Colors.yellow.withOpacity(0.1)
+                    : Colors.red.withOpacity(0.1),
+          ),
+          child: Icon(
+            cuti!.status == 'Disetujui'
+                ? Icons.add_task
+                : cuti!.status == 'Proses Pengajuan'
+                    ? Icons.alarm_add
+                    : Icons.cancel,
+            size: 24,
+            color: cuti!.status == 'Disetujui'
+                ? Colors.green
+                : cuti!.status == 'Proses Pengajuan'
+                    ? Colors.black87
+                    : Colors.red,
+          ),
+        ),
         title: RichTextWidget(
           list: [
             TextSpan(

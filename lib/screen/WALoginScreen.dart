@@ -43,8 +43,9 @@ class WALoginScreenState extends State<WALoginScreen> {
         height: Get.height,
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('images/walletApp/wa_bg.jpg'),
-              fit: BoxFit.cover),
+            image: AssetImage('images/walletApp/wa_bg.jpg'),
+            fit: BoxFit.cover,
+          ),
         ),
         child: SingleChildScrollView(
           child: Column(
@@ -213,7 +214,7 @@ class WALoginScreenState extends State<WALoginScreen> {
                       alignment: Alignment.center,
                       height: 100,
                       width: 100,
-                      decoration: boxDecorationRoundedWithShadow(30),
+                      decoration: boxDecorationRoundedWithShadow(60),
                       child: Image.asset(
                         'images/walletApp/logo_rsbnganjuk.png',
                         height: 80,
