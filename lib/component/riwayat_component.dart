@@ -50,10 +50,6 @@ class RiwayatComponent extends StatelessWidget {
               text: '${cuti!.kepentingan}',
               style: primaryTextStyle(color: Colors.black54, size: 14),
             ),
-            // TextSpan(
-            //   text: '\t${widget.transactionModel!.name!}',
-            //   style: boldTextStyle(size: 14),
-            // ),
           ],
           maxLines: 1,
         ),

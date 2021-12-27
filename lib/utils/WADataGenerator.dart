@@ -97,18 +97,24 @@ List<WAOperationsModel> waOperationList() {
   ));
   operationModel.add(WAOperationsModel(
     color: Color(0xFF6C56F9),
+    title: 'Rapat',
+    image: 'images/walletApp/rapat.png',
+    widget: '/rapat',
+  ));
+  operationModel.add(WAOperationsModel(
+    color: Color(0xFFFF7426),
     title: 'Statistik',
     image: 'images/walletApp/statistics.png',
     widget: '/statistik',
   ));
   operationModel.add(WAOperationsModel(
-    color: Color(0xFFFF7426),
+    color: Color(0xFF6C56F9),
     title: 'Jadwal Dokter',
     image: 'images/walletApp/doctors.png',
     widget: '/jadwaldokter',
   ));
   operationModel.add(WAOperationsModel(
-    color: Color(0xFF6C56F9),
+    color: Color(0xFFFF7426),
     title: 'Rengiat',
     image: 'images/walletApp/clipboard.png',
     widget: '/rengiat',

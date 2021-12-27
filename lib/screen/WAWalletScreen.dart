@@ -75,7 +75,7 @@ class WAWalletScreenState extends State<WAWalletScreen> {
           padding: EdgeInsets.only(top: 70),
           decoration: BoxDecoration(
             image: const DecorationImage(
-              image: AssetImage('images/walletApp/wa_bg.jpg'),
+              image: const AssetImage('images/walletApp/wa_bg.jpg'),
               fit: BoxFit.cover,
             ),
           ),
@@ -94,11 +94,10 @@ class WAWalletScreenState extends State<WAWalletScreen> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
                             image: DecorationImage(
-                              image: NetworkImage(e
-                                  .betterFeaturedImage!
-                                  .mediaDetails!
-                                  .sizes!['medium_large']!
-                                  .sourceUrl!),
+                              image: NetworkImage(
+                                e.betterFeaturedImage!.mediaDetails!
+                                    .sizes!['medium_large']!.sourceUrl!,
+                              ),
                               fit: BoxFit.fill,
                             ),
                           ),

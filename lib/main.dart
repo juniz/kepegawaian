@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:sdm_handal/screen/IzinScreen.dart';
+import 'package:sdm_handal/screen/KesehatanScreen.dart';
+import 'package:sdm_handal/screen/RapatScreen.dart';
 import 'package:sdm_handal/screen/WALoginScreen.dart';
 import 'package:sdm_handal/screen/WASplashScreen.dart';
 import 'package:sdm_handal/screen/jadwal_dokter.dart';
@@ -57,6 +59,8 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/statistik', page: () => Statistik()),
         GetPage(name: '/jadwaldokter', page: () => JadwalDokterPage()),
         GetPage(name: '/rengiat', page: () => RengiatPage()),
+        GetPage(name: '/kesehatan', page: () => KesehatanScreen()),
+        GetPage(name: '/rapat', page: () => RapatScreen()),
       ],
       initialRoute: '/splash',
     );

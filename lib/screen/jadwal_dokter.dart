@@ -80,7 +80,7 @@ class JadwalDokterPage extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                              ),
+                              ).flexible(),
                               10.width,
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -91,14 +91,14 @@ class JadwalDokterPage extends StatelessWidget {
                                   ),
                                   4.height,
                                   RichText(
-                                    overflow: TextOverflow.ellipsis,
+                                    overflow: TextOverflow.clip,
                                     text: TextSpan(
                                       style: boldTextStyle(size: 15),
                                       text: e.nmDokter,
                                     ),
                                   ),
                                 ],
-                              ),
+                              ).flexible(flex: 5),
                             ],
                           ),
                         ),

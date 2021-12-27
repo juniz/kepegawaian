@@ -95,30 +95,30 @@ class PresensiController extends GetxController {
   @override
   void onClose() {}
 
-  Future<LocationData> determinePosition() async {
-    Location location = new Location();
+  // Future<LocationData> determinePosition() async {
+  //   Location location = new Location();
 
-    bool _serviceEnabled;
-    PermissionStatus _permissionGranted;
-    LocationData _locationData;
+  //   bool _serviceEnabled;
+  //   PermissionStatus _permissionGranted;
+  //   LocationData _locationData;
 
-    _serviceEnabled = await location.serviceEnabled();
-    if (!_serviceEnabled) {
-      _serviceEnabled = await location.requestService();
-      if (!_serviceEnabled) {}
-    }
+  //   _serviceEnabled = await location.serviceEnabled();
+  //   if (!_serviceEnabled) {
+  //     _serviceEnabled = await location.requestService();
+  //     if (!_serviceEnabled) {}
+  //   }
 
-    _permissionGranted = await location.hasPermission();
-    if (_permissionGranted == PermissionStatus.denied) {
-      _permissionGranted = await location.requestPermission();
-      if (_permissionGranted != PermissionStatus.granted) {}
-    }
+  //   _permissionGranted = await location.hasPermission();
+  //   if (_permissionGranted == PermissionStatus.denied) {
+  //     _permissionGranted = await location.requestPermission();
+  //     if (_permissionGranted != PermissionStatus.granted) {}
+  //   }
 
-    _locationData = await location.getLocation();
-    return _locationData;
-  }
+  //   _locationData = await location.getLocation();
+  //   return _locationData;
+  // }
 
-  void getJamJaga() {
+  Future<void> getJamJaga() async {
     try {
       Future.delayed(
         Duration.zero,
@@ -171,12 +171,12 @@ class PresensiController extends GetxController {
       () => DialogHelper.showLoading('Sedang mengambil data.....'),
     );
 
-    var position = await determinePosition();
+    // var position = await determinePosition();
     final form = FormData({
       'id': idPegawai.value,
       'shift': shift.value,
-      'lat': position.latitude,
-      'lng': position.longitude,
+      'lat': "-7.6001027",
+      'lng': "111.8946658",
       'file': MultipartFile(file, filename: 'photo.jpg'),
     });
 

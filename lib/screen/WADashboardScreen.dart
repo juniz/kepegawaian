@@ -1,9 +1,11 @@
+import 'package:cool_alert/cool_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:location/location.dart';
 import 'package:sdm_handal/controller/presensi_controller.dart';
 import 'package:sdm_handal/screen/WAHomeScreen.dart';
 import 'package:sdm_handal/screen/WAMyProfileScreen.dart';
@@ -59,7 +61,9 @@ class WADashboardScreenState extends State<WADashboardScreen> {
               child: Icon(Icons.photo_camera, color: Colors.white),
               onPressed: () async {
                 // WAQrScannerScreen().launch(context);
-                c.getJamJaga();
+                // Get.back();
+                // await c.determinePosition();
+                await c.getJamJaga();
                 Get.bottomSheet(
                   Container(
                     padding: const EdgeInsets.only(
@@ -101,6 +105,21 @@ class WADashboardScreenState extends State<WADashboardScreen> {
                   ),
                   isDismissible: false,
                 );
+                // CoolAlert.show(
+                //     context: context,
+                //     backgroundColor: WAPrimaryColor,
+                //     confirmBtnColor: WAPrimaryColor,
+                //     type: CoolAlertType.info,
+                //     title: 'Gunakan Lokasimu Sekarang',
+                //     text:
+                //         'SDM Handal mengumpulkan data lokasi untuk mengaktifkan fitur presensi pegawai',
+                //     confirmBtnText: "Izinkan",
+                //     cancelBtnText: "Batal",
+                //     showCancelBtn: true,
+                //     onConfirmBtnTap: () async {
+
+                //     });
+
                 //c.getImage(ImageSource.camera);
               },
             )),

@@ -47,6 +47,7 @@ class StatistikController extends GetxController {
               url:
                   'https://webapps.rsbhayangkaranganjuk.com/api-rsbnganjuk/api/v1/statistik')
           .then((res) {
+        print(res.bodyString);
         if (res.statusCode == 200) {
           kunjungan.value = res.body['countVisit'];
           kunjunganTahunIni.value = res.body['countYearVisite'];

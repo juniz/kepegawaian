@@ -1,4 +1,4 @@
-package com.bhayangkara.kepegawaian
+package com.bhayangkara.sdmhandal
 
 import io.flutter.embedding.android.FlutterActivity
 
