@@ -62,6 +62,8 @@ class RapatScreen extends StatelessWidget {
                                       WAPrimaryColor.withOpacity(0.1)),
                               padding: const EdgeInsets.all(16),
                               child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Column(
                                     crossAxisAlignment:
@@ -77,7 +79,7 @@ class RapatScreen extends StatelessWidget {
                                         ),
                                       ),
                                     ],
-                                  ).flexible(flex: 5),
+                                  ).flexible(flex: 6),
                                   10.width,
                                   Container(
                                     decoration: boxDecorationWithRoundedCorners(
@@ -101,7 +103,7 @@ class RapatScreen extends StatelessWidget {
                               buttonColor: WAPrimaryColor,
                               onAccept: () {
                                 //Get.back();
-                                controller.hadirRapat(e.id!.toString());
+                                controller.hadirRapat(e.id!);
                               },
                             ),
                           ),

@@ -43,9 +43,10 @@ class IzinScreen extends StatelessWidget {
           width: Get.width,
           padding: EdgeInsets.only(top: 60),
           decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage('images/walletApp/wa_bg.jpg'),
-                  fit: BoxFit.cover)),
+            image: DecorationImage(
+                image: AssetImage('images/walletApp/wa_bg.jpg'),
+                fit: BoxFit.cover),
+          ),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

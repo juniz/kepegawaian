@@ -23,7 +23,7 @@ class JadwalRapatModel {
     this.stts,
   });
 
-  int? id;
+  String? id;
   String? agenda;
   DateTime? tanggal;
   String? pimpinan;

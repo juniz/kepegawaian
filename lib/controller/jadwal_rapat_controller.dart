@@ -11,7 +11,7 @@ class JadwalRapatController extends GetxController {
   @override
   void onInit() {
     // TODO: implement onInit
-    id.value = GetStorage().read('idPegawai');
+    id.value = GetStorage().read('nik');
     super.onInit();
   }
 
@@ -41,6 +41,7 @@ class JadwalRapatController extends GetxController {
               'https://webapps.rsbhayangkaranganjuk.com/api-rsbnganjuk/api/v1/jadwalrapat',
               body)
           .then((res) {
+        print(res.bodyString);
         listJadwalRapat.value = jadwalRapatModelFromJson(res.bodyString!);
       });
     } catch (e) {}
@@ -60,6 +61,7 @@ class JadwalRapatController extends GetxController {
           .then((res) {
         DialogHelper.hideLoading();
         var code = res.statusCode;
+        print(res.bodyString);
         Get.snackbar(
           code == 200 ? 'Success' : 'Gagal',
           res.body['message'],
