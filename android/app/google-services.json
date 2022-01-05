@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "363384926359",
+    "project_id": "kepegawaianrsbnganjuk",
+    "storage_bucket": "kepegawaianrsbnganjuk.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:363384926359:android:6b1a0517dcb5d5457239d2",
+        "android_client_info": {
+          "package_name": "com.bhayangkara.sdmhandal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "363384926359-5tfi0tkm92k4mvbnd10sjagfginatc9e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bhayangkara.sdmhandal",
+            "certificate_hash": "5307ad178d65d58c1058ce44c1dddca4bc290cda"
+          }
+        },
+        {
+          "client_id": "363384926359-4e7iuih6ju2m530f7bjunkpd3bdk4vuu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbqF3k7zGLrDc4EX_KDJ1QqswAXblnPxQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "363384926359-4e7iuih6ju2m530f7bjunkpd3bdk4vuu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

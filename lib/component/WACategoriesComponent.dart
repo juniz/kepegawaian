@@ -56,7 +56,7 @@ class WACategoriesComponentState extends State<WACategoriesComponent> {
                 style: secondaryTextStyle()),
             Text(
                 DateFormat("dd-MM-yyyy HH:mm:ss")
-                    .format(widget.categoryModel!.jamDatang!),
+                    .format(widget.categoryModel!.jamPulang!),
                 style: secondaryTextStyle())
           ],
         ),

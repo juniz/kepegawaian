@@ -59,7 +59,7 @@ class RekapPresensiController extends GetxController {
                   'https://webapps.rsbhayangkaranganjuk.com/api-rsbnganjuk/api/v1/rekappresensi',
               body: body)
           .then((res) {
-        //print(bulan.value);
+        // print(res.bodyString);
         listPresensi.value = rekapPresensiModelFromJson(res.bodyString!).data!;
       });
     } catch (e) {}

@@ -47,13 +47,17 @@ class LoginController extends GetxController {
         'username': emailController.text,
         'password': passwordController.text,
       };
-      var res = await ApiConnection().postData(
+      // print(param);
+      // var response = await Dio().post(
+      //     'https://webapps.rsbhayangkaranganjuk.com/api-rsbnganjuk/api/v1/kepegawaian/login',
+      //     data: param);
+      var response = await ApiConnection().postData(
           url:
               'https://webapps.rsbhayangkaranganjuk.com/api-rsbnganjuk/api/v1/kepegawaian/login',
           body: param);
-      if (res.statusCode == 200) {
-        var body = res.body;
-        // print(body['data']['nama']);
+      if (response.statusCode == 200) {
+        var body = response.body;
+
         GetStorage().write('idPegawai', body['data']['id'].toString());
         GetStorage().write('nik', body['data']['username']);
         GetStorage().write('password', body['data']['password']);
@@ -68,8 +72,8 @@ class LoginController extends GetxController {
         GetStorage().write('photo', body['data']['photo']);
         DialogHelper.hideLoading();
         Get.offAllNamed('/dashboard');
-      } else {
-        print(res.bodyString);
+      } else if (response.statusCode == 404) {
+        // print(response.statusCode);
         DialogHelper.hideLoading();
         CoolAlert.show(
           context: context!,
@@ -78,8 +82,26 @@ class LoginController extends GetxController {
           type: CoolAlertType.error,
           title: 'Username atau Password salah',
         );
+      } else {
+        print(response.statusText);
+        DialogHelper.hideLoading();
+        CoolAlert.show(
+          context: context!,
+          backgroundColor: WAPrimaryColor,
+          confirmBtnColor: WAPrimaryColor,
+          type: CoolAlertType.error,
+          title: response.statusText,
+        );
       }
     } catch (e) {
+      DialogHelper.hideLoading();
+      CoolAlert.show(
+        context: context!,
+        backgroundColor: WAPrimaryColor,
+        confirmBtnColor: WAPrimaryColor,
+        type: CoolAlertType.error,
+        title: e.toString(),
+      );
       DialogHelper.hideLoading();
     }
   }
