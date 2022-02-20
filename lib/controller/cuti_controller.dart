@@ -92,7 +92,7 @@ class CutiController extends GetxController {
           url:
               'https://webapps.rsbhayangkaranganjuk.com/api-rsbnganjuk/api/v1/cuti',
           body: param);
-
+      print(data.bodyString);
       var response = data.body;
 
       DialogHelper.hideLoading();

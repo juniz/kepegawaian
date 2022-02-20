@@ -14,6 +14,7 @@ class HomeController extends GetxController {
   var statusIzin = "".obs;
   var noPengajuanIzin = "".obs;
   var noPengajuanCuti = "".obs;
+  var idNotifAdmin = "".obs;
 
   @override
   void onInit() {
@@ -26,6 +27,7 @@ class HomeController extends GetxController {
     photo.value = GetStorage().read('photo');
     noPengajuanIzin.value = GetStorage().read('noPengajuanIzin');
     noPengajuanCuti.value = GetStorage().read('noPengajuanCuti');
+    idNotifAdmin.value = GetStorage().read('idNotifAdmin');
     super.onInit();
   }
 
@@ -34,7 +36,7 @@ class HomeController extends GetxController {
     // TODO: implement onReady
     cekCutiStatus();
     cekIzinStatus();
-
+    cekAdminNotif();
     super.onReady();
   }
 
@@ -114,6 +116,45 @@ class HomeController extends GetxController {
             backgroundColor: res.body['data']['status'] == 'Disetujui'
                 ? Colors.green
                 : Colors.red,
+            colorText: Colors.white,
+            borderRadius: 20,
+            margin: const EdgeInsets.all(15),
+            duration: const Duration(seconds: 5),
+            isDismissible: true,
+            dismissDirection: SnackDismissDirection.HORIZONTAL,
+            forwardAnimationCurve: Curves.easeOutBack,
+          );
+        }
+      });
+    } catch (e) {
+      DialogHelper.hideLoading();
+    }
+  }
+
+  Future<void> cekAdminNotif() async {
+    try {
+      Future.delayed(
+        Duration.zero,
+        //() => DialogHelper.showLoading('Sedang mengambil data.....'),
+      );
+      // var param = {'nik': nik.value};
+      ApiConnection()
+          .getData(
+              url:
+                  'https://webapps.rsbhayangkaranganjuk.com/api-rsbnganjuk/api/v1/cekadminnotif')
+          .then((res) {
+        DialogHelper.hideLoading();
+        //GetStorage().remove('noPengajuanIzin');
+        //print(res.bodyString);
+        if (idNotifAdmin.value != res.body['id'].toString() &&
+            nik.value == res.body['tujuan']) {
+          GetStorage().write('idNotifAdmin', res.body['id'].toString());
+          Get.snackbar(
+            'Permintaan Persetujuan ${res.body['jenis']}',
+            res.body['isi'],
+            icon: const Icon(Icons.add_alert_outlined, color: Colors.white),
+            snackPosition: SnackPosition.TOP,
+            backgroundColor: Colors.green,
             colorText: Colors.white,
             borderRadius: 20,
             margin: const EdgeInsets.all(15),

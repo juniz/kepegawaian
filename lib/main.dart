@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:sdm_handal/screen/IzinScreen.dart';
+import 'package:sdm_handal/screen/JadwalPegawai.dart';
 import 'package:sdm_handal/screen/KesehatanScreen.dart';
 import 'package:sdm_handal/screen/RapatScreen.dart';
 import 'package:sdm_handal/screen/WALoginScreen.dart';
@@ -78,6 +79,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/rengiat', page: () => RengiatPage()),
         GetPage(name: '/kesehatan', page: () => KesehatanScreen()),
         GetPage(name: '/rapat', page: () => RapatScreen()),
+        GetPage(name: '/jadwalpegawai', page: () => JadwalPegawai()),
       ],
       initialRoute: '/splash',
     );
@@ -99,11 +101,4 @@ class MyApp extends StatelessWidget {
 //   }
 // }
 
-// class MyHttpOverrides extends HttpOverrides {
-//   @override
-//   HttpClient createHttpClient(SecurityContext? context) {
-//     return super.createHttpClient(context)
-//       ..badCertificateCallback =
-//           (X509Certificate cert, String host, int port) => true;
-//   }
-// }
+
