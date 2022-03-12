@@ -85,7 +85,7 @@ List<WAOperationsModel> waOperationList() {
   List<WAOperationsModel> operationModel = [];
   operationModel.add(WAOperationsModel(
     color: Color(0xFFFF7426),
-    title: 'Ganti Jadwal',
+    title: 'Jadwal Saya',
     image: 'images/walletApp/group.png',
     widget: '/jadwalpegawai',
   ));

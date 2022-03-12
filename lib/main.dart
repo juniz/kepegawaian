@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:sdm_handal/screen/IzinScreen.dart';
 import 'package:sdm_handal/screen/JadwalPegawai.dart';
 import 'package:sdm_handal/screen/KesehatanScreen.dart';
@@ -26,14 +27,14 @@ import 'screen/WASendMoneyViaLoopScreen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // OneSignal.shared.setLogLevel(OSLogLevel.verbose, OSLogLevel.none);
+  OneSignal.shared.setLogLevel(OSLogLevel.verbose, OSLogLevel.none);
 
-//   OneSignal.shared.setAppId("492594ed-9b88-474c-891b-c055704850f6");
+  OneSignal.shared.setAppId("492594ed-9b88-474c-891b-c055704850f6");
 
-// // The promptForPushNotificationsWithUserResponse function will show the iOS push notification prompt. We recommend removing the following code and instead using an In-App Message to prompt for notification permission
-//   OneSignal.shared.promptUserForPushNotificationPermission().then((accepted) {
-//     print("Accepted permission: $accepted");
-//   });
+// The promptForPushNotificationsWithUserResponse function will show the iOS push notification prompt. We recommend removing the following code and instead using an In-App Message to prompt for notification permission
+  OneSignal.shared.promptUserForPushNotificationPermission().then((accepted) {
+    //print("Accepted permission: $accepted");
+  });
   ByteData data =
       await PlatformAssetBundle().load('assets/ca/lets-encrypt-r3.pem');
   SecurityContext.defaultContext

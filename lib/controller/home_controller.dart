@@ -15,6 +15,10 @@ class HomeController extends GetxController {
   var noPengajuanIzin = "".obs;
   var noPengajuanCuti = "".obs;
   var idNotifAdmin = "".obs;
+  var version = "".obs;
+  var packageName = "".obs;
+  var storeVersion = "".obs;
+  var storeUrl = "".obs;
 
   @override
   void onInit() {

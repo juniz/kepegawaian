@@ -3,18 +3,18 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:get/get.dart';
-import 'package:get/get_navigation/src/extension_navigation.dart';
-import 'package:get/state_manager.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sdm_handal/api/api_connection.dart';
 import 'package:sdm_handal/model/jam_jaga_model.dart';
 import 'package:sdm_handal/utils/WAColors.dart';
 import 'package:sdm_handal/utils/helper.dart';
-import 'package:location/location.dart';
 
 class PresensiController extends GetxController {
+  final version = ''.obs;
+  final storeVersion = ''.obs;
+  final storeUrl = ''.obs;
+  final packageName = ''.obs;
   var listJamJaga = <JamJagaData>[].obs;
   var cap = "".obs;
   var idPegawai = "".obs;
@@ -82,6 +82,7 @@ class PresensiController extends GetxController {
   void onInit() {
     cap.value = GetStorage().read('cap');
     idPegawai.value = GetStorage().read('idPegawai');
+    //checkVersion();
     super.onInit();
   }
 
@@ -131,6 +132,8 @@ class PresensiController extends GetxController {
                   'https://webapps.rsbhayangkaranganjuk.com/api-rsbnganjuk/api/v1/jamjaga',
               body: body)
           .then((res) {
+        print(cap.value);
+        print(res.bodyString);
         listJamJaga.value = jamJagaModelFromJson(res.bodyString!).data!;
         DialogHelper.hideLoading();
       });
