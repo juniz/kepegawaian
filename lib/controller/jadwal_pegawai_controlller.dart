@@ -135,7 +135,7 @@ class JadwalPegawaiController extends GetxController
         url:
             'https://webapps.rsbhayangkaranganjuk.com/api-rsbnganjuk/api/v1/updatejadwal',
         body: body);
-    print(response.bodyString);
+    // print(response.bodyString);
     getJadwalPegawai();
     return response.statusCode!;
   }
@@ -156,7 +156,7 @@ class JadwalPegawaiController extends GetxController
         url:
             'https://webapps.rsbhayangkaranganjuk.com/api-rsbnganjuk/api/v1/updatejadwaltambahan',
         body: body);
-    print(response.bodyString);
+    // print(response.bodyString);
     getJadwalPegawaiTambahan();
     return response.statusCode!;
   }
