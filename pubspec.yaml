@@ -44,6 +44,8 @@ dependencies:
   getwidget: 2.0.4
   device_info_plus: 3.2.2
   onesignal_flutter: 3.2.8
+  syncfusion_flutter_charts: ^20.1.59
+  responsive_grid: ^2.1.0
   flutter: 
     sdk: flutter
 

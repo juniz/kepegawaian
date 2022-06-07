@@ -8,6 +8,7 @@ import 'package:sdm_handal/utils/WAColors.dart';
 import 'package:sdm_handal/utils/helper.dart';
 
 class ChartController extends GetxController {
+  final provider = Get.put(ApiConnection());
   var nik = "".obs;
   var context = Get.context;
   var leftBarColor = WAPrimaryColor;

@@ -9,6 +9,7 @@ import 'package:sdm_handal/screen/IzinScreen.dart';
 import 'package:sdm_handal/screen/JadwalPegawai.dart';
 import 'package:sdm_handal/screen/KesehatanScreen.dart';
 import 'package:sdm_handal/screen/RapatScreen.dart';
+import 'package:sdm_handal/screen/WADashboardPresensi.dart';
 import 'package:sdm_handal/screen/WALoginScreen.dart';
 import 'package:sdm_handal/screen/WASplashScreen.dart';
 import 'package:sdm_handal/screen/jadwal_dokter.dart';
@@ -81,6 +82,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/kesehatan', page: () => KesehatanScreen()),
         GetPage(name: '/rapat', page: () => RapatScreen()),
         GetPage(name: '/jadwalpegawai', page: () => JadwalPegawai()),
+        GetPage(name: '/dahboardpresensi', page: () => WADashboardPresensi()),
       ],
       initialRoute: '/splash',
     );

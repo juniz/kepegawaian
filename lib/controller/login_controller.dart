@@ -13,6 +13,7 @@ import 'package:device_info_plus/device_info_plus.dart';
 
 class LoginController extends GetxController {
   var context = Get.context;
+  final provider = Get.put(ApiConnection());
   late TextEditingController emailController;
   late TextEditingController passwordController;
   late FocusNode emailFocusNode;

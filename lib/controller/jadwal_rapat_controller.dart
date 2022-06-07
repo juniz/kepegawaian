@@ -73,7 +73,7 @@ class JadwalRapatController extends GetxController {
           margin: const EdgeInsets.all(15),
           duration: const Duration(seconds: 5),
           isDismissible: true,
-          dismissDirection: SnackDismissDirection.HORIZONTAL,
+          dismissDirection: DismissDirection.horizontal,
           forwardAnimationCurve: Curves.easeOutBack,
         );
         getJadwalRapat();
