@@ -1,3 +1,4 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -43,25 +44,50 @@ class WADashboardPresensi extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        child: ResponsiveGridRow(
-          children: [
-            ResponsiveGridCol(
-              child: Container(
-                child: Obx(() => SfCartesianChart(
-                      // Initialize category axis
-                      primaryXAxis: CategoryAxis(),
-                      series: <LineSeries<AbsensiUnit, String>>[
-                        LineSeries<AbsensiUnit, String>(
-                            // Bind data source
-                            dataSource: controller.listAbsensiUnit.value,
-                            xValueMapper: (AbsensiUnit sales, _) => sales.depId,
-                            yValueMapper: (AbsensiUnit sales, _) =>
-                                sales.tepatWaktu)
-                      ],
-                    )),
+        child: SingleChildScrollView(
+          child: Container(
+            height: 300,
+            child: Obx(
+              () => SfCartesianChart(
+                zoomPanBehavior: controller.zoomPanBehavior,
+                enableAxisAnimation: true,
+                primaryXAxis: CategoryAxis(
+                  maximumLabels: 50,
+                  edgeLabelPlacement: EdgeLabelPlacement.shift,
+                  labelIntersectAction: AxisLabelIntersectAction.multipleRows,
+                  labelRotation: 90,
+                ),
+                tooltipBehavior: controller.tooltipBehavior,
+                series: <CartesianSeries>[
+                  ColumnSeries<AbsensiUnit, String>(
+                    color: Colors.green,
+                    dataSource: controller.listAbsensiUnit.value,
+                    xValueMapper: (AbsensiUnit data, _) => data.depId,
+                    yValueMapper: (AbsensiUnit data, _) => data.tepatWaktu!,
+                    enableTooltip: true,
+                  ),
+                  ColumnSeries<AbsensiUnit, String>(
+                    dataSource: controller.listAbsensiUnit.value,
+                    xValueMapper: (AbsensiUnit data, _) => data.depId,
+                    yValueMapper: (AbsensiUnit data, _) => data.toleransi!,
+                    enableTooltip: true,
+                  ),
+                  ColumnSeries<AbsensiUnit, String>(
+                    dataSource: controller.listAbsensiUnit.value,
+                    xValueMapper: (AbsensiUnit data, _) => data.depId,
+                    yValueMapper: (AbsensiUnit data, _) => data.terlambat1!,
+                    enableTooltip: true,
+                  ),
+                  ColumnSeries<AbsensiUnit, String>(
+                    dataSource: controller.listAbsensiUnit.value,
+                    xValueMapper: (AbsensiUnit data, _) => data.depId,
+                    yValueMapper: (AbsensiUnit data, _) => data.terlambat2,
+                    enableTooltip: true,
+                  )
+                ],
               ),
             ),
-          ],
+          ),
         ),
       ),
     );

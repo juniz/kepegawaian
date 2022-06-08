@@ -39,7 +39,7 @@ class WAStatisticsChartComponentState
       child: Obx(
         () => BarChart(
           BarChartData(
-            maxY: 5,
+            maxY: 10,
             gridData:
                 FlGridData(drawHorizontalLine: true, drawVerticalLine: true),
             titlesData: FlTitlesData(
@@ -82,23 +82,23 @@ class WAStatisticsChartComponentState
                 showTitles: true,
                 margin: 20,
                 reservedSize: 2,
-                getTitles: (value) {
-                  if (value == 0) {
-                    return '0';
-                  } else if (value == 1) {
-                    return '1';
-                  } else if (value == 2) {
-                    return '2';
-                  } else if (value == 3) {
-                    return '3';
-                  } else if (value == 4) {
-                    return '4';
-                  } else if (value == 5) {
-                    return '5';
-                  } else {
-                    return '';
-                  }
-                },
+                // getTitles: (value) {
+                //   if (value == 0) {
+                //     return '0';
+                //   } else if (value == 1) {
+                //     return '1';
+                //   } else if (value == 2) {
+                //     return '2';
+                //   } else if (value == 3) {
+                //     return '3';
+                //   } else if (value == 4) {
+                //     return '4';
+                //   } else if (value == 5) {
+                //     return '5';
+                //   } else {
+                //     return '';
+                //   }
+                // },
               ),
             ),
             borderData: FlBorderData(
