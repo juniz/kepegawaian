@@ -59,10 +59,11 @@ class MyApp extends StatelessWidget {
       ),
       getPages: [
         GetPage(
-            name: '/',
-            page: () => GetStorage().read('nik') != null
-                ? WADashboardScreen()
-                : WALoginScreen()),
+          name: '/',
+          page: () => GetStorage().read('nik') != null
+              ? WADashboardScreen()
+              : WALoginScreen(),
+        ),
         GetPage(name: '/splash', page: () => WASplashScreen()),
         GetPage(name: '/login', page: () => WALoginScreen()),
         GetPage(name: '/dashboard', page: () => WADashboardScreen()),

@@ -48,6 +48,19 @@ class ApiConnection extends GetConnect {
     }
   }
 
+  Future<Response> absensiPegawai(Map data) async {
+    try {
+      final response = await post(urlAbsensiPegawai, data);
+      if (response.isOk) {
+        return response;
+      } else {
+        return Future.error(response.statusText!);
+      }
+    } catch (e) {
+      return Future.error(e);
+    }
+  }
+
   Future<Response> getData({String? url}) => get(url!);
 
   Future<Response> postData({String? url, Map<String, dynamic>? body}) =>
