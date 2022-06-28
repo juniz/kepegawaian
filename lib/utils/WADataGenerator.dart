@@ -86,7 +86,7 @@ List<WAOperationsModel> waOperationList() {
   operationModel.add(WAOperationsModel(
     color: Color(0xFF6C56F9),
     title: 'Presensi',
-    image: 'images/walletApp/group.png',
+    image: 'images/walletApp/statistics.png',
     widget: '/dahboardpresensi',
   ));
   operationModel.add(WAOperationsModel(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:location/location.dart';
@@ -62,49 +63,99 @@ class WADashboardScreenState extends State<WADashboardScreen> {
               onPressed: () async {
                 // WAQrScannerScreen().launch(context);
                 // Get.back();
-                // await c.determinePosition();
-                await c.getJamJaga();
-                Get.bottomSheet(
-                  Container(
-                    padding: const EdgeInsets.only(
-                        top: 16, left: 16, right: 16, bottom: 16),
-                    width: Get.width,
-                    height: Get.height / 2,
-                    decoration: boxDecorationWithShadow(
-                        borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(30),
-                            topRight: Radius.circular(30))),
-                    child: SingleChildScrollView(
-                      child: Obx(
-                        () => Column(
-                          children: c.listJamJaga.value
-                              .map(
-                                (e) => Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 16, right: 16, top: 10, bottom: 10),
-                                  child: Container(
-                                    decoration:
-                                        boxDecorationRoundedWithShadow(12),
-                                    child: ListTile(
-                                      title: Text(e.shift!,
-                                          style: boldTextStyle(size: 18)),
-                                      subtitle: Text(
-                                          '${e.jamMasuk} - ${e.jamPulang}'),
-                                      onTap: () {
-                                        c.shift.value = e.shift!;
-                                        c.getImage(ImageSource.camera);
-                                      },
-                                    ),
+
+                c.determinePosition().then((value) {
+                  log(value);
+                  c.lat.value = value.latitude;
+                  c.lng.value = value.longitude;
+                  double distanceInMeters = Geolocator.distanceBetween(
+                      -7.6001027, 111.8946658, value.latitude, value.longitude);
+                  log(distanceInMeters);
+                  if (distanceInMeters > 500) {
+                    Get.snackbar(
+                      'Error',
+                      'Anda harus berada dalam jangkauan 500m dari Rumah Sakit',
+                      icon: const Icon(Icons.add_alert_outlined,
+                          color: Colors.white),
+                      snackPosition: SnackPosition.TOP,
+                      backgroundColor: Colors.red,
+                      colorText: Colors.white,
+                      borderRadius: 20,
+                      margin: const EdgeInsets.all(15),
+                      duration: const Duration(seconds: 5),
+                      isDismissible: true,
+                      dismissDirection: DismissDirection.horizontal,
+                      forwardAnimationCurve: Curves.easeOutBack,
+                    );
+                  } else {
+                    c.getJamJaga().then(
+                          (value) => Get.bottomSheet(
+                            Container(
+                              padding: const EdgeInsets.only(
+                                  top: 16, left: 16, right: 16, bottom: 16),
+                              width: Get.width,
+                              height: Get.height / 2,
+                              decoration: boxDecorationWithShadow(
+                                  borderRadius: const BorderRadius.only(
+                                      topLeft: Radius.circular(30),
+                                      topRight: Radius.circular(30))),
+                              child: SingleChildScrollView(
+                                child: Obx(
+                                  () => Column(
+                                    children: c.listJamJaga.value
+                                        .map(
+                                          (e) => Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 16,
+                                                right: 16,
+                                                top: 10,
+                                                bottom: 10),
+                                            child: Container(
+                                              decoration:
+                                                  boxDecorationRoundedWithShadow(
+                                                      12),
+                                              child: ListTile(
+                                                title: Text(e.shift!,
+                                                    style: boldTextStyle(
+                                                        size: 18)),
+                                                subtitle: Text(
+                                                    '${e.jamMasuk} - ${e.jamPulang}'),
+                                                onTap: () {
+                                                  c.shift.value = e.shift!;
+                                                  c.getImage(
+                                                      ImageSource.camera);
+                                                },
+                                              ),
+                                            ),
+                                          ),
+                                        )
+                                        .toList(),
                                   ),
                                 ),
-                              )
-                              .toList(),
-                        ),
-                      ),
-                    ),
-                  ),
-                  isDismissible: false,
-                );
+                              ),
+                            ),
+                            isDismissible: false,
+                          ),
+                        );
+                  }
+                }).catchError((error) {
+                  Get.snackbar(
+                    'Error',
+                    error.toString(),
+                    icon: const Icon(Icons.add_alert_outlined,
+                        color: Colors.white),
+                    snackPosition: SnackPosition.TOP,
+                    backgroundColor: Colors.red,
+                    colorText: Colors.white,
+                    borderRadius: 20,
+                    margin: const EdgeInsets.all(15),
+                    duration: const Duration(seconds: 5),
+                    isDismissible: true,
+                    dismissDirection: DismissDirection.horizontal,
+                    forwardAnimationCurve: Curves.easeOutBack,
+                  );
+                });
+
                 // CoolAlert.show(
                 //     context: context,
                 //     backgroundColor: WAPrimaryColor,

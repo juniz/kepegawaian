@@ -68,7 +68,7 @@ class WAMyProfileScreenState extends State<WAMyProfileScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Obx(() => waCommonCachedNetworkImage(
-                      'https://webapps.rsbhayangkaranganjuk.com/webapps/penggajian/${c.dataBiodata.value.photo!}',
+                      'https://simrs.rsbhayangkaranganjuk.com/webapps/penggajian/${c.dataBiodata.value.photo!}',
                       fit: BoxFit.cover,
                       alignment: Alignment.topCenter,
                       height: 120,

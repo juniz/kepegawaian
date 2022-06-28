@@ -5,6 +5,7 @@ import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:sdm_handal/api/api_connection.dart';
 import 'package:sdm_handal/model/jam_jaga_model.dart';
 import 'package:sdm_handal/utils/WAColors.dart';
@@ -31,8 +32,8 @@ class PresensiController extends GetxController {
   var compressImagePath = ''.obs;
   var compressImageSize = ''.obs;
 
-  var lat = "".obs;
-  var lng = "".obs;
+  var lat = 0.0.obs;
+  var lng = 0.0.obs;
 
   void getImage(ImageSource imageSource) async {
     final pickedFile = await ImagePicker()
@@ -96,28 +97,43 @@ class PresensiController extends GetxController {
   @override
   void onClose() {}
 
-  // Future<LocationData> determinePosition() async {
-  //   Location location = new Location();
+  Future<Position> determinePosition() async {
+    bool serviceEnabled;
+    LocationPermission permission;
 
-  //   bool _serviceEnabled;
-  //   PermissionStatus _permissionGranted;
-  //   LocationData _locationData;
+    // Test if location services are enabled.
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      // Location services are not enabled don't continue
+      // accessing the position and request users of the
+      // App to enable the location services.
+      return Future.error('Location services are disabled.');
+    }
 
-  //   _serviceEnabled = await location.serviceEnabled();
-  //   if (!_serviceEnabled) {
-  //     _serviceEnabled = await location.requestService();
-  //     if (!_serviceEnabled) {}
-  //   }
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        // Permissions are denied, next time you could try
+        // requesting permissions again (this is also where
+        // Android's shouldShowRequestPermissionRationale
+        // returned true. According to Android guidelines
+        // your App should show an explanatory UI now.
+        return Future.error('Location permissions are denied');
+      }
+    }
 
-  //   _permissionGranted = await location.hasPermission();
-  //   if (_permissionGranted == PermissionStatus.denied) {
-  //     _permissionGranted = await location.requestPermission();
-  //     if (_permissionGranted != PermissionStatus.granted) {}
-  //   }
+    if (permission == LocationPermission.deniedForever) {
+      // Permissions are denied forever, handle appropriately.
+      return Future.error(
+          'Location permissions are permanently denied, we cannot request permissions.');
+    }
 
-  //   _locationData = await location.getLocation();
-  //   return _locationData;
-  // }
+    // When we reach here, permissions are granted and we can
+    // continue accessing the position of the device.
+    // var loc = await Geolocator.getCurrentPosition();
+    return await Geolocator.getCurrentPosition();
+  }
 
   Future<void> getJamJaga() async {
     try {
@@ -129,7 +145,7 @@ class PresensiController extends GetxController {
       ApiConnection()
           .postData(
               url:
-                  'https://webapps.rsbhayangkaranganjuk.com/api-rsbnganjuk/api/v1/jamjaga',
+                  'https://webapps.rsbhayangkaranganjuk.com/api-rsbnganjuk/api/v2/kepegawaian/jamjaga',
               body: body)
           .then((res) {
         print(cap.value);
@@ -178,8 +194,8 @@ class PresensiController extends GetxController {
     final form = FormData({
       'id': idPegawai.value,
       'shift': shift.value,
-      'lat': "-7.6001027",
-      'lng': "111.8946658",
+      'lat': lat.value.toString(),
+      'lng': lng.value.toString(),
       'file': MultipartFile(file, filename: 'photo.jpg'),
     });
 

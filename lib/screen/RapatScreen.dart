@@ -1,9 +1,14 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lottie/lottie.dart';
+
 import 'package:nb_utils/nb_utils.dart';
+import 'package:responsive_grid/responsive_grid.dart';
 import 'package:sdm_handal/controller/jadwal_rapat_controller.dart';
-import 'package:sdm_handal/utils/WAColors.dart';
+import 'package:syncfusion_flutter_signaturepad/signaturepad.dart';
+
+import '../utils/uppercase_formater.dart';
 
 class RapatScreen extends StatelessWidget {
   const RapatScreen({Key? key}) : super(key: key);
@@ -16,7 +21,7 @@ class RapatScreen extends StatelessWidget {
         extendBodyBehindAppBar: true,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-          title: Text('Rapat',
+          title: Text('Form Absensi Rapat',
               style: boldTextStyle(color: Colors.black, size: 20)),
           centerTitle: true,
           leading: Container(
@@ -37,79 +42,283 @@ class RapatScreen extends StatelessWidget {
         body: Container(
           height: Get.height,
           width: Get.width,
-          padding: EdgeInsets.only(top: 60),
           decoration: BoxDecoration(
             image: const DecorationImage(
               image: AssetImage('images/walletApp/wa_bg.jpg'),
               fit: BoxFit.cover,
             ),
           ),
-          child: Obx(
-            () => controller.listJadwalRapat.value.isEmpty
-                ? Center(
-                    child:
-                        Lottie.asset('images/lottie/no-data-found-json.json'),
-                  )
-                : Column(
-                    children: controller.listJadwalRapat.value
-                        .map(
-                          (e) => Padding(
-                            padding: const EdgeInsets.only(
-                                left: 16, right: 16, bottom: 16),
-                            child: Container(
-                              decoration: boxDecorationRoundedWithShadow(12,
-                                  backgroundColor:
-                                      WAPrimaryColor.withOpacity(0.1)),
-                              padding: const EdgeInsets.all(16),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(e.pimpinan!,
-                                          style: boldTextStyle(size: 12)),
-                                      4.height,
-                                      Text(
-                                        e.agenda!,
-                                        style: boldTextStyle(
-                                          size: 14,
-                                        ),
-                                      ),
-                                    ],
-                                  ).flexible(flex: 6),
-                                  10.width,
-                                  Container(
-                                    decoration: boxDecorationWithRoundedCorners(
-                                      backgroundColor: e.stts == "0"
-                                          ? WAPrimaryColor
-                                          : Colors.red,
-                                    ),
-                                    height: 45,
-                                    width: 45,
-                                    padding: const EdgeInsets.all(10),
-                                    child: const Icon(Icons.input,
-                                        color: Colors.white),
-                                  ).flexible(),
-                                ],
+          child: Card(
+            elevation: 4,
+            margin: EdgeInsets.all(10),
+            child: Container(
+              width: Get.width,
+              height: Get.height,
+              child: SingleChildScrollView(
+                child: Form(
+                  key: controller.formKey,
+                  child: Obx(
+                    () => ResponsiveGridRow(
+                      children: [
+                        ResponsiveGridCol(
+                          lg: 3,
+                          child: Container(
+                            // height: Get.height * 0.05,
+                            alignment: Alignment.centerLeft,
+                            child: Text('Tanggal', style: boldTextStyle()),
+                          ).paddingAll(10),
+                        ),
+                        ResponsiveGridCol(
+                          lg: 9,
+                          child: Container(
+                            // height: Get.height * 0.05,
+                            alignment: const Alignment(0, 0),
+                            child: AppTextField(
+                              controller: controller.tanggal, // Optional
+                              textFieldType: TextFieldType.NAME,
+                              readOnly: true,
+                              // onTap: () => controller.dateWidget(context),
+                              decoration: const InputDecoration(
+                                border: OutlineInputBorder(),
                               ),
                             ),
-                          ).onTap(
-                            () => showConfirmDialog(
-                              context,
-                              'Anda yakin ingin menghadiri rapat tentang "${e.agenda}"',
-                              buttonColor: WAPrimaryColor,
-                              onAccept: () {
-                                //Get.back();
-                                controller.hadirRapat(e.id!);
-                              },
-                            ),
+                          ).paddingBottom(10),
+                        ),
+                        ResponsiveGridCol(
+                          lg: 3,
+                          child: Container(
+                            // height: Get.height * 0.05,
+                            alignment: Alignment.centerLeft,
+                            child: Text('Rapat', style: boldTextStyle())
+                                .paddingAll(10),
                           ),
-                        )
-                        .toList(),
+                        ),
+                        ResponsiveGridCol(
+                          lg: 9,
+                          child: Container(
+                            // height: Get.height * 0.05,
+                            alignment: const Alignment(0, 0),
+                            child: AppTextField(
+                              controller: controller.rapat, // Optional
+                              textFieldType: TextFieldType.NAME,
+                              textCapitalization: TextCapitalization.characters,
+                              inputFormatters: [
+                                UpperCaseTextFormatter(),
+                              ],
+                              validator: (value) {
+                                if (value.isEmptyOrNull) {
+                                  return 'Rapat tidak boleh kosong';
+                                }
+                                return null;
+                              },
+                              decoration: const InputDecoration(
+                                border: OutlineInputBorder(),
+                              ),
+                            ),
+                          ).paddingBottom(10),
+                        ),
+                        ResponsiveGridCol(
+                          lg: 3,
+                          child: Container(
+                            // height: Get.height * 0.05,
+                            alignment: Alignment.centerLeft,
+                            child: Text('Nama', style: boldTextStyle())
+                                .paddingAll(10),
+                          ),
+                        ),
+                        ResponsiveGridCol(
+                          lg: 9,
+                          child: Container(
+                            // height: Get.height * 0.05,
+                            alignment: const Alignment(0, 0),
+                            child: AppTextField(
+                              controller: controller.nama, // Optional
+                              textFieldType: TextFieldType.NAME,
+                              textCapitalization: TextCapitalization.characters,
+                              inputFormatters: [
+                                UpperCaseTextFormatter(),
+                              ],
+                              validator: (value) {
+                                if (value.isEmptyOrNull) {
+                                  return 'Nama tidak boleh kosong';
+                                }
+                                return null;
+                              },
+                              decoration: const InputDecoration(
+                                border: OutlineInputBorder(),
+                              ),
+                            ),
+                          ).paddingBottom(10),
+                        ),
+                        ResponsiveGridCol(
+                          lg: 3,
+                          child: Container(
+                            // height: Get.height * 0.05,
+                            alignment: Alignment.centerLeft,
+                            child: Text('NRP/Instansi/Jabatan',
+                                    style: boldTextStyle())
+                                .paddingAll(10),
+                          ),
+                        ),
+                        ResponsiveGridCol(
+                          lg: 9,
+                          child: Container(
+                            // height: Get.height * 0.05,
+                            alignment: const Alignment(0, 0),
+                            child: AppTextField(
+                              controller: controller.instansi, // Optional
+                              textFieldType: TextFieldType.NAME,
+                              textCapitalization: TextCapitalization.characters,
+                              inputFormatters: [
+                                UpperCaseTextFormatter(),
+                              ],
+                              validator: (value) {
+                                if (value.isEmptyOrNull) {
+                                  return 'Instansi / Jabatan tidak boleh kosong';
+                                }
+                                return null;
+                              },
+                              decoration: const InputDecoration(
+                                border: OutlineInputBorder(),
+                              ),
+                            ),
+                          ).paddingBottom(10),
+                        ),
+                        ResponsiveGridCol(
+                          lg: 3,
+                          child: Container(
+                            // height: Get.height * 0.05,
+                            alignment: Alignment.centerLeft,
+                            child: Text('Tanda Tangan', style: boldTextStyle())
+                                .paddingAll(10),
+                          ),
+                        ),
+                        controller.isSigned.value
+                            ? ResponsiveGridCol(
+                                lg: 9,
+                                child: Container(
+                                  height: 100,
+                                  width: 100,
+                                  child: Image.memory(
+                                      controller.image.value as Uint8List),
+                                  alignment: Alignment.centerLeft,
+                                ).onTap(
+                                  () => Get.defaultDialog(
+                                    backgroundColor: Colors.grey.shade200,
+                                    title: 'Tanda Tangan',
+                                    content: Container(
+                                      color: Colors.grey.shade200,
+                                      child: SfSignaturePad(
+                                        key: controller.signaturePadKey,
+                                        backgroundColor: Colors.white,
+                                        minimumStrokeWidth: 2,
+                                        maximumStrokeWidth: 2,
+                                      ),
+                                      height: 200,
+                                      width: 300,
+                                    ),
+                                    confirm: ElevatedButton(
+                                      child: const Text('OK'),
+                                      onPressed: () async {
+                                        controller.handleSaveButtonPressed();
+                                      },
+                                    ),
+                                    cancel: OutlinedButton(
+                                      child: const Text('Batal'),
+                                      onPressed: () => Get.back(),
+                                      style: OutlinedButton.styleFrom(
+                                        primary: Theme.of(context)
+                                            .colorScheme
+                                            .primary,
+                                      ).copyWith(
+                                          elevation:
+                                              ButtonStyleButton.allOrNull(0.0)),
+                                    ),
+                                  ),
+                                ),
+                              )
+                            : ResponsiveGridCol(
+                                lg: 9,
+                                child: DottedBorderWidget(
+                                  child: Container(
+                                    color: Colors.grey.shade200,
+                                    height: 100,
+                                    width: 100,
+                                    child: Center(
+                                      child: Text('Tanda Tangan Disini',
+                                          style: boldTextStyle()),
+                                    ),
+                                  ),
+                                ).onTap(
+                                  () => Get.defaultDialog(
+                                    backgroundColor: Colors.grey.shade200,
+                                    title: 'Tanda Tangan',
+                                    content: Container(
+                                      child: SfSignaturePad(
+                                        key: controller.signaturePadKey,
+                                        backgroundColor: Colors.white,
+                                        minimumStrokeWidth: 2,
+                                        maximumStrokeWidth: 2,
+                                      ),
+                                      height: 200,
+                                      width: 300,
+                                    ),
+                                    confirm: ElevatedButton(
+                                      child: const Text('OK'),
+                                      onPressed: () async {
+                                        controller.handleSaveButtonPressed();
+                                      },
+                                    ),
+                                    cancel: OutlinedButton(
+                                      child: const Text('Batal'),
+                                      onPressed: () => Get.back(),
+                                      style: OutlinedButton.styleFrom(
+                                        primary: Theme.of(context)
+                                            .colorScheme
+                                            .primary,
+                                      ).copyWith(
+                                          elevation:
+                                              ButtonStyleButton.allOrNull(0.0)),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                        ResponsiveGridCol(
+                          lg: 12,
+                          child: Container(
+                            height: context.isLargeTablet
+                                ? Get.height * 0.025
+                                : Get.height * 0.025,
+                            alignment: Alignment.centerLeft,
+                          ),
+                        ),
+                        ResponsiveGridCol(
+                          lg: 12,
+                          child: Container(
+                            alignment: Alignment.centerRight,
+                            child: ElevatedButton.icon(
+                              label: const Text('HADIR'),
+                              icon: const Icon(Icons.send),
+                              onPressed: () {
+                                if (controller.formKey.currentState!
+                                        .validate() &&
+                                    !controller.imageBlob.value.isEmptyOrNull) {
+                                  controller.kirimRapat();
+                                }
+                              },
+                            ).paddingSymmetric(horizontal: 10),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
+                ),
+              ),
+            ).paddingSymmetric(
+              vertical: 60,
+              horizontal:
+                  context.isLargeTablet ? Get.width * 0.15 : Get.width * 0.1,
+            ),
           ),
         ),
       ),

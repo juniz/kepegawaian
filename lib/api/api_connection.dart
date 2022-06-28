@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:nb_utils/nb_utils.dart';
 import 'package:sdm_handal/utils/WAUrl.dart';
 
 class ApiConnection extends GetConnect {
@@ -51,6 +52,7 @@ class ApiConnection extends GetConnect {
   Future<Response> absensiPegawai(Map data) async {
     try {
       final response = await post(urlAbsensiPegawai, data);
+      log(response.bodyString);
       if (response.isOk) {
         return response;
       } else {
@@ -58,6 +60,60 @@ class ApiConnection extends GetConnect {
       }
     } catch (e) {
       return Future.error(e);
+    }
+  }
+
+  Future<Response> absensiTerlambat(Map data) async {
+    try {
+      final response = await post(urlAbsensiTerlambat, data);
+      if (response.isOk) {
+        return response;
+      } else {
+        return Future.error(response.statusText!);
+      }
+    } catch (e) {
+      return Future.error(e);
+    }
+  }
+
+  Future<Response> absensiTepatWaktu(Map data) async {
+    try {
+      final response = await post(urlAbsensiTepatWaktu, data);
+      if (response.isOk) {
+        return response;
+      } else {
+        return Future.error(response.statusText!);
+      }
+    } catch (e) {
+      return Future.error(e);
+    }
+  }
+
+  Future<Response> cekAkses(Map data) async {
+    try {
+      final response = await post(urlCekAkses, data);
+      log(response.bodyString);
+      log(data);
+      if (response.isOk) {
+        return response;
+      } else {
+        return Future.error(response.statusText!);
+      }
+    } catch (e) {
+      return Future.error(e);
+    }
+  }
+
+  Future<Response> kirimRapat(Map body) async {
+    try {
+      final response = await post(urlHadirRapat, body);
+      if (response.status.hasError) {
+        return Future.error(response.statusText!);
+      } else {
+        return response;
+      }
+    } catch (e) {
+      return Future.error(e.toString());
     }
   }
 

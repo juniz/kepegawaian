@@ -14,6 +14,8 @@ String absensiPegawaiToJson(List<AbsensiPegawai> data) =>
 class AbsensiPegawai {
   AbsensiPegawai({
     this.nama,
+    this.photo,
+    this.total,
     this.tepatWaktu,
     this.toleransi,
     this.terlambat1,
@@ -21,6 +23,8 @@ class AbsensiPegawai {
   });
 
   String? nama;
+  String? photo;
+  int? total;
   int? tepatWaktu;
   int? toleransi;
   int? terlambat1;
@@ -28,6 +32,8 @@ class AbsensiPegawai {
 
   factory AbsensiPegawai.fromJson(Map<String, dynamic> json) => AbsensiPegawai(
         nama: json["nama"],
+        photo: json["photo"],
+        total: json["total"],
         tepatWaktu: json["tepat_waktu"],
         toleransi: json["toleransi"],
         terlambat1: json["terlambat1"],

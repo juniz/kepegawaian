@@ -169,8 +169,8 @@ class WASplashScreenState extends State<WASplashScreen> {
               child: Image.asset(
                 'images/walletApp/logo_rsbnganjuk.png',
                 fit: BoxFit.cover,
-                height: 200,
-                width: 200,
+                height: 150,
+                width: 150,
               ).center(),
             ),
           ],

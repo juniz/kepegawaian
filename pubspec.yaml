@@ -1,5 +1,5 @@
 name: sdm_handal
-version: 1.1.0+7
+version: 1.1.1+8
 publish_to: none
 description: Aplikasi kepegawaian RS Bhayangkara Nganjuk.
 environment: 
@@ -46,6 +46,8 @@ dependencies:
   onesignal_flutter: 3.2.8
   syncfusion_flutter_charts: ^20.1.59
   responsive_grid: ^2.1.0
+  syncfusion_flutter_signaturepad: ^20.1.56
+  geolocator: ^9.0.0
   flutter: 
     sdk: flutter
 

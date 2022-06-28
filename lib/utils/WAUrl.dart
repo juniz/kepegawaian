@@ -6,3 +6,7 @@ const urlCekIzinStatus = '/v1/cekizinstatus';
 const urlCekCutiStatus = '/v1/cekcutistatus';
 const urlAbsensiUnit = '/v1/absensiunit';
 const urlAbsensiPegawai = '/v1/absensipegawai';
+const urlAbsensiTerlambat = '/v1/topterlambat';
+const urlAbsensiTepatWaktu = '/v1/toptepatwaktu';
+const urlCekAkses = '/v1/cekakses';
+const urlHadirRapat = '/v1/hadirrapat';

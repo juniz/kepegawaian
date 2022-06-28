@@ -99,6 +99,7 @@ class LoginController extends GetxController {
         GetStorage().write('tgl_lahir', tglLahir);
         GetStorage().write('alamat', body['data']['alamat']);
         GetStorage().write('photo', body['data']['photo']);
+        GetStorage().write('jbtn', body['data']['jbtn']);
         DialogHelper.hideLoading();
         Get.offAllNamed('/dashboard');
       } else if (response.statusCode == 404) {
