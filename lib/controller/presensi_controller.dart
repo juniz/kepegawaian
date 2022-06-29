@@ -91,6 +91,7 @@ class PresensiController extends GetxController {
   void onReady() {
     //getJamJaga();
     cekPresensi();
+    getJamJaga();
     super.onReady();
   }
 
@@ -137,25 +138,20 @@ class PresensiController extends GetxController {
 
   Future<void> getJamJaga() async {
     try {
-      Future.delayed(
-        Duration.zero,
-        () => DialogHelper.showLoading('Sedang mengambil data.....'),
-      );
-      var body = {'cap': cap.value};
-      ApiConnection()
-          .postData(
-              url:
-                  'https://webapps.rsbhayangkaranganjuk.com/api-rsbnganjuk/api/v2/kepegawaian/jamjaga',
-              body: body)
-          .then((res) {
-        print(cap.value);
-        print(res.bodyString);
-        listJamJaga.value = jamJagaModelFromJson(res.bodyString!).data!;
-        DialogHelper.hideLoading();
+      Future.delayed(Duration.zero, () {
+        var body = {'cap': cap.value};
+        ApiConnection()
+            .postData(
+                url:
+                    'https://webapps.rsbhayangkaranganjuk.com/api-rsbnganjuk/api/v2/kepegawaian/jamjaga',
+                body: body)
+            .then((res) {
+          print(cap.value);
+          print(res.bodyString);
+          listJamJaga.value = jamJagaModelFromJson(res.bodyString!).data!;
+        });
       });
-    } catch (e) {
-      DialogHelper.hideLoading();
-    }
+    } catch (e) {}
   }
 
   void cekPresensi() {

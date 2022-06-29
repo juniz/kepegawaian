@@ -74,10 +74,10 @@ class WADashboardScreenState extends State<WADashboardScreen> {
                       value.latitude,
                       value.longitude);
                   log(distanceInMeters);
-                  if (distanceInMeters < 300) {
+                  if (distanceInMeters > 300) {
                     Get.snackbar(
                       'Error',
-                      'Jarak Anda dan Rumah Sakit sekarang ${distanceInMeters.round()} m. Presensi harus dilakukan dengan jarak 300 m dari Rumah Sakit.',
+                      'Jarak Anda dan Rumah Sakit sekarang ${distanceInMeters.round()} m. Presensi harus dilakukan dengan jarak kurang dari 300 m dari Rumah Sakit.',
                       icon: const Icon(Icons.add_alert_outlined,
                           color: Colors.white),
                       snackPosition: SnackPosition.TOP,
@@ -91,8 +91,7 @@ class WADashboardScreenState extends State<WADashboardScreen> {
                       forwardAnimationCurve: Curves.easeOutBack,
                     );
                   } else {
-                    c.getJamJaga();
-                    if (c.listJamJaga.isNotEmpty) {
+                    if (c.listJamJaga.value.isNotEmpty) {
                       Get.bottomSheet(
                         Container(
                           padding: const EdgeInsets.only(
