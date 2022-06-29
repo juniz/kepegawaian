@@ -1,4 +1,6 @@
 const urlBase = 'https://webapps.rsbhayangkaranganjuk.com/api-rsbnganjuk/api';
+const urlBaseImage =
+    'https://simrs.rsbhayangkaranganjuk.com/webapps/penggajian/';
 const urlLogin = '/v2/kepegawaian/login';
 const urlJumlahCuti = '/v1/jumlahcuti';
 const urlJumlahIzin = '/v1/jumlahIzin';

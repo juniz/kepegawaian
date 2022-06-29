@@ -7,6 +7,7 @@ import 'package:sdm_handal/controller/profile_controller.dart';
 import 'package:sdm_handal/utils/WAColors.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:sdm_handal/screen/WAEditProfileScreen.dart';
+import 'package:sdm_handal/utils/WAUrl.dart';
 import 'package:sdm_handal/utils/WAWidgets.dart';
 
 class WAMyProfileScreen extends StatefulWidget {
@@ -68,7 +69,7 @@ class WAMyProfileScreenState extends State<WAMyProfileScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Obx(() => waCommonCachedNetworkImage(
-                      'https://simrs.rsbhayangkaranganjuk.com/webapps/penggajian/${c.dataBiodata.value.photo!}',
+                      urlBaseImage + c.dataBiodata.value.photo!,
                       fit: BoxFit.cover,
                       alignment: Alignment.topCenter,
                       height: 120,

@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_launcher_icons/main.dart';
 import 'package:get/get.dart';
-import 'package:getwidget/components/appbar/gf_appbar.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:intl/intl.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:sdm_handal/controller/dashboard_presensi_controller.dart';
 import 'package:sdm_handal/model/absensi_unit_model.dart';
+import 'package:sdm_handal/utils/WAUrl.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
-
 import '../controller/rekap_presensi_controller.dart';
-import '../model/absensi_pegawai_model.dart';
 import '../utils/WAColors.dart';
 import '../utils/WAWidgets.dart';
 
@@ -92,8 +89,8 @@ class WADashboardPresensi extends StatelessWidget {
                                 isExpanded: true,
                                 decoration: waInputDecoration(
                                     bgColor: Colors.white,
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 8)),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 8)),
                                 items:
                                     controller.months.value.map((Bulan? value) {
                                   return DropdownMenuItem<String>(
@@ -119,8 +116,8 @@ class WADashboardPresensi extends StatelessWidget {
                                 isExpanded: true,
                                 decoration: waInputDecoration(
                                     bgColor: Colors.white,
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 8)),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 8)),
                                 items:
                                     controller.years.value.map((String? value) {
                                   return DropdownMenuItem<String>(
@@ -279,11 +276,13 @@ class WADashboardPresensi extends StatelessWidget {
                           avatar: Column(
                             children: [
                               waCommonCachedNetworkImage(
-                                'https://simrs.rsbhayangkaranganjuk.com/webapps/penggajian/${controller.listAbsensiPegawai.value[index].photo}',
+                                urlBaseImage +
+                                    controller
+                                        .listAbsensiPegawai.value[index].photo!,
                                 height: 100,
                                 width: 80,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 5,
                               ),
                               Text(
@@ -299,7 +298,7 @@ class WADashboardPresensi extends StatelessWidget {
                                       child: Text(
                                         '${controller.listAbsensiPegawai.value[index].tepatWaktu}',
                                         textAlign: TextAlign.end,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontSize: 16, color: Colors.white),
                                       ),
                                       leading: Text(
@@ -323,7 +322,7 @@ class WADashboardPresensi extends StatelessWidget {
                                       child: Text(
                                         '${controller.listAbsensiPegawai.value[index].toleransi}',
                                         textAlign: TextAlign.end,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontSize: 16, color: Colors.white),
                                       ),
                                       leading: Text(
@@ -347,7 +346,7 @@ class WADashboardPresensi extends StatelessWidget {
                                       child: Text(
                                         '${controller.listAbsensiPegawai.value[index].terlambat1}',
                                         textAlign: TextAlign.end,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontSize: 16, color: Colors.white),
                                       ),
                                       leading: Text(
@@ -371,7 +370,7 @@ class WADashboardPresensi extends StatelessWidget {
                                       child: Text(
                                         '${controller.listAbsensiPegawai.value[index].terlambat2}',
                                         textAlign: TextAlign.end,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontSize: 16, color: Colors.white),
                                       ),
                                       leading: Text(
@@ -455,7 +454,9 @@ class WADashboardPresensi extends StatelessWidget {
                           ],
                         ),
                         avatar: waCommonCachedNetworkImage(
-                          'https://simrs.rsbhayangkaranganjuk.com/webapps/penggajian/${controller.listAbsensiTerlambat.value[index].photo}',
+                          urlBaseImage +
+                              controller
+                                  .listAbsensiTerlambat.value[index].photo!,
                           height: 100,
                           width: 80,
                         ),
@@ -467,11 +468,11 @@ class WADashboardPresensi extends StatelessWidget {
                               leading: Text('Total', style: boldTextStyle())
                                   .withWidth(85),
                               child: Padding(
-                                padding: EdgeInsets.only(right: 5),
+                                padding: const EdgeInsets.only(right: 5),
                                 child: Text(
                                   '${controller.listAbsensiTerlambat.value[index].total}',
                                   textAlign: TextAlign.end,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 16, color: Colors.white),
                                 ),
                               ),
@@ -489,11 +490,11 @@ class WADashboardPresensi extends StatelessWidget {
                                       .toDouble(),
                               lineHeight: 20,
                               child: Padding(
-                                padding: EdgeInsets.only(right: 5),
+                                padding: const EdgeInsets.only(right: 5),
                                 child: Text(
                                   '${controller.listAbsensiTerlambat.value[index].totalTerlambat!}',
                                   textAlign: TextAlign.end,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 16, color: Colors.white),
                                 ),
                               ),
@@ -566,7 +567,9 @@ class WADashboardPresensi extends StatelessWidget {
                           ],
                         ),
                         avatar: waCommonCachedNetworkImage(
-                          'https://simrs.rsbhayangkaranganjuk.com/webapps/penggajian/${controller.listAbsensiTepatWaktu.value[index].photo}',
+                          urlBaseImage +
+                              controller
+                                  .listAbsensiTepatWaktu.value[index].photo!,
                           height: 100,
                           width: 80,
                         ),
@@ -579,11 +582,11 @@ class WADashboardPresensi extends StatelessWidget {
                                       style: primaryTextStyle(size: 14))
                                   .withWidth(85),
                               child: Padding(
-                                padding: EdgeInsets.only(right: 5),
+                                padding: const EdgeInsets.only(right: 5),
                                 child: Text(
                                   '${controller.listAbsensiTepatWaktu.value[index].total}',
                                   textAlign: TextAlign.end,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 16, color: Colors.white),
                                 ),
                               ),
@@ -597,11 +600,11 @@ class WADashboardPresensi extends StatelessWidget {
                                       style: primaryTextStyle(size: 14))
                                   .withWidth(85),
                               child: Padding(
-                                padding: EdgeInsets.only(right: 5),
+                                padding: const EdgeInsets.only(right: 5),
                                 child: Text(
                                   '${controller.listAbsensiTepatWaktu.value[index].tepatWaktu}',
                                   textAlign: TextAlign.end,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 16, color: Colors.white),
                                 ),
                               ),

@@ -69,12 +69,15 @@ class WADashboardScreenState extends State<WADashboardScreen> {
                   c.lat.value = value.latitude;
                   c.lng.value = value.longitude;
                   double distanceInMeters = Geolocator.distanceBetween(
-                      -7.6001027, 111.8946658, value.latitude, value.longitude);
+                      -7.600011986205038,
+                      111.89475748487666,
+                      value.latitude,
+                      value.longitude);
                   log(distanceInMeters);
-                  if (distanceInMeters > 500) {
+                  if (distanceInMeters < 300) {
                     Get.snackbar(
                       'Error',
-                      'Anda harus berada dalam jangkauan 500m dari Rumah Sakit',
+                      'Jarak Anda dan Rumah Sakit sekarang ${distanceInMeters.round()} m. Presensi harus dilakukan dengan jarak 300 m dari Rumah Sakit.',
                       icon: const Icon(Icons.add_alert_outlined,
                           color: Colors.white),
                       snackPosition: SnackPosition.TOP,
@@ -88,55 +91,54 @@ class WADashboardScreenState extends State<WADashboardScreen> {
                       forwardAnimationCurve: Curves.easeOutBack,
                     );
                   } else {
-                    c.getJamJaga().then(
-                          (value) => Get.bottomSheet(
-                            Container(
-                              padding: const EdgeInsets.only(
-                                  top: 16, left: 16, right: 16, bottom: 16),
-                              width: Get.width,
-                              height: Get.height / 2,
-                              decoration: boxDecorationWithShadow(
-                                  borderRadius: const BorderRadius.only(
-                                      topLeft: Radius.circular(30),
-                                      topRight: Radius.circular(30))),
-                              child: SingleChildScrollView(
-                                child: Obx(
-                                  () => Column(
-                                    children: c.listJamJaga.value
-                                        .map(
-                                          (e) => Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 16,
-                                                right: 16,
-                                                top: 10,
-                                                bottom: 10),
-                                            child: Container(
-                                              decoration:
-                                                  boxDecorationRoundedWithShadow(
-                                                      12),
-                                              child: ListTile(
-                                                title: Text(e.shift!,
-                                                    style: boldTextStyle(
-                                                        size: 18)),
-                                                subtitle: Text(
-                                                    '${e.jamMasuk} - ${e.jamPulang}'),
-                                                onTap: () {
-                                                  c.shift.value = e.shift!;
-                                                  c.getImage(
-                                                      ImageSource.camera);
-                                                },
-                                              ),
-                                            ),
+                    c.getJamJaga();
+                    if (c.listJamJaga.isNotEmpty) {
+                      Get.bottomSheet(
+                        Container(
+                          padding: const EdgeInsets.only(
+                              top: 16, left: 16, right: 16, bottom: 16),
+                          width: Get.width,
+                          height: Get.height / 2,
+                          decoration: boxDecorationWithShadow(
+                              borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(30),
+                                  topRight: Radius.circular(30))),
+                          child: SingleChildScrollView(
+                            child: Obx(
+                              () => Column(
+                                children: c.listJamJaga.value
+                                    .map(
+                                      (e) => Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 16,
+                                            right: 16,
+                                            top: 10,
+                                            bottom: 10),
+                                        child: Container(
+                                          decoration:
+                                              boxDecorationRoundedWithShadow(
+                                                  12),
+                                          child: ListTile(
+                                            title: Text(e.shift!,
+                                                style: boldTextStyle(size: 18)),
+                                            subtitle: Text(
+                                                '${e.jamMasuk} - ${e.jamPulang}'),
+                                            onTap: () {
+                                              c.shift.value = e.shift!;
+                                              c.getImage(ImageSource.camera);
+                                            },
                                           ),
-                                        )
-                                        .toList(),
-                                  ),
-                                ),
+                                        ),
+                                      ),
+                                    )
+                                    .toList(),
                               ),
                             ),
-                            isDismissible: false,
                           ),
-                        );
+                        ),
+                        isDismissible: false,
+                      );
+                    }
                   }
                 }).catchError((error) {
                   Get.snackbar(

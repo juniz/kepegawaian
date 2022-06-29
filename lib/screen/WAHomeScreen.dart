@@ -11,6 +11,8 @@ import 'package:sdm_handal/utils/WADataGenerator.dart';
 import 'package:sdm_handal/utils/WAWidgets.dart';
 import 'package:nb_utils/nb_utils.dart';
 
+import '../utils/WAUrl.dart';
+
 class WAHomeScreen extends StatefulWidget {
   static String tag = '/WAHomeScreen';
 
@@ -94,7 +96,7 @@ class WAHomeScreenState extends State<WAHomeScreen> {
                                 image: DecorationImage(
                                   fit: BoxFit.fill,
                                   image: CachedNetworkImageProvider(
-                                    'https://simrs.rsbhayangkaranganjuk.com/webapps/penggajian/${c.photo.value}',
+                                    urlBaseImage + c.photo.value,
                                   ),
                                 ),
                               ),
