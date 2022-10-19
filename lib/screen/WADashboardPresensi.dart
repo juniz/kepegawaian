@@ -290,7 +290,17 @@ class WADashboardPresensi extends StatelessWidget {
                                 style: boldTextStyle(),
                               )
                             ],
-                          ),
+                          ).onTap(() async {
+                            await showDialog(
+                                context: context,
+                                builder: (_) => imageDialog(
+                                    controller
+                                        .listAbsensiPegawai.value[index].nama!,
+                                    urlBaseImage +
+                                        controller.listAbsensiPegawai
+                                            .value[index].photo!,
+                                    context));
+                          }),
                           description: Column(
                             children: [
                               GFProgressBar(
@@ -459,6 +469,19 @@ class WADashboardPresensi extends StatelessWidget {
                                   .listAbsensiTerlambat.value[index].photo!,
                           height: 100,
                           width: 80,
+                        ).onTap(
+                          () async {
+                            await showDialog(
+                              context: context,
+                              builder: (_) => imageDialog(
+                                  controller
+                                      .listAbsensiTerlambat.value[index].nama!,
+                                  urlBaseImage +
+                                      controller.listAbsensiTerlambat
+                                          .value[index].photo!,
+                                  context),
+                            );
+                          },
                         ),
                         description: Column(
                           children: [
@@ -572,6 +595,19 @@ class WADashboardPresensi extends StatelessWidget {
                                   .listAbsensiTepatWaktu.value[index].photo!,
                           height: 100,
                           width: 80,
+                        ).onTap(
+                          () async {
+                            await showDialog(
+                              context: context,
+                              builder: (_) => imageDialog(
+                                  controller
+                                      .listAbsensiTepatWaktu.value[index].nama!,
+                                  urlBaseImage +
+                                      controller.listAbsensiTepatWaktu
+                                          .value[index].photo!,
+                                  context),
+                            );
+                          },
                         ),
                         description: Column(
                           children: [
@@ -624,6 +660,46 @@ class WADashboardPresensi extends StatelessWidget {
       },
     );
   }
+}
+
+Widget imageDialog(text, path, context) {
+  return Dialog(
+    // backgroundColor: Colors.transparent,
+    // elevation: 0,
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                '$text',
+                style: boldTextStyle(),
+              ),
+              IconButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                icon: Icon(Icons.close_rounded),
+                color: Colors.redAccent,
+              ),
+            ],
+          ),
+        ),
+        waCommonCachedNetworkImage(
+          '$path',
+          width: 300, height: 500, fit: BoxFit.contain,
+          // child: Image.network(
+          //   '$path',
+          //   fit: BoxFit.contain,
+          // ),
+        ),
+      ],
+    ),
+  );
 }
 
 class SalesData {

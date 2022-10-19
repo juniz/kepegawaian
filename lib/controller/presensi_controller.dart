@@ -1,5 +1,6 @@
 import 'dart:io';
-
+import 'package:nb_utils/nb_utils.dart';
+import 'package:package_info/package_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:get/get.dart';
@@ -137,6 +138,12 @@ class PresensiController extends GetxController {
   }
 
   Future<void> getJamJaga() async {
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+
+    String appName = packageInfo.appName;
+    String packageName = packageInfo.packageName;
+    String version = packageInfo.version;
+    String buildNumber = packageInfo.buildNumber;
     try {
       Future.delayed(Duration.zero, () {
         var body = {'cap': cap.value};
@@ -146,8 +153,6 @@ class PresensiController extends GetxController {
                     'https://webapps.rsbhayangkaranganjuk.com/api-rsbnganjuk/api/v2/kepegawaian/jamjaga',
                 body: body)
             .then((res) {
-          print(cap.value);
-          print(res.bodyString);
           listJamJaga.value = jamJagaModelFromJson(res.bodyString!).data!;
         });
       });
@@ -185,6 +190,12 @@ class PresensiController extends GetxController {
       Duration.zero,
       () => DialogHelper.showLoading('Sedang mengambil data.....'),
     );
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+
+    String appName = packageInfo.appName;
+    String packageName = packageInfo.packageName;
+    String version = packageInfo.version;
+    String buildNumber = packageInfo.buildNumber;
 
     // var position = await determinePosition();
     final form = FormData({
@@ -192,6 +203,10 @@ class PresensiController extends GetxController {
       'shift': shift.value,
       'lat': lat.value.toString(),
       'lng': lng.value.toString(),
+      'package_name': packageName,
+      'build_number': buildNumber,
+      'version': version,
+      'app_name': appName,
       'file': MultipartFile(file, filename: 'photo.jpg'),
     });
 

@@ -298,7 +298,7 @@ class RapatScreen extends StatelessWidget {
                             alignment: Alignment.centerRight,
                             child: ElevatedButton.icon(
                               label: const Text('HADIR'),
-                              icon: const Icon(Icons.send),
+                              icon: const Icon(LineIcons.file),
                               onPressed: () {
                                 if (controller.formKey.currentState!
                                         .validate() &&

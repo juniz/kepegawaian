@@ -38,15 +38,24 @@ class WACategoriesComponentState extends State<WACategoriesComponent> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-      margin: EdgeInsets.only(bottom: 16, left: 16, right: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+      margin: const EdgeInsets.only(bottom: 16, left: 16, right: 16),
       decoration:
           boxDecorationRoundedWithShadow(16, backgroundColor: Colors.white),
       child: ListTile(
         tileColor: Colors.red,
         enabled: true,
         contentPadding: EdgeInsets.zero,
-        title: Text(widget.categoryModel!.nama!, style: boldTextStyle()),
+        title: Text(widget.categoryModel!.nama!, style: boldTextStyle()).onTap(
+          () async {
+            await c.getGeo(
+              id: widget.categoryModel!.id!.toString(),
+              tanggal: DateFormat('yyyy-MM-dd').format(
+                widget.categoryModel!.jamDatang!,
+              ),
+            );
+          },
+        ),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -59,6 +68,15 @@ class WACategoriesComponentState extends State<WACategoriesComponent> {
                     .format(widget.categoryModel!.jamPulang!),
                 style: secondaryTextStyle())
           ],
+        ).onTap(
+          () async {
+            await c.getGeo(
+              id: widget.categoryModel!.id!.toString(),
+              tanggal: DateFormat('yyyy-MM-dd').format(
+                widget.categoryModel!.jamDatang!,
+              ),
+            );
+          },
         ),
         leading: waCommonCachedNetworkImage(
           widget.categoryModel!.photo,
@@ -66,7 +84,18 @@ class WACategoriesComponentState extends State<WACategoriesComponent> {
           width: 60,
           fit: BoxFit.cover,
           alignment: Alignment.center,
-        ).cornerRadiusWithClipRRect(30),
+        ).cornerRadiusWithClipRRect(30).onTap(
+          () async {
+            await showDialog(
+              context: context,
+              builder: (_) => imageDialog(
+                widget.categoryModel?.nama,
+                widget.categoryModel!.photo,
+                context,
+              ),
+            );
+          },
+        ),
         trailing: Container(
           width: 80,
           height: 35,
@@ -87,15 +116,47 @@ class WACategoriesComponentState extends State<WACategoriesComponent> {
                     : Colors.red),
           ),
         ),
-        onTap: () async {
-          await c.getGeo(
-            id: widget.categoryModel!.id!.toString(),
-            tanggal: DateFormat('yyyy-MM-dd').format(
-              widget.categoryModel!.jamDatang!,
-            ),
-          );
-        },
       ),
     );
   }
+}
+
+Widget imageDialog(text, path, context) {
+  return Dialog(
+    // backgroundColor: Colors.transparent,
+    // elevation: 0,
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                '$text',
+                style: boldTextStyle(),
+              ),
+              IconButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                icon: Icon(Icons.close_rounded),
+                color: Colors.redAccent,
+              ),
+            ],
+          ),
+        ),
+        waCommonCachedNetworkImage(
+          '$path',
+          width: 300, height: 500, fit: BoxFit.contain,
+          // child: Image.network(
+          //   '$path',
+          //   fit: BoxFit.contain,
+          // ),
+        ),
+      ],
+    ),
+  );
 }

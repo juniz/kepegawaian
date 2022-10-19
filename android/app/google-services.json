@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:363384926359:android:6b1a0517dcb5d5457239d2",
         "android_client_info": {
-          "package_name": "com.bhayangkara.sdmhandal"
+          "package_name": "com.bhayangkarangk.sdmhandal"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "363384926359-5tfi0tkm92k4mvbnd10sjagfginatc9e.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.bhayangkara.sdmhandal",
+            "package_name": "com.bhayangkarangk.sdmhandal",
             "certificate_hash": "5307ad178d65d58c1058ce44c1dddca4bc290cda"
           }
         },

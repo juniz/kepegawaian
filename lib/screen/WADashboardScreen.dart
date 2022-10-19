@@ -65,19 +65,10 @@ class WADashboardScreenState extends State<WADashboardScreen> {
                 // Get.back();
 
                 c.determinePosition().then((value) {
-                  log(value);
-                  c.lat.value = value.latitude;
-                  c.lng.value = value.longitude;
-                  double distanceInMeters = Geolocator.distanceBetween(
-                      -7.600011986205038,
-                      111.89475748487666,
-                      value.latitude,
-                      value.longitude);
-                  log(distanceInMeters);
-                  if (distanceInMeters > 300) {
+                  if (value.isMocked) {
                     Get.snackbar(
                       'Error',
-                      'Jarak Anda dan Rumah Sakit sekarang ${distanceInMeters.round()} m. Presensi harus dilakukan dengan jarak kurang dari 300 m dari Rumah Sakit.',
+                      'Kemungkinan Aplikasi Mendeteksi Penggunaan Lokasi Palsu',
                       icon: const Icon(Icons.add_alert_outlined,
                           color: Colors.white),
                       snackPosition: SnackPosition.TOP,
@@ -91,52 +82,79 @@ class WADashboardScreenState extends State<WADashboardScreen> {
                       forwardAnimationCurve: Curves.easeOutBack,
                     );
                   } else {
-                    if (c.listJamJaga.value.isNotEmpty) {
-                      Get.bottomSheet(
-                        Container(
-                          padding: const EdgeInsets.only(
-                              top: 16, left: 16, right: 16, bottom: 16),
-                          width: Get.width,
-                          height: Get.height / 2,
-                          decoration: boxDecorationWithShadow(
-                              borderRadius: const BorderRadius.only(
-                                  topLeft: Radius.circular(30),
-                                  topRight: Radius.circular(30))),
-                          child: SingleChildScrollView(
-                            child: Obx(
-                              () => Column(
-                                children: c.listJamJaga.value
-                                    .map(
-                                      (e) => Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 16,
-                                            right: 16,
-                                            top: 10,
-                                            bottom: 10),
-                                        child: Container(
-                                          decoration:
-                                              boxDecorationRoundedWithShadow(
-                                                  12),
-                                          child: ListTile(
-                                            title: Text(e.shift!,
-                                                style: boldTextStyle(size: 18)),
-                                            subtitle: Text(
-                                                '${e.jamMasuk} - ${e.jamPulang}'),
-                                            onTap: () {
-                                              c.shift.value = e.shift!;
-                                              c.getImage(ImageSource.camera);
-                                            },
+                    c.lat.value = value.latitude;
+                    c.lng.value = value.longitude;
+                    double distanceInMeters = Geolocator.distanceBetween(
+                        -7.600011986205038,
+                        111.89475748487666,
+                        value.latitude,
+                        value.longitude);
+                    log(distanceInMeters);
+                    if (distanceInMeters > 300) {
+                      Get.snackbar(
+                        'Error',
+                        'Jarak Anda dan Rumah Sakit sekarang ${distanceInMeters.round()} m. Presensi harus dilakukan dengan jarak kurang dari 300 m dari Rumah Sakit.',
+                        icon: const Icon(Icons.add_alert_outlined,
+                            color: Colors.white),
+                        snackPosition: SnackPosition.TOP,
+                        backgroundColor: Colors.red,
+                        colorText: Colors.white,
+                        borderRadius: 20,
+                        margin: const EdgeInsets.all(15),
+                        duration: const Duration(seconds: 5),
+                        isDismissible: true,
+                        dismissDirection: DismissDirection.horizontal,
+                        forwardAnimationCurve: Curves.easeOutBack,
+                      );
+                    } else {
+                      if (c.listJamJaga.value.isNotEmpty) {
+                        Get.bottomSheet(
+                          Container(
+                            padding: const EdgeInsets.only(
+                                top: 16, left: 16, right: 16, bottom: 16),
+                            width: Get.width,
+                            height: Get.height / 2,
+                            decoration: boxDecorationWithShadow(
+                                borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(30),
+                                    topRight: Radius.circular(30))),
+                            child: SingleChildScrollView(
+                              child: Obx(
+                                () => Column(
+                                  children: c.listJamJaga.value
+                                      .map(
+                                        (e) => Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 16,
+                                              right: 16,
+                                              top: 10,
+                                              bottom: 10),
+                                          child: Container(
+                                            decoration:
+                                                boxDecorationRoundedWithShadow(
+                                                    12),
+                                            child: ListTile(
+                                              title: Text(e.shift!,
+                                                  style:
+                                                      boldTextStyle(size: 18)),
+                                              subtitle: Text(
+                                                  '${e.jamMasuk} - ${e.jamPulang}'),
+                                              onTap: () {
+                                                c.shift.value = e.shift!;
+                                                c.getImage(ImageSource.camera);
+                                              },
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    )
-                                    .toList(),
+                                      )
+                                      .toList(),
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        isDismissible: false,
-                      );
+                          isDismissible: false,
+                        );
+                      }
                     }
                   }
                 }).catchError((error) {
