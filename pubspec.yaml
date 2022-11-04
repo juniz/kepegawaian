@@ -32,7 +32,7 @@ dependencies:
   nb_utils: ^4.4.8
   otp_text_field: ^1.1.1
   outlined_text: ^1.0.1
-  photo_view: ^0.12.0
+  photo_view: ^0.14.0
   search_choices: ^2.0.14
   signature: ^4.1.1
   simple_animations: ^3.1.1
@@ -42,15 +42,17 @@ dependencies:
   lottie: ^1.2.1
   calendar_timeline: 1.0.4
   getwidget: 2.0.4
-  device_info_plus: 3.2.2
+  device_info_plus: ^4.0.0
   onesignal_flutter: 3.2.8
   syncfusion_flutter_charts: ^20.1.59
   responsive_grid: ^2.1.0
   syncfusion_flutter_signaturepad: ^20.1.56
   geolocator: ^9.0.0
   package_info: 2.0.2
+  pdfx: ^2.3.0
   flutter: 
     sdk: flutter
+  
 
 dev_dependencies: 
   flutter_lints: ^1.0.0

@@ -57,7 +57,7 @@ class WASplashScreenState extends State<WASplashScreen> {
       'tags': build.tags,
       'type': build.type,
       'isPhysicalDevice': build.isPhysicalDevice,
-      'androidId': build.androidId,
+      'androidId': build.id,
       'systemFeatures': build.systemFeatures,
     };
   }
@@ -92,7 +92,7 @@ class WASplashScreenState extends State<WASplashScreen> {
       final DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
       var android = await deviceInfo.androidInfo;
       setState(() {
-        uuid = android.androidId!;
+        uuid = android.id!;
         mesin = android.brand!;
         model = android.model!;
       });

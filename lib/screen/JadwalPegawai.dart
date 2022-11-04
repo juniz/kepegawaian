@@ -1,15 +1,16 @@
-import 'package:calendar_timeline/calendar_timeline.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/components/dropdown/gf_dropdown.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:intl/intl.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:sdm_handal/controller/jadwal_pegawai_controlller.dart';
 import 'package:sdm_handal/controller/rekap_presensi_controller.dart';
-import 'package:sdm_handal/model/jadwal_pegawai_model.dart';
 import 'package:sdm_handal/model/jam_masuk_model.dart';
 import 'package:sdm_handal/utils/WAColors.dart';
 import 'package:sdm_handal/utils/WAWidgets.dart';
+import 'package:smart_select/smart_select.dart';
 
 class JadwalPegawai extends StatelessWidget {
   const JadwalPegawai({Key? key}) : super(key: key);
@@ -56,13 +57,19 @@ class JadwalPegawai extends StatelessWidget {
               Tab(
                 icon: Icon(Icons.calendar_today),
                 child: Text(
-                  "Jadwal Biasa",
+                  "Biasa",
                 ),
               ),
               Tab(
                 icon: Icon(Icons.event),
                 child: Text(
-                  "Jadwal Tambahan",
+                  "Tambahan",
+                ),
+              ),
+              Tab(
+                icon: Icon(Icons.book),
+                child: Text(
+                  "Tukar Dinas",
                 ),
               ),
             ],
@@ -74,6 +81,9 @@ class JadwalPegawai extends StatelessWidget {
                 ),
                 SingleChildScrollView(
                   child: JadwalTambahan(controller),
+                ),
+                SingleChildScrollView(
+                  child: TukarDinas(controller, context),
                 ),
               ],
             ),
@@ -202,6 +212,210 @@ class JadwalPegawai extends StatelessWidget {
         ),
         20.height,
       ],
+    );
+  }
+
+  Form TukarDinas(JadwalPegawaiController controller, BuildContext context) {
+    return Form(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          16.height,
+          Text('Form Pengajuan Tukar Dinas', style: boldTextStyle(size: 20))
+              .paddingLeft(16),
+          16.height,
+          Text('PJ terkait', style: boldTextStyle(size: 18)).paddingLeft(16),
+          8.height,
+          Container(
+            margin: const EdgeInsets.only(left: 16, right: 16),
+            width: Get.width,
+            decoration: boxDecorationRoundedWithShadow(16),
+            child: Obx(
+              () => SmartSelect<String>.single(
+                title: 'Pilih PJ',
+                value: controller.pjSelected.value,
+                modalType: S2ModalType.fullPage,
+                modalFilter: true,
+                modalFilterAuto: true,
+                choiceItems: controller.options.value,
+                onChange: (state) => controller.pjSelected.value = state.value,
+              ),
+            ),
+          ),
+          16.height,
+          Text("Tanggal Dinas", style: boldTextStyle(size: 18)).paddingLeft(16),
+          8.height,
+          AppTextField(
+            readOnly: true,
+            autoFocus: false,
+            onTap: () {
+              DatePicker.showDatePicker(
+                context,
+                showTitleActions: true,
+                minTime: DateTime.now(),
+                maxTime: DateTime.now().add(const Duration(days: 32)),
+                onConfirm: (date) {
+                  controller.tanggalDinasController.text =
+                      DateFormat('dd-MM-yyyy').format(date);
+                  controller.tglMulai.value = date;
+                },
+                currentTime: controller.tglMulai.value,
+                locale: LocaleType.id,
+              );
+            },
+            decoration: waInputDecoration(
+                hint: "Masukkan tanggal dinas",
+                bgColor: Colors.white,
+                borderColor: Colors.grey),
+            textFieldType: TextFieldType.NAME,
+            keyboardType: TextInputType.name,
+            controller: controller.tanggalDinasController,
+          ).paddingOnly(left: 16, right: 16, bottom: 16),
+          Text("Shift Dinas", style: boldTextStyle(size: 18)).paddingLeft(16),
+          8.height,
+          SizedBox(
+            width: Get.width,
+            height: 65,
+            child: Obx(
+              () => DropdownButtonFormField(
+                value: controller.shiftMasuk.value,
+                isExpanded: true,
+                decoration: waInputDecoration(
+                    bgColor: Colors.white,
+                    padding: EdgeInsets.symmetric(horizontal: 8)),
+                items:
+                    controller.listJamMasuk.value.map((JamMasukModel? value) {
+                  return DropdownMenuItem<String>(
+                    value: value!.shift,
+                    child: Text(
+                        value.shift != ''
+                            ? '${value.shift} [${value.jamMasuk} - ${value.jamPulang}]'
+                            : '-- Pilih Shift --',
+                        style: boldTextStyle(size: 14)),
+                  );
+                }).toList(),
+                onChanged: (value) {
+                  controller.shiftMasuk.value = value.toString();
+                },
+              ),
+            ),
+          ).paddingSymmetric(horizontal: 16),
+          16.height,
+          Text('Pengganti', style: boldTextStyle(size: 18)).paddingLeft(16),
+          8.height,
+          Container(
+            margin: const EdgeInsets.only(left: 16, right: 16),
+            width: Get.width,
+            decoration: boxDecorationRoundedWithShadow(16),
+            child: Obx(
+              () => SmartSelect<String>.single(
+                title: 'Pilih Pengganti',
+                value: controller.pengganti.value,
+                modalType: S2ModalType.fullPage,
+                modalFilter: true,
+                modalFilterAuto: true,
+                choiceItems: controller.options.value,
+                onChange: (state) => controller.pengganti.value = state.value,
+              ),
+            ),
+          ),
+          16.height,
+          Text("Tanggal Ganti", style: boldTextStyle(size: 18)).paddingLeft(16),
+          8.height,
+          AppTextField(
+            readOnly: true,
+            autoFocus: false,
+            onTap: () {
+              DatePicker.showDatePicker(
+                context,
+                showTitleActions: true,
+                minTime: DateTime.now(),
+                maxTime: DateTime.now().add(const Duration(days: 32)),
+                onConfirm: (date) {
+                  controller.tanggalGantiController.text =
+                      DateFormat('dd-MM-yyyy').format(date);
+                  controller.tglMulai.value = date;
+                },
+                currentTime: controller.tglGanti.value,
+                locale: LocaleType.id,
+              );
+            },
+            decoration: waInputDecoration(
+                hint: "Masukkan tanggal ganti",
+                bgColor: Colors.white,
+                borderColor: Colors.grey),
+            textFieldType: TextFieldType.NAME,
+            keyboardType: TextInputType.name,
+            controller: controller.tanggalGantiController,
+          ).paddingOnly(left: 16, right: 16, bottom: 16),
+          Text("Shift Ganti", style: boldTextStyle(size: 18)).paddingLeft(16),
+          8.height,
+          SizedBox(
+            width: Get.width,
+            height: 65,
+            child: Obx(
+              () => DropdownButtonFormField(
+                value: controller.shiftGanti.value,
+                isExpanded: true,
+                decoration: waInputDecoration(
+                    bgColor: Colors.white,
+                    padding: EdgeInsets.symmetric(horizontal: 8)),
+                items:
+                    controller.listJamMasuk.value.map((JamMasukModel? value) {
+                  return DropdownMenuItem<String>(
+                    value: value!.shift,
+                    child: Text(
+                        value.shift != ''
+                            ? '${value.shift} [${value.jamMasuk} - ${value.jamPulang}]'
+                            : '-- Pilih Shift --',
+                        style: boldTextStyle(size: 14)),
+                  );
+                }).toList(),
+                onChanged: (value) {
+                  controller.shiftGanti.value = value.toString();
+                },
+              ),
+            ),
+          ).paddingSymmetric(horizontal: 16),
+          16.height,
+          Text("Kepentingan", style: boldTextStyle(size: 18)).paddingLeft(16),
+          8.height,
+          AppTextField(
+            autoFocus: false,
+            maxLines: 3,
+            decoration: waInputDecoration(
+                hint: "Kepentingan Tukar Dinas", bgColor: white),
+            textFieldType: TextFieldType.NAME,
+            keyboardType: TextInputType.name,
+            controller: controller.kepentinganController,
+          ).paddingOnly(left: 16, right: 16),
+          16.height,
+          AppButton(
+                  text: "Ajukan",
+                  color: WAPrimaryColor,
+                  textColor: Colors.white,
+                  shapeBorder: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30)),
+                  width: Get.width,
+                  onTap: () async {
+                    // var res = await c.submitIzin();
+
+                    // CoolAlert.show(
+                    //   context: context,
+                    //   backgroundColor: WAPrimaryColor,
+                    //   confirmBtnColor: WAPrimaryColor,
+                    //   type: res!["code"] == 200
+                    //       ? CoolAlertType.success
+                    //       : CoolAlertType.error,
+                    //   text: res['message'],
+                    //   onConfirmBtnTap: () =>
+                    //       Get.offAllNamed('/dashboard'),
+                    // );
+                  })
+              .paddingOnly(left: 16, right: 16),
+          20.height,
+        ],
+      ),
     );
   }
 }

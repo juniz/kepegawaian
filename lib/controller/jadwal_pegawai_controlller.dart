@@ -4,7 +4,10 @@ import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
 import 'package:sdm_handal/api/api_connection.dart';
 import 'package:sdm_handal/model/jam_masuk_model.dart';
+import 'package:smart_select/smart_select.dart';
 
+import '../model/pegawai_model.dart';
+import '../utils/helper.dart';
 import 'rekap_presensi_controller.dart';
 
 class JadwalPegawaiController extends GetxController
@@ -19,11 +22,24 @@ class JadwalPegawaiController extends GetxController
   final jadwalPegawaiTambahan = <dynamic, dynamic>{}.obs;
   var monthSelected = DateTime.now().month.obs.toString();
   late TabController tabController;
+  var options = [
+    S2Choice<String>(value: '', title: ''),
+  ].obs;
+  var pjSelected = ''.obs;
+  var pengganti = ''.obs;
+  var tglMulai = DateTime.now().obs;
+  var tglGanti = DateTime.now().obs;
+  var listPegawai = <PegawaiData?>[].obs;
+  late TextEditingController tanggalDinasController;
+  late TextEditingController tanggalGantiController;
+  late TextEditingController kepentinganController;
+  final shiftMasuk = "".obs;
+  final shiftGanti = "".obs;
 
   @override
-  void onInit() {
+  void onInit() async {
     // TODO: implement onInit
-    tabController = new TabController(length: 2, vsync: this);
+    tabController = TabController(length: 3, vsync: this);
     cap.value = GetStorage().read('cap');
     idPegawai.value = GetStorage().read('idPegawai');
     months.value = [
@@ -41,6 +57,11 @@ class JadwalPegawaiController extends GetxController
       Bulan('December', '12')
     ];
     tahun.value = DateFormat("yyyy").format(DateTime.now());
+
+    tanggalDinasController = TextEditingController();
+    tanggalGantiController = TextEditingController();
+    kepentinganController = TextEditingController();
+    await getPegawai();
     super.onInit();
   }
 
@@ -52,6 +73,28 @@ class JadwalPegawaiController extends GetxController
     getJadwalPegawaiTambahan();
     //print(idPegawai.value);
     super.onReady();
+  }
+
+  Future<PegawaiModel?> getPegawai() async {
+    try {
+      Future.delayed(
+        Duration.zero,
+        () => DialogHelper.showLoading('Sedang mengambil data.....'),
+      );
+
+      var data = await ApiConnection().getData(
+          url:
+              'https://webapps.rsbhayangkaranganjuk.com/api-rsbnganjuk/api/v1/pegawai');
+      listPegawai.value = pegawaiModelFromJson(data.bodyString!).data!;
+      print(data.bodyString);
+      options.value = listPegawai.value
+          .map((e) => S2Choice<String>(value: e!.nik, title: e.nama))
+          .toList();
+      DialogHelper.hideLoading();
+    } on Exception catch (e) {
+      printError(info: e.toString());
+      DialogHelper.hideLoading();
+    }
   }
 
   getJamMasuk() {
