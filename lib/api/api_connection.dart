@@ -117,6 +117,19 @@ class ApiConnection extends GetConnect {
     }
   }
 
+  Future<Response> getBukuAkreditasi() async {
+    try {
+      final response = await get(urlBukuAkreditasi);
+      if (response.status.hasError) {
+        return Future.error(response.statusText!);
+      } else {
+        return response;
+      }
+    } catch (e) {
+      return Future.error(e.toString());
+    }
+  }
+
   Future<Response> getData({String? url}) => get(url!);
 
   Future<Response> postData({String? url, Map<String, dynamic>? body}) =>

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:get/get.dart';
-import 'package:getwidget/components/dropdown/gf_dropdown.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:intl/intl.dart';
 import 'package:nb_utils/nb_utils.dart';
@@ -18,7 +18,6 @@ class JadwalPegawai extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(JadwalPegawaiController());
-    final _scaffoldKey = GlobalKey<ScaffoldState>();
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -39,13 +38,13 @@ class JadwalPegawai extends StatelessWidget {
           }),
           automaticallyImplyLeading: false,
           elevation: 0.0,
-          brightness: Brightness.dark,
+          systemOverlayStyle: SystemUiOverlayStyle.light,
         ),
         body: Container(
           width: Get.width,
           height: Get.height,
-          decoration: BoxDecoration(
-            image: const DecorationImage(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
               image: AssetImage('images/walletApp/wa_bg.jpg'),
               fit: BoxFit.cover,
             ),
@@ -53,20 +52,21 @@ class JadwalPegawai extends StatelessWidget {
           child: GFTabs(
             tabBarColor: WAPrimaryColor,
             length: 3,
+            // ignore: prefer_const_literals_to_create_immutables
             tabs: <Widget>[
-              Tab(
+              const Tab(
                 icon: Icon(Icons.calendar_today),
                 child: Text(
                   "Biasa",
                 ),
               ),
-              Tab(
+              const Tab(
                 icon: Icon(Icons.event),
                 child: Text(
                   "Tambahan",
                 ),
               ),
-              Tab(
+              const Tab(
                 icon: Icon(Icons.book),
                 child: Text(
                   "Tukar Dinas",
@@ -124,7 +124,7 @@ class JadwalPegawai extends StatelessWidget {
                   isExpanded: true,
                   decoration: waInputDecoration(
                       bgColor: Colors.white,
-                      padding: EdgeInsets.symmetric(horizontal: 8)),
+                      padding: const EdgeInsets.symmetric(horizontal: 8)),
                   items: controller.months.value.map((Bulan? value) {
                     return DropdownMenuItem<String>(
                       value: value!.bulan,
@@ -178,7 +178,7 @@ class JadwalPegawai extends StatelessWidget {
                   isExpanded: true,
                   decoration: waInputDecoration(
                       bgColor: Colors.white,
-                      padding: EdgeInsets.symmetric(horizontal: 8)),
+                      padding: const EdgeInsets.symmetric(horizontal: 8)),
                   items: controller.months.value.map((Bulan? value) {
                     return DropdownMenuItem<String>(
                       value: value!.bulan,
@@ -282,7 +282,7 @@ class JadwalPegawai extends StatelessWidget {
                 isExpanded: true,
                 decoration: waInputDecoration(
                     bgColor: Colors.white,
-                    padding: EdgeInsets.symmetric(horizontal: 8)),
+                    padding: const EdgeInsets.symmetric(horizontal: 8)),
                 items:
                     controller.listJamMasuk.value.map((JamMasukModel? value) {
                   return DropdownMenuItem<String>(
@@ -359,7 +359,7 @@ class JadwalPegawai extends StatelessWidget {
                 isExpanded: true,
                 decoration: waInputDecoration(
                     bgColor: Colors.white,
-                    padding: EdgeInsets.symmetric(horizontal: 8)),
+                    padding: const EdgeInsets.symmetric(horizontal: 8)),
                 items:
                     controller.listJamMasuk.value.map((JamMasukModel? value) {
                   return DropdownMenuItem<String>(
@@ -448,7 +448,7 @@ class Jadwal extends StatelessWidget {
         Container(
           height: 50,
           width: Get.width,
-          margin: EdgeInsets.all(20),
+          margin: const EdgeInsets.all(20),
           child: DropdownButtonHideUnderline(
             child: GFDropdown(
               padding: const EdgeInsets.all(15),
@@ -541,7 +541,7 @@ class JadwalPegawaiTambahan extends StatelessWidget {
         Container(
           height: 50,
           width: Get.width,
-          margin: EdgeInsets.all(20),
+          margin: const EdgeInsets.all(20),
           child: DropdownButtonHideUnderline(
             child: GFDropdown(
               padding: const EdgeInsets.all(15),

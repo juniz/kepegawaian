@@ -39,7 +39,7 @@ class WAStatisticsChartComponentState
       child: Obx(
         () => BarChart(
           BarChartData(
-            maxY: 10,
+            maxY: c.nilaiMax.value + 5.0,
             gridData:
                 FlGridData(drawHorizontalLine: true, drawVerticalLine: true),
             titlesData: FlTitlesData(

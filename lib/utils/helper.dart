@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sdm_handal/utils/WAColors.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 class DialogHelper {
@@ -18,7 +17,7 @@ class DialogHelper {
                 style: Get.textTheme.headline4,
               ),
               Text(
-                description ?? '',
+                description,
                 style: Get.textTheme.headline6,
               ),
               ElevatedButton(

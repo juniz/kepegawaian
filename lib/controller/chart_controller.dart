@@ -16,6 +16,7 @@ class ChartController extends GetxController {
   late var width = 7;
   var chart = "".obs;
   var url = "".obs;
+  var nilaiMax = 0.0.obs;
 
   late var rawBarGroups = <BarChartGroupData>[].obs;
   late var showingBarGroups = <BarChartGroupData>[].obs;
@@ -84,11 +85,22 @@ class ChartController extends GetxController {
         makeGroupData(10, e['nov'].toDouble(), chart.value),
         makeGroupData(11, e['des'].toDouble(), chart.value),
       ];
+      getMaxArray();
       DialogHelper.hideLoading();
     } on Exception catch (e) {
       // TODO
       DialogHelper.hideLoading();
     }
+  }
+
+  getMaxArray() {
+    var max = 0.0;
+    for (var i = 0; i < showingBarGroups.length; i++) {
+      if (showingBarGroups[i].barRods[0].y > max) {
+        max = showingBarGroups[i].barRods[0].y.toDouble();
+      }
+    }
+    nilaiMax.value = max;
   }
 }
 
@@ -99,7 +111,7 @@ BarChartGroupData makeGroupData(int x, double y1, String y2) {
     barRods: [
       BarChartRodData(
           y: y1,
-          colors: [y2 == 'Cuti' ? WAPrimaryColor : Color(0xFFFF7426)],
+          colors: [y2 == 'Cuti' ? WAPrimaryColor : const Color(0xFFFF7426)],
           width: 7),
       //BarChartRodData(y: y2, colors: [Color(0xFFFF7426)], width: 7),
     ],

@@ -12,6 +12,7 @@ import 'package:sdm_handal/screen/RapatScreen.dart';
 import 'package:sdm_handal/screen/WADashboardPresensi.dart';
 import 'package:sdm_handal/screen/WALoginScreen.dart';
 import 'package:sdm_handal/screen/WASplashScreen.dart';
+import 'package:sdm_handal/screen/buku_akreditasi.dart';
 import 'package:sdm_handal/screen/jadwal_dokter.dart';
 import 'package:sdm_handal/screen/rengiat.dart';
 import 'package:sdm_handal/screen/riwayat_cuti.dart';
@@ -84,6 +85,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/rapat', page: () => RapatScreen()),
         GetPage(name: '/jadwalpegawai', page: () => JadwalPegawai()),
         GetPage(name: '/dahboardpresensi', page: () => WADashboardPresensi()),
+        GetPage(name: '/akreditasi', page: () => BukuAkreditasi()),
       ],
       initialRoute: '/splash',
     );

@@ -121,6 +121,7 @@ class JadwalRapatController extends GetxController {
           length: Toast.LENGTH_LONG,
           bgColor: Colors.green,
           textColor: Colors.white,
+          duration: const Duration(seconds: 2),
         );
       }).onError((error, stackTrace) {
         DialogHelper.hideLoading();
@@ -130,6 +131,7 @@ class JadwalRapatController extends GetxController {
           length: Toast.LENGTH_LONG,
           bgColor: Colors.red,
           textColor: Colors.white,
+          duration: const Duration(seconds: 2),
         );
       });
     } catch (e) {
@@ -140,6 +142,7 @@ class JadwalRapatController extends GetxController {
         length: Toast.LENGTH_LONG,
         bgColor: Colors.red,
         textColor: Colors.white,
+        duration: const Duration(seconds: 2),
       );
     }
   }

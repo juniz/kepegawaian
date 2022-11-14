@@ -29,16 +29,16 @@ dependencies:
   intl: ^0.17.0
   location: ^4.3.0
   map_launcher: ^2.1.1
-  nb_utils: ^4.4.8
+  nb_utils: 4.4.10
   otp_text_field: ^1.1.1
   outlined_text: ^1.0.1
   photo_view: ^0.14.0
   search_choices: ^2.0.14
   signature: ^4.1.1
   simple_animations: ^3.1.1
-  smart_select: ^4.3.2
+  smart_select: 4.2.1
   timeline_tile: ^2.0.0
-  url_launcher: ^6.0.12
+  url_launcher: ^6.1.6
   lottie: ^1.2.1
   calendar_timeline: 1.0.4
   getwidget: 2.0.4
@@ -52,6 +52,7 @@ dependencies:
   pdfx: ^2.3.0
   flutter: 
     sdk: flutter
+  internet_file: ^1.2.0
   
 
 dev_dependencies: 
@@ -70,6 +71,7 @@ flutter:
     - fonts/
     - assets/
     - assets/ca/
+    - assets/pdf/
     - images/
     - images/widgets/
     - images/walletApp/

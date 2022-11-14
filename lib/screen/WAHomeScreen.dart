@@ -247,7 +247,7 @@ class WAHomeScreenState extends State<WAHomeScreen> {
                       'Menu',
                       style: boldTextStyle(size: 20),
                     ),
-                    Icon(Icons.play_arrow, color: Colors.grey).onTap(() {
+                    const Icon(Icons.play_arrow, color: Colors.grey).onTap(() {
                       WAOperatorsScreen().launch(context);
                     }),
                   ],

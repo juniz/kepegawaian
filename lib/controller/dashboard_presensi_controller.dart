@@ -67,7 +67,8 @@ class DashboardPresensiController extends GetxController {
       toasty(Get.overlayContext!, res.body['message'],
           length: Toast.LENGTH_LONG,
           textColor: Colors.white,
-          bgColor: Colors.red);
+          bgColor: Colors.red,
+          duration: const Duration(seconds: 2));
       Get.offNamed('/dashboard');
     }
 

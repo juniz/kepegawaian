@@ -91,42 +91,48 @@ List<WAOperationsModel> waOperationList() {
   ));
   operationModel.add(WAOperationsModel(
     color: Color(0xFFFF7426),
+    title: 'Buku Akreditasi',
+    image: 'images/walletApp/notebook.png',
+    widget: '/akreditasi',
+  ));
+  operationModel.add(WAOperationsModel(
+    color: Color(0xFF6C56F9),
     title: 'Jadwal Saya',
     image: 'images/walletApp/group.png',
     widget: '/jadwalpegawai',
   ));
   operationModel.add(WAOperationsModel(
-    color: Color(0xFF6C56F9),
+    color: Color(0xFFFF7426),
     title: 'Cuti',
     image: 'images/walletApp/group.png',
     widget: '/cuti',
   ));
   operationModel.add(WAOperationsModel(
-    color: Color(0xFFFF7426),
+    color: Color(0xFF6C56F9),
     title: 'Izin',
     image: 'images/walletApp/group.png',
     widget: '/izin',
   ));
   operationModel.add(WAOperationsModel(
-    color: Color(0xFF6C56F9),
+    color: Color(0xFFFF7426),
     title: 'Rapat',
     image: 'images/walletApp/rapat.png',
     widget: '/rapat',
   ));
   operationModel.add(WAOperationsModel(
-    color: Color(0xFFFF7426),
+    color: Color(0xFF6C56F9),
     title: 'Statistik',
     image: 'images/walletApp/statistics.png',
     widget: '/statistik',
   ));
   operationModel.add(WAOperationsModel(
-    color: Color(0xFF6C56F9),
+    color: Color(0xFFFF7426),
     title: 'Jadwal Dokter',
     image: 'images/walletApp/doctors.png',
     widget: '/jadwaldokter',
   ));
   operationModel.add(WAOperationsModel(
-    color: Color(0xFFFF7426),
+    color: Color(0xFF6C56F9),
     title: 'Rengiat',
     image: 'images/walletApp/clipboard.png',
     widget: '/rengiat',
