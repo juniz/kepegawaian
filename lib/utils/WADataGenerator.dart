@@ -143,11 +143,12 @@ List<WAOperationsModel> waOperationList() {
     image: 'images/walletApp/heart.png',
     widget: '/kesehatan',
   ));
-  // operationModel.add(WAOperationsModel(
-  //   color: Color(0xFF6C56F9),
-  //   title: 'Rewards',
-  //   image: 'images/walletApp/wa_ticket.png',
-  // ));
+  operationModel.add(WAOperationsModel(
+    color: Color(0xFF6C56F9),
+    title: 'Barcode',
+    image: 'images/walletApp/wa_ticket.png',
+    widget: '/barcode',
+  ));
   // operationModel.add(WAOperationsModel(
   //   color: Color(0xFF26C884),
   //   title: 'Shopping',

@@ -5,7 +5,6 @@ import 'package:sdm_handal/controller/rekap_presensi_controller.dart';
 import 'package:sdm_handal/model/rekap_presensi_model.dart';
 import 'package:sdm_handal/utils/WAWidgets.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:map_launcher/map_launcher.dart';
 
 class WACategoriesComponent extends StatefulWidget {
   static String tag = '/WACategoriesComponent';
@@ -107,7 +106,7 @@ class WACategoriesComponentState extends State<WACategoriesComponent> {
                 : Colors.red.withOpacity(0.1),
           ),
           child: Text(
-            '${widget.categoryModel!.shift!}',
+            widget.categoryModel!.shift!,
             maxLines: 1,
             style: boldTextStyle(
                 size: 12,

@@ -12,6 +12,7 @@ import 'package:sdm_handal/screen/RapatScreen.dart';
 import 'package:sdm_handal/screen/WADashboardPresensi.dart';
 import 'package:sdm_handal/screen/WALoginScreen.dart';
 import 'package:sdm_handal/screen/WASplashScreen.dart';
+import 'package:sdm_handal/screen/barcode_jaga.dart';
 import 'package:sdm_handal/screen/buku_akreditasi.dart';
 import 'package:sdm_handal/screen/jadwal_dokter.dart';
 import 'package:sdm_handal/screen/rengiat.dart';
@@ -70,22 +71,27 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/dashboard', page: () => WADashboardScreen()),
         GetPage(name: '/izin', page: () => IzinScreen()),
         GetPage(name: '/cuti', page: () => WASendMoneyViaLoopScreen()),
-        GetPage(name: '/riwayatcuti', page: () => RiwayatCuti()),
-        GetPage(name: '/riwayatizin', page: () => RiwayatIzin()),
-        GetPage(name: '/riwayatseminar', page: () => RiwayatSeminar()),
-        GetPage(name: '/riwayatgaji', page: () => RiwayatGaji()),
-        GetPage(name: '/riwayatjabatan', page: () => RiwayatJabatan()),
+        GetPage(name: '/riwayatcuti', page: () => const RiwayatCuti()),
+        GetPage(name: '/riwayatizin', page: () => const RiwayatIzin()),
+        GetPage(name: '/riwayatseminar', page: () => const RiwayatSeminar()),
+        GetPage(name: '/riwayatgaji', page: () => const RiwayatGaji()),
+        GetPage(name: '/riwayatjabatan', page: () => const RiwayatJabatan()),
         GetPage(
-            name: '/riwayatpendidikan', page: () => RiwayatPendidikanPage()),
-        GetPage(name: '/riwayatpenghargaan', page: () => RiwayatPenghargaan()),
-        GetPage(name: '/statistik', page: () => Statistik()),
-        GetPage(name: '/jadwaldokter', page: () => JadwalDokterPage()),
-        GetPage(name: '/rengiat', page: () => RengiatPage()),
-        GetPage(name: '/kesehatan', page: () => KesehatanScreen()),
-        GetPage(name: '/rapat', page: () => RapatScreen()),
-        GetPage(name: '/jadwalpegawai', page: () => JadwalPegawai()),
-        GetPage(name: '/dahboardpresensi', page: () => WADashboardPresensi()),
-        GetPage(name: '/akreditasi', page: () => BukuAkreditasi()),
+            name: '/riwayatpendidikan',
+            page: () => const RiwayatPendidikanPage()),
+        GetPage(
+            name: '/riwayatpenghargaan',
+            page: () => const RiwayatPenghargaan()),
+        GetPage(name: '/statistik', page: () => const Statistik()),
+        GetPage(name: '/jadwaldokter', page: () => const JadwalDokterPage()),
+        GetPage(name: '/rengiat', page: () => const RengiatPage()),
+        GetPage(name: '/kesehatan', page: () => const KesehatanScreen()),
+        GetPage(name: '/rapat', page: () => const RapatScreen()),
+        GetPage(name: '/jadwalpegawai', page: () => const JadwalPegawai()),
+        GetPage(
+            name: '/dahboardpresensi', page: () => const WADashboardPresensi()),
+        GetPage(name: '/akreditasi', page: () => const BukuAkreditasi()),
+        GetPage(name: '/barcode', page: () => const BarcodeJaga()),
       ],
       initialRoute: '/splash',
     );
