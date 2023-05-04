@@ -279,13 +279,6 @@ class WAHomeScreenState extends State<WAHomeScreen> {
                               : toast(operationModel.title);
                         });
                       }
-                      // return Container();
-                      // return WAOperationComponent(itemModel: operationModel)
-                      //     .onTap(() {
-                      //   operationModel.widget != null
-                      //       ? Get.toNamed(operationModel.widget!)
-                      //       : toast(operationModel.title);
-                      // });
                     }).toList(),
                   ).paddingAll(16),
                 ),
