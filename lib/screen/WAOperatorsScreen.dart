@@ -5,6 +5,8 @@ import 'package:sdm_handal/component/WAOperationComponent.dart';
 import 'package:sdm_handal/model/WalletAppModel.dart';
 import 'package:sdm_handal/utils/WADataGenerator.dart';
 
+import '../controller/home_controller.dart';
+
 class WAOperatorsScreen extends StatefulWidget {
   static String tag = '/WAOperatorsScreen';
 
@@ -14,6 +16,7 @@ class WAOperatorsScreen extends StatefulWidget {
 
 class WAOperatorsScreenState extends State<WAOperatorsScreen> {
   List<WAOperationsModel> operationsList = waOperationList();
+  final c = Get.put(HomeController());
 
   @override
   void initState() {
@@ -77,18 +80,37 @@ class WAOperatorsScreenState extends State<WAOperatorsScreen> {
               runSpacing: 16,
               alignment: WrapAlignment.center,
               children: operationsList.map((item) {
-                return Container(
-                  padding:
-                      EdgeInsets.only(top: 16, bottom: 8, left: 8, right: 8),
-                  decoration: boxDecorationRoundedWithShadow(16),
-                  alignment: AlignmentDirectional.center,
-                  width: Get.width * 0.27,
-                  child: WAOperationComponent(
-                    itemModel: item,
-                  ),
-                ).onTap(() {
-                  Get.toNamed(item.widget!);
-                });
+                if (!item.role.isEmptyOrNull) {
+                  if (item.role! == c.departemen.value) {
+                    return Container(
+                      padding: EdgeInsets.only(
+                          top: 16, bottom: 8, left: 8, right: 8),
+                      decoration: boxDecorationRoundedWithShadow(16),
+                      alignment: AlignmentDirectional.center,
+                      width: Get.width * 0.27,
+                      child: WAOperationComponent(
+                        itemModel: item,
+                      ),
+                    ).onTap(() {
+                      Get.toNamed(item.widget!);
+                    });
+                  } else {
+                    return Container();
+                  }
+                } else {
+                  return Container(
+                    padding:
+                        EdgeInsets.only(top: 16, bottom: 8, left: 8, right: 8),
+                    decoration: boxDecorationRoundedWithShadow(16),
+                    alignment: AlignmentDirectional.center,
+                    width: Get.width * 0.27,
+                    child: WAOperationComponent(
+                      itemModel: item,
+                    ),
+                  ).onTap(() {
+                    Get.toNamed(item.widget!);
+                  });
+                }
               }).toList(),
             ).paddingAll(16),
           ),

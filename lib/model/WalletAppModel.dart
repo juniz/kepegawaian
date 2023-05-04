@@ -37,8 +37,10 @@ class WAOperationsModel {
   Color? color;
   String? title;
   String? widget;
+  String? role;
 
-  WAOperationsModel({this.image, this.color, this.title, this.widget});
+  WAOperationsModel(
+      {this.image, this.color, this.title, this.widget, this.role});
 }
 
 class WATransactionModel {

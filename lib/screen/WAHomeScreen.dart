@@ -259,12 +259,33 @@ class WAHomeScreenState extends State<WAHomeScreen> {
                     direction: Axis.horizontal,
                     spacing: 16,
                     children: operationsList.map((operationModel) {
-                      return WAOperationComponent(itemModel: operationModel)
-                          .onTap(() {
-                        operationModel.widget != null
-                            ? Get.toNamed(operationModel.widget!)
-                            : toast(operationModel.title);
-                      });
+                      if (!operationModel.role.isEmptyOrNull) {
+                        // log(operationModel.role);
+                        if (operationModel.role! == c.departemen.value) {
+                          return WAOperationComponent(itemModel: operationModel)
+                              .onTap(() {
+                            operationModel.widget != null
+                                ? Get.toNamed(operationModel.widget!)
+                                : toast(operationModel.title);
+                          });
+                        } else {
+                          return Container();
+                        }
+                      } else {
+                        return WAOperationComponent(itemModel: operationModel)
+                            .onTap(() {
+                          operationModel.widget != null
+                              ? Get.toNamed(operationModel.widget!)
+                              : toast(operationModel.title);
+                        });
+                      }
+                      // return Container();
+                      // return WAOperationComponent(itemModel: operationModel)
+                      //     .onTap(() {
+                      //   operationModel.widget != null
+                      //       ? Get.toNamed(operationModel.widget!)
+                      //       : toast(operationModel.title);
+                      // });
                     }).toList(),
                   ).paddingAll(16),
                 ),

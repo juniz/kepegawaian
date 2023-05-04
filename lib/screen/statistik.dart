@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -35,14 +36,14 @@ class Statistik extends StatelessWidget {
           centerTitle: true,
           automaticallyImplyLeading: false,
           elevation: 0.0,
-          brightness: Brightness.dark,
+          systemOverlayStyle: SystemUiOverlayStyle.light,
         ),
         body: Container(
           height: Get.height,
           width: Get.width,
-          padding: EdgeInsets.only(top: 60),
-          decoration: BoxDecoration(
-            image: const DecorationImage(
+          padding: const EdgeInsets.only(top: 60),
+          decoration: const BoxDecoration(
+            image: DecorationImage(
                 image: AssetImage('images/walletApp/wa_bg.jpg'),
                 fit: BoxFit.cover),
           ),
@@ -104,7 +105,8 @@ class Statistik extends StatelessWidget {
                           height: 45,
                           width: 45,
                           padding: const EdgeInsets.all(10),
-                          child: Icon(AntDesign.home, color: Colors.white),
+                          child:
+                              const Icon(AntDesign.home, color: Colors.white),
                         ),
                         10.width,
                         Column(

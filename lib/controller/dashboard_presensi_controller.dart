@@ -156,7 +156,7 @@ class DashboardPresensiController extends GetxController {
         (value) {
           listAbsensiTepatWaktu.value =
               absensiTepatWaktuFromJson(value.bodyString!);
-          log(value.bodyString!);
+          // log(value.bodyString!);
         },
       ),
     );

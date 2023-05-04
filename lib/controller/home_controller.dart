@@ -11,6 +11,7 @@ class HomeController extends GetxController {
   var tglLahir = "".obs;
   var alamat = "".obs;
   var photo = "".obs;
+  var departemen = "".obs;
   var statusIzin = "".obs;
   var noPengajuanIzin = "".obs;
   var noPengajuanCuti = "".obs;
@@ -32,6 +33,7 @@ class HomeController extends GetxController {
     noPengajuanIzin.value = GetStorage().read('noPengajuanIzin');
     noPengajuanCuti.value = GetStorage().read('noPengajuanCuti');
     idNotifAdmin.value = GetStorage().read('idNotifAdmin');
+    departemen.value = GetStorage().read('cap');
     super.onInit();
   }
 

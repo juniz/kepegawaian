@@ -130,6 +130,34 @@ class ApiConnection extends GetConnect {
     }
   }
 
+  Future<Response> kirimPatroli(Map body) async {
+    try {
+      final response = await post(urlPatroli, body);
+      log(body);
+      if (response.status.hasError) {
+        return Future.error(response.statusText!);
+      } else {
+        return response;
+      }
+    } catch (e) {
+      return Future.error(e.toString());
+    }
+  }
+
+  Future<Response> patroli(Map<String, dynamic> queryParams) async {
+    try {
+      final response = await get(urlPatroli, query: queryParams);
+      // log(response.bodyString);
+      if (response.status.hasError) {
+        return Future.error(response.statusText!);
+      } else {
+        return response;
+      }
+    } catch (e) {
+      return Future.error(e.toString());
+    }
+  }
+
   Future<Response> getData({String? url}) => get(url!);
 
   Future<Response> postData({String? url, Map<String, dynamic>? body}) =>

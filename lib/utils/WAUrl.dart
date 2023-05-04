@@ -13,3 +13,4 @@ const urlAbsensiTerlambat = '/v1/topterlambat';
 const urlAbsensiTepatWaktu = '/v1/toptepatwaktu';
 const urlCekAkses = '/v1/cekakses';
 const urlHadirRapat = '/v1/hadirrapat';
+const urlPatroli = '/v1/patroli';

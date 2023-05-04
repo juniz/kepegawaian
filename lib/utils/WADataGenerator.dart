@@ -84,6 +84,13 @@ List<WACardModel> waCardList() {
 List<WAOperationsModel> waOperationList() {
   List<WAOperationsModel> operationModel = [];
   operationModel.add(WAOperationsModel(
+    color: Color(0xFFFF7426),
+    title: 'Patroli',
+    image: 'images/walletApp/security.png',
+    widget: '/barcode',
+    role: 'SATP',
+  ));
+  operationModel.add(WAOperationsModel(
     color: Color(0xFF6C56F9),
     title: 'Presensi',
     image: 'images/walletApp/statistics.png',
@@ -142,12 +149,6 @@ List<WAOperationsModel> waOperationList() {
     title: 'Kesehatan',
     image: 'images/walletApp/heart.png',
     widget: '/kesehatan',
-  ));
-  operationModel.add(WAOperationsModel(
-    color: Color(0xFF6C56F9),
-    title: 'Barcode',
-    image: 'images/walletApp/wa_ticket.png',
-    widget: '/barcode',
   ));
   // operationModel.add(WAOperationsModel(
   //   color: Color(0xFF26C884),

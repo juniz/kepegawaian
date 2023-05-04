@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nb_utils/nb_utils.dart';
+
+import '../controller/home_controller.dart';
 
 class WAOperationComponent extends StatefulWidget {
   static String tag = '/WAOperationComponent';
