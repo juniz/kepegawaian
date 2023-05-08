@@ -27,6 +27,7 @@ import 'package:sdm_handal/screen/statistik.dart';
 
 import 'screen/WADashboardScreen.dart';
 import 'screen/WASendMoneyViaLoopScreen.dart';
+import 'screen/helpdesk.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -92,6 +93,7 @@ class MyApp extends StatelessWidget {
             name: '/dahboardpresensi', page: () => const WADashboardPresensi()),
         GetPage(name: '/akreditasi', page: () => const BukuAkreditasi()),
         GetPage(name: '/barcode', page: () => const BarcodeJaga()),
+        GetPage(name: '/helpdesk', page: () => HelpDesk()),
       ],
       initialRoute: '/splash',
     );

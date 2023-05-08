@@ -128,6 +128,12 @@ List<WAOperationsModel> waOperationList() {
   ));
   operationModel.add(WAOperationsModel(
     color: Color(0xFF6C56F9),
+    title: 'Helpdesk IT',
+    image: 'images/walletApp/support.png',
+    widget: '/helpdesk',
+  ));
+  operationModel.add(WAOperationsModel(
+    color: Color(0xFF6C56F9),
     title: 'Statistik',
     image: 'images/walletApp/statistics.png',
     widget: '/statistik',

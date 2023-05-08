@@ -158,6 +158,34 @@ class ApiConnection extends GetConnect {
     }
   }
 
+  Future<Response> helpdesk(Map<String, dynamic>? queryParams) async {
+    try {
+      final response = await get(urlHelpdesk, query: queryParams);
+      // log(response.bodyString);
+      if (response.status.hasError) {
+        return Future.error(response.statusText!);
+      } else {
+        return response;
+      }
+    } catch (e) {
+      return Future.error(e.toString());
+    }
+  }
+
+  Future<Response> simpanHelpdesk(Map body) async {
+    try {
+      final response = await post(urlHelpdesk, body);
+      // log(response.bodyString);
+      if (response.status.hasError) {
+        return Future.error(response.statusText!);
+      } else {
+        return response;
+      }
+    } catch (e) {
+      return Future.error(e.toString());
+    }
+  }
+
   Future<Response> getData({String? url}) => get(url!);
 
   Future<Response> postData({String? url, Map<String, dynamic>? body}) =>
