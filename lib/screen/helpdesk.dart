@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:sdm_handal/utils/WAColors.dart';
 
 import '../controller/helpdesk_controller.dart';
 
@@ -92,7 +93,7 @@ class HelpDesk extends StatelessWidget {
                       AppButton(
                         text: 'Kirim',
                         textStyle: boldTextStyle(color: Colors.white),
-                        color: Colors.green,
+                        color: WAPrimaryColor,
                         enableScaleAnimation: true,
                         onTap: () {
                           if (c.formKey.currentState!.validate()) {
